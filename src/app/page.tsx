@@ -1,7 +1,17 @@
+import Header from '@/components/Header';
+import Hero from '@/components/Hero';
+import WorkGrid from '@/components/WorkGrid';
+import Footer from '@/components/Footer';
+
 export default function Home() {
   return (
-    <main className="min-h-screen flex items-center justify-center">
-      <h1 className="text-4xl font-semibold">Portfolio</h1>
-    </main>
+    <>
+      <Header />
+      <main>
+        <Hero />
+        <WorkGrid />
+      </main>
+      <Footer />
+    </>
   );
 }
