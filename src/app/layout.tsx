@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Rethink_Sans, VT323 } from "next/font/google";
+import { Rethink_Sans, Silkscreen } from "next/font/google";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import "./globals.css";
 
@@ -9,10 +9,10 @@ const rethink = Rethink_Sans({
   display: "swap",
 });
 
-const vt323 = VT323({
+const silkscreen = Silkscreen({
   weight: "400",
   subsets: ["latin"],
-  variable: "--font-vt323",
+  variable: "--font-silkscreen",
   display: "swap",
 });
 
@@ -26,7 +26,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${rethink.variable} ${vt323.variable}`}>
+    <html lang="en" className={`${rethink.variable} ${silkscreen.variable}`}>
       <head>
         {/* Resolve theme before React hydrates to prevent flash */}
         <link rel="preconnect" href="https://api.fontshare.com" />

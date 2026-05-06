@@ -31,8 +31,8 @@ function CoffeeIcon() {
 
 function ArrowElbowIcon() {
   return (
-    <svg width="24" height="24" viewBox="0 0 256 256" fill="currentColor">
-      <path d="M223.39,99.06A8,8,0,0,1,216,104H176v88a8,8,0,0,1-8,8H24a8,8,0,0,1,0-16H160V104H120a8,8,0,0,1-5.66-13.66l48-48a8,8,0,0,1,11.32,0l48,48A8,8,0,0,1,223.39,99.06Z" />
+    <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor">
+      <path d="M208.49,88.49a12,12,0,0,1-17,0L164,61v67A108.12,108.12,0,0,1,56,236a12,12,0,0,1,0-24,84.09,84.09,0,0,0,84-84V61L112.49,88.49a12,12,0,0,1-17-17l48-48a12,12,0,0,1,17,0l48,48A12,12,0,0,1,208.49,88.49Z" />
     </svg>
   );
 }
@@ -48,7 +48,7 @@ export default function Footer() {
 
       {/* Bottom row */}
       <div className="flex items-center justify-between px-[2px] h-[60px] text-primary dark:text-[#E6E6E6]" style={{ fontFamily: "'Satoshi', sans-serif" }}>
-        <p className="flex items-center gap-2 text-[18px] font-medium leading-none">
+        <p className="flex items-center gap-2 text-sm font-medium leading-none">
           <span>© 2026 · BUILT WITH</span>
           <BicycleIcon />
           <CookieIcon />
@@ -62,7 +62,7 @@ export default function Footer() {
               href={href}
               target={href.startsWith('http') ? '_blank' : undefined}
               rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-              className="flex items-center gap-1 text-[18px] font-medium leading-none hover:opacity-70 transition-opacity"
+              className="flex items-center gap-1 text-sm font-medium leading-none hover:opacity-70 transition-opacity"
             >
               {label}
               <ArrowElbowIcon />

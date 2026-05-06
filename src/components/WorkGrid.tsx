@@ -28,15 +28,17 @@ const categoryLabel: Record<string, string> = {
   product: 'Product | UXUI',
 };
 
-export default function WorkGrid() {
-  const [active, setActive] = useState<Category>('all');
+export default function WorkGrid({ active: externalActive }: { active?: Category }) {
+  const [internalActive, setInternalActive] = useState<Category>('all');
+  const active = externalActive ?? internalActive;
 
   const filtered =
     active === 'all' ? projects : projects.filter((p) => p.category === active);
 
   return (
     <section id="work" className="w-full px-8 pb-32">
-      {/* Filter */}
+      {/* Filter — 외부 active 없을 때만 표시 (홈 페이지) */}
+      {!externalActive && (
       <div className="flex items-center justify-center gap-10 mb-10">
         {(
           [
@@ -47,7 +49,7 @@ export default function WorkGrid() {
         ).map(({ key, label }) => (
           <button
             key={key}
-            onClick={() => setActive(key)}
+            onClick={() => setInternalActive(key)}
             className={`flex items-center text-[18px] font-medium transition-colors ${
               active === key
                 ? 'text-black dark:text-[#E6E6E6]'
@@ -65,6 +67,7 @@ export default function WorkGrid() {
           </button>
         ))}
       </div>
+      )}
 
       {/* Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-[clamp(12px,1.0417vw,20px)] gap-y-6">

@@ -35,30 +35,32 @@ function VancouverTime() {
 
 export default function Hero() {
   return (
-    <section className="w-full flex flex-col items-center justify-center min-h-[calc(85vh-30px)] px-8 text-center">
+    <section className="w-full flex flex-col items-center justify-center min-h-[70vh] px-8">
+      <div className="translate-y-[50px]" style={{ textAlign: 'justify', textAlignLast: 'justify', textJustify: 'inter-word' }}>
       {/* Location + live time */}
       <p
-        className="text-primary dark:text-accent tracking-wide mb-6"
-        style={{ fontFamily: "'Satoshi', sans-serif", fontWeight: 500, fontSize: '18px' }}
+        className="text-primary dark:text-accent tracking-wide mb-8"
+        style={{ fontFamily: "'Satoshi', sans-serif", fontWeight: 500, fontSize: '18px', textAlign: 'center', textAlignLast: 'center' }}
       >
         I&apos;m Here — Vancouver, BC · <VancouverTime /> PT
       </p>
 
       {/* Main copy — VT323, 48px fluid, 100% line-height, 8% letter-spacing */}
       <h1
-        className="font-vt323 text-primary dark:text-accent"
+        className="text-primary dark:text-accent"
         style={{
-          fontSize: 'clamp(28px, 3.5vw, 48px)',
+          fontFamily: 'var(--font-silkscreen), monospace',
+          fontSize: 'clamp(24px, 2.5vw, 40px)',
           lineHeight: '100%',
           letterSpacing: '0.08em',
-          maxWidth: '811px',
         }}
       >
-        Sangwha Cha{' '}
-        <SmileIcon />
-        {' '}is a designer in Vancouver, shaping brands and digital products with a
-        refined eye for systems and user experience.
+        <span className="block">Sangwha Cha <SmileIcon /> is a designer</span>
+        <span className="block">in Vancouver, shaping brands and</span>
+        <span className="block">digital products with a refined eye for</span>
+        <span className="block">systems and user experience.</span>
       </h1>
+      </div>
     </section>
   );
 }

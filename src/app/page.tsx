@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main>
+      <main className="pb-[150px]">
         <Hero />
         <WorkGrid />
       </main>

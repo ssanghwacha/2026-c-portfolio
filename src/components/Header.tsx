@@ -4,108 +4,141 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useTheme } from '@/providers/ThemeProvider';
 
-export default function Header() {
+export default function Header({ inverted = false, hideScrollBtn = false }: { inverted?: boolean; hideScrollBtn?: boolean }) {
   const { theme, toggle } = useTheme();
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [isHeaderHovered, setIsHeaderHovered] = useState(false);
+  const [isScrollingDown, setIsScrollingDown] = useState(false);
+  const [time, setTime] = useState('');
 
   useEffect(() => {
+    let lastScrollY = window.scrollY;
     const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 80);
+      const currentScrollY = window.scrollY;
+      setShowScrollTop(currentScrollY > 80);
+      setIsScrollingDown(currentScrollY > lastScrollY && currentScrollY > 80);
+      lastScrollY = currentScrollY;
     };
-
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
-
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  useEffect(() => {
+    const updateTime = () => {
+      setTime(
+        new Intl.DateTimeFormat('en-US', {
+          timeZone: 'America/Vancouver',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: false,
+        }).format(new Date())
+      );
+    };
+    updateTime();
+    const id = setInterval(updateTime, 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  const hideControls = showScrollTop && isScrollingDown;
+  const showCollapsedTime = hideControls && !isHeaderHovered;
+
+  // 색상 토큰
+  const cardBg     = inverted ? 'bg-primary dark:bg-[#E6E6E6]'    : 'bg-white dark:bg-[#1E1E1E]';
+  const logoBg     = inverted ? 'bg-white dark:bg-[#1E1E1E]'       : 'bg-primary dark:bg-[#E6E6E6]';
+  const logoText   = inverted ? 'text-primary dark:text-[#E6E6E6]' : 'text-white dark:text-[#1E1E1E]';
+  const navBar     = inverted ? 'bg-white dark:bg-[#1E1E1E]'       : 'bg-primary dark:bg-[#E6E6E6]';
+  const navText    = inverted ? 'text-white dark:text-[#1E1E1E]'   : 'text-primary dark:text-[#E6E6E6]';
+  const timeText   = inverted ? 'text-white dark:text-[#1E1E1E]'   : 'text-primary dark:text-[#E6E6E6]';
+  const toggleTrack = inverted
+    ? (theme === 'dark' ? 'bg-[#1E1E1E]' : 'bg-white')
+    : (theme === 'dark' ? 'bg-[#E6E6E6]' : 'bg-primary');
+  const toggleHandle = inverted
+    ? (theme === 'dark' ? 'translate-x-[23px] bg-[#E6E6E6]' : 'translate-x-[3px] bg-primary')
+    : (theme === 'dark' ? 'translate-x-[23px] bg-[#1E1E1E]' : 'translate-x-[3px] bg-white');
+  const btnBg      = inverted ? 'bg-white dark:bg-[#1E1E1E]'       : 'bg-primary dark:bg-[#E6E6E6]';
+  const btnIcon    = inverted ? 'text-primary dark:text-[#E6E6E6]' : 'text-white dark:text-[#1E1E1E]';
 
   return (
     <>
-      <div
-        aria-hidden="true"
-        className={`fixed left-0 right-0 top-0 z-40 bg-white/40 backdrop-blur-[5px] transition-[height,opacity] duration-300 ease-out dark:bg-[#1E1E1E]/40 ${
-          showScrollTop ? 'opacity-100' : 'opacity-0 pointer-events-none'
-        } ${isHeaderHovered ? 'h-[160px]' : 'h-[84px]'}`}
-      />
+      <header
+        onMouseEnter={() => setIsHeaderHovered(true)}
+        onMouseLeave={() => setIsHeaderHovered(false)}
+        className={`group/header fixed top-[24px] left-9 z-50 w-[281px] flex flex-col rounded-[8px] p-4 ${cardBg}`}
+      >
+        {/* 로고 */}
+        <Link href="/" className={`w-full h-[21px] flex items-center justify-between px-[2px] ${logoBg}`}>
+          <span className={`font-rethink font-medium text-2xl leading-none ${logoText}`}>C</span>
+          <span className={`font-rethink font-medium text-2xl leading-none ${logoText}`}>SANGWHA</span>
+        </Link>
 
-    <header
-      onMouseEnter={() => setIsHeaderHovered(true)}
-      onMouseLeave={() => setIsHeaderHovered(false)}
-      className="group/header fixed top-[24px] left-[28px] z-50 w-[249px] flex flex-col overflow-visible"
-    >
-      {/* 1. 로고 */}
-      <div className="w-[249px] h-[21px] bg-primary dark:bg-[#E6E6E6] flex items-center justify-between px-[2px] hover:w-[270px] transition-[width] duration-300 ease-in-out">
-        <span className="font-rethink text-white dark:text-[#1E1E1E] font-medium text-2xl leading-none">C</span>
-        <span className="font-rethink text-white dark:text-[#1E1E1E] font-medium text-2xl leading-none">SANGWHA</span>
-      </div>
+        {/* 시간 */}
+        <div
+          className={`overflow-hidden transition-[max-height,opacity,margin-top] duration-300 ease-out ${
+            showCollapsedTime ? 'max-h-[28px] opacity-100 mt-2' : 'max-h-0 opacity-0 mt-0'
+          }`}
+        >
+          <p
+            className={`whitespace-nowrap text-sm font-bold leading-none py-[4px] ${timeText}`}
+            style={{ fontFamily: "'Satoshi', sans-serif" }}
+          >
+            I&apos;m here — {time} Vancouver, BC
+          </p>
+        </div>
 
-      <button
+        {/* 메뉴 + 토글 */}
+        <div
+          className={`flex flex-col overflow-hidden transition-[max-height,opacity,margin-top] duration-300 ease-out ${
+            hideControls
+              ? 'max-h-0 opacity-0 mt-0 pointer-events-none group-hover/header:max-h-[120px] group-hover/header:opacity-100 group-hover/header:mt-2 group-hover/header:pointer-events-auto'
+              : 'max-h-[120px] opacity-100 mt-2'
+          }`}
+        >
+          <nav className="flex flex-col gap-0.5">
+            <Link href="/info" className="group flex items-center py-[4px]">
+              <div className={`w-0 self-stretch shrink-0 group-hover:w-[10px] transition-[width] duration-200 ease-out ${navBar}`} />
+              <span className={`text-[18px] leading-none group-hover:pl-1 transition-[padding] duration-200 ${navText}`} style={{ fontFamily: "'Satoshi', sans-serif", fontWeight: 500 }}>INFO</span>
+            </Link>
+            <Link href="/work" className="group flex items-center py-[4px]">
+              <div className={`w-0 self-stretch shrink-0 group-hover:w-[10px] transition-[width] duration-200 ease-out ${navBar}`} />
+              <span className={`text-[18px] leading-none group-hover:pl-1 transition-[padding] duration-200 ${navText}`} style={{ fontFamily: "'Satoshi', sans-serif", fontWeight: 500 }}>WORK</span>
+            </Link>
+          </nav>
+          <div className="mt-2">
+            <button
+              onClick={toggle}
+              aria-label="Toggle dark mode"
+              className={`w-10 h-5 rounded-full relative border-0 p-0 transition-colors duration-300 ${toggleTrack}`}
+            >
+              <span className={`absolute left-0 top-[3px] h-3.5 w-3.5 rounded-full transition-all duration-300 ${toggleHandle}`} />
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* 위로 스크롤 버튼 */}
+      {!hideScrollBtn && <button
         type="button"
         onClick={scrollToTop}
         aria-label="Scroll to top"
-        className={`fixed top-[24px] right-[28px] flex h-7 w-7 items-center justify-center text-primary transition-[opacity,transform] duration-200 dark:text-[#E6E6E6] ${
-          showScrollTop
-            ? 'opacity-100 scale-100 pointer-events-auto'
-            : 'opacity-0 scale-90 pointer-events-none'
+        className={`group fixed top-[24px] right-9 z-50 flex h-9 w-9 items-center justify-center rounded-[8px] transition-[opacity,transform] duration-200 ${btnBg} ${
+          showScrollTop ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-90 pointer-events-none'
         }`}
       >
-        <span
-          aria-hidden="true"
-          className="h-full w-full bg-current"
-          style={{
-            WebkitMaskImage: "url('/assets/icons/arrow-circle-up-fill.svg')",
-            maskImage: "url('/assets/icons/arrow-circle-up-fill.svg')",
-            WebkitMaskRepeat: 'no-repeat',
-            maskRepeat: 'no-repeat',
-            WebkitMaskPosition: 'center',
-            maskPosition: 'center',
-            WebkitMaskSize: 'contain',
-            maskSize: 'contain',
-          }}
-        />
-      </button>
-
-      {/* 2. INFO / WORK */}
-      <nav
-        className={`flex flex-col gap-0.5 overflow-hidden transition-[max-height,opacity,transform,margin] duration-300 ease-out ${
-          showScrollTop
-            ? 'mt-0 max-h-0 -translate-y-1 opacity-0 pointer-events-none group-hover/header:mt-2 group-hover/header:max-h-[64px] group-hover/header:translate-y-0 group-hover/header:opacity-100 group-hover/header:pointer-events-auto'
-            : 'mt-2 max-h-[64px] translate-y-0 opacity-100'
-        }`}
-      >
-        <Link href="/info" className="group flex items-center py-[4px]">
-          <div className="w-0 self-stretch bg-primary dark:bg-[#E6E6E6] shrink-0 group-hover:w-[10px] transition-[width] duration-200 ease-out" />
-          <span className="text-[18px] leading-none text-primary dark:text-[#E6E6E6] group-hover:pl-1 transition-[padding] duration-200" style={{ fontFamily: "'Satoshi', sans-serif", fontWeight: 500 }}>INFO</span>
-        </Link>
-        <Link href="#work" className="group flex items-center py-[4px]">
-          <div className="w-0 self-stretch bg-primary dark:bg-[#E6E6E6] shrink-0 group-hover:w-[10px] transition-[width] duration-200 ease-out" />
-          <span className="text-[18px] leading-none text-primary dark:text-[#E6E6E6] group-hover:pl-1 transition-[padding] duration-200" style={{ fontFamily: "'Satoshi', sans-serif", fontWeight: 500 }}>WORK</span>
-        </Link>
-      </nav>
-
-      {/* 3. 토글 */}
-      <div className="mt-2">
-        <button
-          onClick={toggle}
-          aria-label="Toggle dark mode"
-          className={`w-10 h-5 rounded-full relative border-0 p-0 transition-colors duration-300 ${
-            theme === 'dark' ? 'bg-[#E6E6E6]' : 'bg-primary'
-          }`}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 256 256"
+          fill="currentColor"
+          className={`transition-transform duration-200 group-hover:-translate-y-0.5 ${btnIcon}`}
         >
-          <span
-            className={`absolute left-0 top-[2px] w-4 h-4 rounded-full transition-all duration-300 ${
-              theme === 'dark' ? 'translate-x-5 bg-[#1E1E1E]' : 'translate-x-[2px] bg-white'
-            }`}
-          />
-        </button>
-      </div>
-
-    </header>
+          <path d="M216.49,168.49a12,12,0,0,1-17,0L128,97,56.49,168.49a12,12,0,0,1-17-17l80-80a12,12,0,0,1,17,0l80,80A12,12,0,0,1,216.49,168.49Z" />
+        </svg>
+      </button>}
     </>
   );
 }
