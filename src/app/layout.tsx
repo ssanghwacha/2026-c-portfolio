@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Rethink_Sans, Silkscreen } from "next/font/google";
+import { Rethink_Sans } from "next/font/google";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import "./globals.css";
 
@@ -9,12 +9,6 @@ const rethink = Rethink_Sans({
   display: "swap",
 });
 
-const silkscreen = Silkscreen({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-silkscreen",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "Sangwha Cha — Designer",
@@ -26,11 +20,12 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${rethink.variable} ${silkscreen.variable}`}>
+    <html lang="en" className={`${rethink.variable}`}>
       <head>
         {/* Resolve theme before React hydrates to prevent flash */}
         <link rel="preconnect" href="https://api.fontshare.com" />
         <link href="https://api.fontshare.com/v2/css?f[]=satoshi@500,700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(){try{var t=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme:dark)').matches;if(t==='dark'||(t===null&&d)){document.documentElement.classList.add('dark')}}catch(e){}})()`,

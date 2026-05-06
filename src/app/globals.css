@@ -10,7 +10,7 @@
 /* next/font sets these CSS vars on <html> at runtime */
 @theme inline {
   --font-rethink: var(--font-rethink);
-  --font-silkscreen: var(--font-silkscreen);
+  --font-display: var(--font-display);
 }
 
 html {

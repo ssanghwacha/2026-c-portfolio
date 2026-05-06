@@ -1,32 +1,9 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
-
-type Category = 'all' | 'product' | 'branding';
-
-type Project = {
-  id: number;
-  title: string;
-  year: number;
-  category: Exclude<Category, 'all'>;
-  thumbnail?: string;
-  description: string;
-};
-
-const projects: Project[] = [
-  { id: 1, title: 'Billow', year: 2025, category: 'product', thumbnail: '/assets/projects/billow.jpg', description: 'Shaping urban car sharing into a clear and cohesive digital brand.' },
-  { id: 2, title: 'Altra', year: 2025, category: 'product', thumbnail: '/assets/projects/altra.jpg', description: 'Shaping urban car sharing into a clear and cohesive digital brand.' },
-  { id: 3, title: 'BGZT', year: 2025, category: 'branding', thumbnail: '/assets/projects/BGZT.jpg', description: 'Shaping urban car sharing into a clear and cohesive digital brand.' },
-  { id: 4, title: 'Velot', year: 2025, category: 'branding', thumbnail: '/assets/projects/VELOT.jpg', description: 'Shaping urban car sharing into a clear and cohesive digital brand.' },
-  { id: 5, title: 'Fianchetto', year: 2025, category: 'branding', thumbnail: '/assets/projects/Fianchetto.jpg', description: 'Shaping urban car sharing into a clear and cohesive digital brand.' },
-  { id: 6, title: 'Velot', year: 2025, category: 'branding', description: 'Shaping urban car sharing into a clear and cohesive digital brand.' },
-];
-
-const categoryLabel: Record<string, string> = {
-  branding: 'Branding',
-  product: 'Product | UXUI',
-};
+import { projects, categoryLabel, type Category } from '@/data/projects';
 
 export default function WorkGrid({ active: externalActive }: { active?: Category }) {
   const [internalActive, setInternalActive] = useState<Category>('all');
@@ -72,9 +49,10 @@ export default function WorkGrid({ active: externalActive }: { active?: Category
       {/* Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-[clamp(12px,1.0417vw,20px)] gap-y-6">
         {filtered.map((project) => (
-          <div
-            key={project.id}
-            className="flex flex-col gap-3"
+          <Link
+            key={project.slug}
+            href={`/work/${project.slug}`}
+            className="flex flex-col gap-3 group"
             style={{ fontFamily: "'Satoshi', sans-serif" }}
           >
             <div className="relative w-full aspect-[7/10] bg-[#D9D9D9] dark:bg-[#2A2A2A] rounded-lg overflow-hidden">
@@ -85,7 +63,7 @@ export default function WorkGrid({ active: externalActive }: { active?: Category
                   fill
                   unoptimized
                   sizes="(max-width: 640px) calc(100vw - 64px), (max-width: 1024px) calc((100vw - 84px) / 2), calc((100vw - 104px) / 3)"
-                  className="object-cover"
+                  className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
                 />
               )}
               <span className="absolute top-3 left-3 bg-white dark:bg-[#2E2E2E] text-black dark:text-[#E6E6E6] text-sm font-medium px-3 py-1 rounded-full border border-black/10 dark:border-white/10">
@@ -105,11 +83,7 @@ export default function WorkGrid({ active: externalActive }: { active?: Category
             <p className="text-sm text-[#666] dark:text-[#888] leading-snug">
               {project.description}
             </p>
-
-            <button className="self-start bg-black dark:bg-[#E6E6E6] text-white dark:text-black text-sm font-semibold px-6 py-2 rounded-full hover:opacity-80 transition-opacity">
-              View
-            </button>
-          </div>
+          </Link>
         ))}
       </div>
     </section>
