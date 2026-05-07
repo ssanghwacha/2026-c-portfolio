@@ -5,6 +5,7 @@
 @theme {
   --color-primary: #3D5FE8;
   --color-accent: #95FF6B;
+  --font-satoshi: 'Satoshi', sans-serif;
 }
 
 /* next/font sets these CSS vars on <html> at runtime */
