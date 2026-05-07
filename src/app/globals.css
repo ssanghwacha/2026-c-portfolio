@@ -18,3 +18,38 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Typography scale — case study right column */
+@layer components {
+  .type-hero {
+    @apply text-[34px] font-semibold leading-[115%] tracking-[-0.02em];
+  }
+
+  .type-section {
+    @apply text-[30px] font-medium leading-[120%] tracking-[-0.01em];
+  }
+
+  .type-overview {
+    @apply text-[28px] font-medium leading-[135%];
+  }
+
+  .type-body-lg {
+    @apply text-[18px] font-normal leading-[160%];
+  }
+
+  .type-body {
+    @apply text-base font-normal leading-[160%];
+  }
+
+  .type-ui {
+    @apply text-sm font-normal leading-[140%];
+  }
+
+  .type-eyebrow {
+    @apply text-[12px] uppercase tracking-[0.08em] opacity-80;
+  }
+
+  .type-stat {
+    @apply text-[72px] font-bold leading-[100%] tracking-[-0.04em];
+  }
+}
+

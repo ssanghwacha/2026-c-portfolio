@@ -42,12 +42,11 @@ export default function AnchorNav({ items }: { items: { id: string; label: strin
         <a
           key={id}
           href={`#${id}`}
-          className={`text-sm whitespace-nowrap transition-colors duration-150 ${
+          className={`font-satoshi text-sm whitespace-nowrap transition-colors duration-150 ${
             active === id
               ? 'text-[#1E1E1E] dark:text-[#E6E6E6] font-medium'
               : 'text-[#ADADAD] dark:text-[#555] hover:text-[#1E1E1E] dark:hover:text-[#E6E6E6]'
           }`}
-          style={{ fontFamily: "'Satoshi', sans-serif" }}
         >
           {label}
         </a>

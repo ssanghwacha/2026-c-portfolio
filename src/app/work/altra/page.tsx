@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import ProjectLayout from '@/components/casestudy/ProjectLayout';
+import HoverVideo from '@/components/casestudy/HoverVideo';
 import CaseHero from '@/components/casestudy/CaseHero';
 import CaseSection from '@/components/casestudy/CaseSection';
 import QuoteBlock from '@/components/casestudy/QuoteBlock';
@@ -8,6 +9,8 @@ import PersonaCard from '@/components/casestudy/PersonaCard';
 import NumberedBlock from '@/components/casestudy/NumberedBlock';
 import ABTestCard from '@/components/casestudy/ABTestCard';
 import MetricRow from '@/components/casestudy/MetricRow';
+import BigStat from '@/components/casestudy/BigStat';
+import ImagePlaceholder from '@/components/casestudy/ImagePlaceholder';
 import SeeMore from '@/components/casestudy/SeeMore';
 
 const NAV = [
@@ -23,7 +26,6 @@ const NAV = [
 export default function AltraPage() {
   return (
     <ProjectLayout projectNav={NAV}>
-      {/* Fixed left sidebar */}
       <CaseHero
         title="Altra"
         headline="From 25% to 75% risk awareness making hiking safer in uncertain conditions"
@@ -42,178 +44,208 @@ export default function AltraPage() {
         nav={NAV}
       />
 
-      {/* Right column */}
-      <div className="ml-[30%]">
-        {/* Hero image — edge to edge within right column */}
-        <div className="relative h-screen">
-          <Image
-            src="/assets/projects/altra.jpg"
+      <div>
+        <div className="ml-[30%] pr-9 pt-[40px]">
+          <HoverVideo
+            src="https://golden-parfait-60a7b7.netlify.app/001.mp4"
+            fallback="https://cdn.prod.website-files.com/67cf995ac794a925d9518c2e/69b1dd97e3c9f0b640b0d1df_alltra-main01.png"
             alt="Altra"
-            fill
-            className="object-cover"
-            priority
+            className="w-full h-auto block rounded-[8px]"
           />
         </div>
 
-        {/* Case study content */}
-        <div className="px-7">
+        <div className="ml-[30%] px-7 pt-12">
           {/* Overview */}
           <CaseSection id="overview">
-            <p className="text-sm text-[#ADADAD] dark:text-[#555] mb-3" style={{ fontFamily: "'Satoshi', sans-serif" }}>Overview</p>
-            <p className="text-xl text-[#1E1E1E] dark:text-[#E6E6E6] max-w-2xl leading-[160%]" style={{ fontFamily: "'Satoshi', sans-serif" }}>
-              Altra is a hiking safety navigation app that restructures the experience around real-time safety states.
-              Most trail apps tell you where you are — Altra tells you what to do next.
+            <p className="font-satoshi type-eyebrow text-[#ADADAD] dark:text-[#555] mb-4">Overview</p>
+            <p className="font-satoshi type-overview text-[#1E1E1E] dark:text-[#E6E6E6] max-w-2xl">
+              Most trail apps tell you where you are.<br />Altra tells you what to do next.
             </p>
           </CaseSection>
 
-          {/* Context */}
+          {/* The Problem */}
           <CaseSection id="context">
-            <p className="text-sm text-[#ADADAD] dark:text-[#555] mb-3" style={{ fontFamily: "'Satoshi', sans-serif" }}>Context</p>
-            <h2 className="text-[40px] font-bold leading-[110%] text-[#1E1E1E] dark:text-[#E6E6E6] mb-10" style={{ fontFamily: "'Satoshi', sans-serif" }}>
-              On the trail, you do not always know which direction is correct.
+            <p className="font-satoshi type-eyebrow text-[#ADADAD] dark:text-[#555] mb-4">The Problem</p>
+            <h2 className="font-satoshi type-hero text-[#1E1E1E] dark:text-[#E6E6E6] mb-10">
+              Knowing where you are<br />isn&apos;t the same as knowing<br />what to do next.
             </h2>
             <TwoCol
               left={
-                <div style={{ fontFamily: "'Satoshi', sans-serif" }}>
+                <div className="font-satoshi">
                   <p className="text-sm text-[#ADADAD] dark:text-[#555] mb-4">What apps provide</p>
                   <ul className="space-y-3 text-[#1E1E1E] dark:text-[#E6E6E6]">
                     <li>GPS coordinates</li>
                     <li>Route maps</li>
-                    <li>Distance to destination</li>
-                    <li>Elevation data</li>
+                    <li>ETA</li>
+                    <li>Elevation</li>
                   </ul>
                 </div>
               }
               right={
-                <div style={{ fontFamily: "'Satoshi', sans-serif" }}>
-                  <p className="text-sm text-[#ADADAD] dark:text-[#555] mb-4">What hikers actually need</p>
+                <div className="font-satoshi">
+                  <p className="text-sm text-[#ADADAD] dark:text-[#555] mb-4">What hikers face</p>
                   <ul className="space-y-3 text-[#1E1E1E] dark:text-[#E6E6E6]">
-                    <li>Is it safe to continue?</li>
-                    <li>How much daylight remains?</li>
-                    <li>Should I turn back now?</li>
-                    <li>What are the risks ahead?</li>
+                    <li>Ambiguous junctions</li>
+                    <li>Scale distortion</li>
+                    <li>Fading daylight</li>
+                    <li>Unclear thresholds</li>
                   </ul>
                 </div>
               }
             />
             <QuoteBlock>
-              The problem is not knowing where you are. It is knowing what to do next.
+              Even with exact GPS, the right next step isn&apos;t always obvious.
             </QuoteBlock>
           </CaseSection>
 
-          {/* Research */}
+          {/* Research & Insight */}
           <CaseSection id="research">
-            <p className="text-sm text-[#ADADAD] dark:text-[#555] mb-3" style={{ fontFamily: "'Satoshi', sans-serif" }}>Research</p>
-            <h2 className="text-[40px] font-bold leading-[110%] text-[#1E1E1E] dark:text-[#E6E6E6] mb-3" style={{ fontFamily: "'Satoshi', sans-serif" }}>
-              Understanding the Behaviour
+            <p className="font-satoshi type-eyebrow text-[#ADADAD] dark:text-[#555] mb-4">Research</p>
+            <h2 className="font-satoshi type-hero text-[#1E1E1E] dark:text-[#E6E6E6] mb-3">
+              15 hikers. One question:<br />when do you stop trusting the map?
             </h2>
-            <p className="text-[#ADADAD] dark:text-[#555] mb-10" style={{ fontFamily: "'Satoshi', sans-serif" }}>
-              Google Forms questionnaire · 12 beginner hikers, 3 peer hikers · Ages 25–40
+            <p className="font-satoshi text-[#ADADAD] dark:text-[#555] mb-10">
+              Google Forms · 12 beginner + 3 peer hikers · ages 25–40
             </p>
             <div className="grid grid-cols-3 gap-4">
-              <PersonaCard icon="🐴" quote="I always feel unsure about whether to keep going or turn back, especially when it gets cloudy." />
-              <PersonaCard icon="🐦" quote="The hardest part isn't finding the trail — it's knowing when conditions have changed too much." />
-              <PersonaCard icon="🐈" quote="I wish the app would just tell me: is it safe? Instead of showing me coordinates I can't interpret." />
+              <PersonaCard icon="🐴" quote="I thought I was on the right path until it was too late." />
+              <PersonaCard icon="🐦" quote="I kept checking the map, but I still wasn't sure." />
+              <PersonaCard icon="🐈" quote="I didn't know if turning back was overreacting." />
             </div>
+            <QuoteBlock>
+              Hikers don&apos;t need precision. They need a signal that their next step is safe.
+            </QuoteBlock>
           </CaseSection>
 
           {/* Design System */}
           <CaseSection id="system">
-            <p className="text-sm text-[#ADADAD] dark:text-[#555] mb-3" style={{ fontFamily: "'Satoshi', sans-serif" }}>Design System</p>
-            <h2 className="text-[40px] font-bold leading-[110%] text-[#1E1E1E] dark:text-[#E6E6E6] mb-12" style={{ fontFamily: "'Satoshi', sans-serif" }}>
-              Translating Safety into Structure
+            <p className="font-satoshi type-eyebrow text-[#ADADAD] dark:text-[#555] mb-4">Design System</p>
+            <h2 className="font-satoshi type-hero text-[#1E1E1E] dark:text-[#E6E6E6] mb-12">
+              From route to state.
             </h2>
-            <div className="space-y-10">
-              <NumberedBlock number={1} title="Route → State">
-                Shift the interface focus from destination-based routing to current safety state. The primary screen
-                communicates Safe, Caution, or Critical — not GPS coordinates.
-              </NumberedBlock>
-              <NumberedBlock number={2} title="Metrics → Judgment Signals">
-                Distance, ETA, and daylight are integrated into a unified timeline. Rather than displaying raw data,
-                the system interprets it: "1.5 hrs to summit, 2.2 hrs of daylight remaining."
-              </NumberedBlock>
-              <NumberedBlock number={3} title="Safety State Model">
-                Three states with defined temporal and environmental thresholds. Each state triggers a distinct visual
-                hierarchy and recommended action set.
-              </NumberedBlock>
-              <NumberedBlock number={4} title="State-Driven Tokens">
-                Design tokens are mapped to safety states, not aesthetic preferences. Color, iconography, and typography
-                shift with context — not brand guidelines.
-              </NumberedBlock>
+
+            <div className="space-y-16">
+              <div>
+                <NumberedBlock number={1} title="Route → State">
+                  The primary screen reads Safe, Caution, or Critical — not coordinates.
+                </NumberedBlock>
+                <div className="grid grid-cols-2 gap-4 mt-8">
+                  <ImagePlaceholder ratio="9/16" label="Safe state — phone mockup" />
+                  <ImagePlaceholder ratio="9/16" label="Critical state — phone mockup" />
+                </div>
+              </div>
+
+              <div>
+                <NumberedBlock number={2} title="Metrics → Signals">
+                  ETA, daylight, and weather collapse into a single judgment line.
+                </NumberedBlock>
+                <ImagePlaceholder ratio="16/7" label="Timeline — Now / Sunset / Arrival" className="mt-8" />
+              </div>
+
+              <div>
+                <NumberedBlock number={3} title="Safety State Model">
+                  Each state has a defined threshold — temporal (return time + 30min &lt; sunset) and environmental (weather, trail condition).
+                </NumberedBlock>
+                <div className="grid grid-cols-2 gap-4 mt-8">
+                  <ImagePlaceholder ratio="9/16" label="Temporal boundary — Safe" />
+                  <ImagePlaceholder ratio="9/16" label="Temporal boundary — Critical" />
+                </div>
+              </div>
+
+              <div>
+                <NumberedBlock number={4} title="State → Tokens">
+                  Color, weight, and hierarchy shift with risk — not brand.
+                </NumberedBlock>
+                <ImagePlaceholder ratio="16/9" label="Variable tokens — safe / critical" className="mt-8" />
+              </div>
             </div>
           </CaseSection>
 
           {/* User Testing */}
           <CaseSection id="testing">
-            <p className="text-sm text-[#ADADAD] dark:text-[#555] mb-3" style={{ fontFamily: "'Satoshi', sans-serif" }}>User Testing</p>
-            <h2 className="text-[40px] font-bold leading-[110%] text-[#1E1E1E] dark:text-[#E6E6E6] mb-10" style={{ fontFamily: "'Satoshi', sans-serif" }}>
-              A/B Testing
+            <p className="font-satoshi type-eyebrow text-[#ADADAD] dark:text-[#555] mb-4">User Testing</p>
+            <h2 className="font-satoshi type-hero text-[#1E1E1E] dark:text-[#E6E6E6] mb-10">
+              Recognition got 58% faster.
             </h2>
+            <BigStat
+              before="4.88s"
+              after="2.06s"
+              delta="−58%"
+              caption="Time to identify safety status — route-first vs state-first layout."
+            />
+            <div className="grid grid-cols-2 gap-4 mb-10">
+              <div>
+                <p className="font-satoshi type-eyebrow text-[#ADADAD] dark:text-[#555] mb-4">A: Route-first</p>
+                <ImagePlaceholder ratio="9/16" label="Layout A" />
+              </div>
+              <div>
+                <p className="font-satoshi type-eyebrow text-[#ADADAD] dark:text-[#555] mb-4">B: State-first</p>
+                <ImagePlaceholder ratio="9/16" label="Layout B" />
+              </div>
+            </div>
             <div className="space-y-4">
               <ABTestCard
-                objective="Test 1 — Risk state recognition speed"
+                objective="Decision confidence (1–5)"
                 beforeLabel="A: Route-first"
                 afterLabel="B: State-first"
-                beforeContent={<p className="text-3xl font-bold text-[#1E1E1E] dark:text-[#E6E6E6]" style={{ fontFamily: "'Satoshi', sans-serif" }}>4.88s</p>}
-                afterContent={<p className="text-3xl font-bold text-[#1E1E1E] dark:text-[#E6E6E6]" style={{ fontFamily: "'Satoshi', sans-serif" }}>2.06s</p>}
-                finding="State-first layout reduced recognition time by 58%. Users immediately identified risk level without scanning."
+                beforeContent={<p className="font-satoshi type-overview text-[#1E1E1E] dark:text-[#E6E6E6]">4.0</p>}
+                afterContent={<p className="font-satoshi type-overview text-[#1E1E1E] dark:text-[#E6E6E6]">4.75</p>}
+                finding="Users felt more certain about whether to continue or turn back."
               />
               <ABTestCard
-                objective="Test 2 — Decision confidence score (1–5)"
+                objective="Risk awareness accuracy"
                 beforeLabel="A: Route-first"
                 afterLabel="B: State-first"
-                beforeContent={<p className="text-3xl font-bold text-[#1E1E1E] dark:text-[#E6E6E6]" style={{ fontFamily: "'Satoshi', sans-serif" }}>4.0</p>}
-                afterContent={<p className="text-3xl font-bold text-[#1E1E1E] dark:text-[#E6E6E6]" style={{ fontFamily: "'Satoshi', sans-serif" }}>4.75</p>}
-                finding="Confidence improved significantly. Users reported feeling more certain about whether to continue or turn back."
-              />
-              <ABTestCard
-                objective="Test 3 — Risk awareness accuracy"
-                beforeLabel="A: Route-first"
-                afterLabel="B: State-first"
-                beforeContent={<p className="text-3xl font-bold text-[#1E1E1E] dark:text-[#E6E6E6]" style={{ fontFamily: "'Satoshi', sans-serif" }}>25%</p>}
-                afterContent={<p className="text-3xl font-bold text-[#1E1E1E] dark:text-[#E6E6E6]" style={{ fontFamily: "'Satoshi', sans-serif" }}>75%</p>}
-                finding="Three times more users correctly identified the risk level in the state-first interface."
+                beforeContent={<p className="font-satoshi type-overview text-[#1E1E1E] dark:text-[#E6E6E6]">25%</p>}
+                afterContent={<p className="font-satoshi type-overview text-[#1E1E1E] dark:text-[#E6E6E6]">75%</p>}
+                finding="Three times more users correctly identified the current risk level."
               />
             </div>
           </CaseSection>
 
-          {/* Results */}
+          {/* Result */}
           <CaseSection id="results">
-            <p className="text-sm text-[#ADADAD] dark:text-[#555] mb-3" style={{ fontFamily: "'Satoshi', sans-serif" }}>Results</p>
-            <h2 className="text-[40px] font-bold leading-[110%] text-[#1E1E1E] dark:text-[#E6E6E6] mb-10" style={{ fontFamily: "'Satoshi', sans-serif" }}>
+            <p className="font-satoshi type-eyebrow text-[#ADADAD] dark:text-[#555] mb-4">Result</p>
+            <h2 className="font-satoshi type-hero text-[#1E1E1E] dark:text-[#E6E6E6] mb-10">
               Before / After
             </h2>
-            <MetricRow label="Recognition time"   before="8.44s"    after="5.87s (−30%)" />
-            <MetricRow label="Risk awareness"      before="25%"      after="75%"          />
-            <MetricRow label="Decision confidence" before="4.0 / 5"  after="4.75 / 5"    />
-            <MetricRow label="Task completion"     before="67%"      after="92%"          />
+            <div className="grid grid-cols-2 gap-4 mb-10">
+              <div>
+                <p className="font-satoshi type-eyebrow text-[#ADADAD] dark:text-[#555] mb-4">Before</p>
+                <ImagePlaceholder ratio="9/16" label="Route-first home" />
+              </div>
+              <div>
+                <p className="font-satoshi type-eyebrow text-[#ADADAD] dark:text-[#555] mb-4">After</p>
+                <ImagePlaceholder ratio="9/16" label="State-first home" />
+              </div>
+            </div>
+            <MetricRow label="Risk awareness"      before="25%"     after="75%"           />
+            <MetricRow label="Recognition time"    before="8.44s"   after="5.87s (−30%)"  />
+            <MetricRow label="Decision confidence" before="4.0 / 5" after="4.75 / 5"      />
           </CaseSection>
 
           {/* Reflection */}
           <CaseSection id="reflection">
-            <p className="text-sm text-[#ADADAD] dark:text-[#555] mb-3" style={{ fontFamily: "'Satoshi', sans-serif" }}>Reflection</p>
-            <h2 className="text-[40px] font-bold leading-[110%] text-[#1E1E1E] dark:text-[#E6E6E6] mb-12" style={{ fontFamily: "'Satoshi', sans-serif" }}>
+            <p className="font-satoshi type-eyebrow text-[#ADADAD] dark:text-[#555] mb-4">Reflection</p>
+            <h2 className="font-satoshi type-hero text-[#1E1E1E] dark:text-[#E6E6E6] mb-12">
               Takeaways
             </h2>
             <div className="space-y-10">
               <NumberedBlock number={1} title="Confidence matters more than speed">
-                Speed improvements were measurable, but the more meaningful outcome was users feeling certain about
-                their decisions. That confidence directly maps to safety.
+                Hikers act on certainty, not on latency.
               </NumberedBlock>
-              <NumberedBlock number={2} title="Safety requires defined thresholds">
-                Vague risk communication ("be careful") performs no better than none. Clear state logic with defined
-                thresholds drives actionable behaviour.
+              <NumberedBlock number={2} title="Safety needs thresholds, not warnings">
+                &ldquo;Be careful&rdquo; performs no better than nothing.
               </NumberedBlock>
-              <NumberedBlock number={3} title="Clear state logic improves recognition">
-                When the interface commits to a single, dominant state rather than layering multiple data points,
-                recognition speed and accuracy both improve.
+              <NumberedBlock number={3} title="Binary states beat fuzzy ones">
+                Removing the middle &ldquo;Warning&rdquo; tier sharpened decisions.
               </NumberedBlock>
             </div>
           </CaseSection>
 
           <SeeMore
             projects={[
-              { slug: 'billow', title: 'Billow', category: 'Product · UXUI', thumbnail: '/assets/projects/billow.jpg' },
+              { slug: 'billow', title: 'Billow', category: 'Product · UXUI', thumbnail: '/assets/projects/billow/thumbnail.jpg' },
               { slug: 'velot',  title: 'Velot',  category: 'Branding',       thumbnail: '/assets/projects/VELOT.jpg'  },
             ]}
           />
