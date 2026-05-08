@@ -471,7 +471,7 @@ export default function AltraPage() {
                       </p>
                     </div>
                   </div>
-                  <div className="rounded-[8px] bg-[#3A3A3A] p-12">
+                  <div className="rounded-[8px] bg-[#F5F5F5] p-12 dark:bg-[#2A2A2A]">
                     <div className="grid justify-center gap-6 md:grid-cols-[310px_310px]">
                       <div>
                         <Image
@@ -525,7 +525,7 @@ export default function AltraPage() {
                       </p>
                     </div>
                   </div>
-                  <div className="rounded-[8px] bg-white p-12">
+                  <div className="rounded-[8px] bg-[#F5F5F5] p-12 dark:bg-[#2A2A2A]">
                     <div className="mx-auto grid max-w-[760px] items-center gap-8 md:grid-cols-2">
                       <div>
                         <Image
@@ -579,7 +579,7 @@ export default function AltraPage() {
                       </p>
                     </div>
                   </div>
-                  <div className="rounded-[8px] bg-[#3A3A3A] p-12">
+                  <div className="rounded-[8px] bg-[#F5F5F5] p-12 dark:bg-[#2A2A2A]">
                     <div className="grid justify-center gap-6 md:grid-cols-[310px_310px]">
                       <div>
                         <Image
