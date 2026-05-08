@@ -77,10 +77,10 @@ export default function CaseHero({
       {/* Card 1: Project info + CTA */}
       <div className="bg-[#F5F5F5] dark:bg-[#2A2A2A] rounded-[8px] p-6 pb-5 flex flex-col gap-5 shrink-0">
         <div className="flex flex-col gap-5">
-          <p className="font-satoshi text-sm text-[#1E1E1E] dark:text-white leading-[1.4]">
+          <p className="font-satoshi text-sm text-primary dark:text-white leading-[1.4]">
             {title}
           </p>
-          <h1 className="font-satoshi text-[22px] font-medium leading-[1.2] text-[#1E1E1E] dark:text-[#E6E6E6]">
+          <h1 className="font-satoshi text-[22px] font-medium leading-[1.2] text-primary dark:text-[#E6E6E6]">
             {headline}
           </h1>
           {description ? (
@@ -95,7 +95,7 @@ export default function CaseHero({
               href={prototypeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-satoshi inline-flex items-center gap-1.5 rounded-full bg-[#E9E9E9] px-4 py-2 text-sm font-medium leading-[1.2] text-[#1E1E1E] transition-colors duration-150 hover:bg-[#DEDEDE] dark:bg-[#333] dark:text-[#E6E6E6] dark:hover:bg-[#3C3C3C]"
+              className="font-satoshi inline-flex items-center gap-1.5 rounded-full bg-[#E9E9E9] px-4 py-2 text-sm font-semibold leading-[1.2] text-primary transition-colors duration-150 hover:bg-[#DEDEDE] dark:bg-[#333] dark:font-medium dark:text-[#E6E6E6] dark:hover:bg-[#3C3C3C]"
             >
               Prototype
               <ArrowUpRight size={15} weight="bold" />
@@ -108,7 +108,7 @@ export default function CaseHero({
       <div className="bg-[#F5F5F5] dark:bg-[#2A2A2A] rounded-[8px] p-6 shrink-0">
         <div className="grid grid-cols-4 gap-3">
           <div className="flex flex-col gap-3">
-            <p className="font-satoshi text-[11px] font-bold uppercase tracking-[0.08em] text-[#6F6F6F] dark:text-[#ADADAD] leading-normal">Role</p>
+            <p className="font-satoshi text-[11px] font-bold uppercase tracking-[0.08em] text-primary dark:text-[#ADADAD] leading-normal">Role</p>
             <div>
               {roleLines.map((r, i) => (
                 <p key={i} className="font-satoshi text-[15px] font-medium text-[#6F6F6F] dark:text-[#E6E6E6] leading-[1.4]">{r}</p>
@@ -116,7 +116,7 @@ export default function CaseHero({
             </div>
           </div>
           <div className="flex flex-col gap-3">
-            <p className="font-satoshi text-[11px] font-bold uppercase tracking-[0.08em] text-[#6F6F6F] dark:text-[#ADADAD] leading-normal">Team ({team.length})</p>
+            <p className="font-satoshi text-[11px] font-bold uppercase tracking-[0.08em] text-primary dark:text-[#ADADAD] leading-normal">Team ({team.length})</p>
             <div className="flex w-fit items-center" aria-label={`${team.length} team members`}>
               {orderedTeam.map(({ initials }) => (
                 <Avatar
@@ -126,7 +126,7 @@ export default function CaseHero({
                   title={initials}
                 >
                   <AvatarFallback
-                    className={initials === 'SC' ? 'bg-[#1E1E1E] text-white dark:bg-[#E6E6E6] dark:text-[#1E1E1E]' : 'bg-[#C9C9C9] text-[#6F6F6F] dark:bg-[#3A3A3A] dark:text-[#E6E6E6]'}
+                    className={initials === 'SC' ? 'bg-primary text-white dark:bg-[#E6E6E6] dark:text-[#1E1E1E]' : 'bg-[#C9C9C9] text-[#6F6F6F] dark:bg-[#3A3A3A] dark:text-[#E6E6E6]'}
                   >
                     {initials}
                   </AvatarFallback>
@@ -135,11 +135,11 @@ export default function CaseHero({
             </div>
           </div>
           <div className="flex flex-col gap-3">
-            <p className="font-satoshi text-[11px] font-bold uppercase tracking-[0.08em] text-[#6F6F6F] dark:text-[#ADADAD] leading-normal">Timeline</p>
+            <p className="font-satoshi text-[11px] font-bold uppercase tracking-[0.08em] text-primary dark:text-[#ADADAD] leading-normal">Timeline</p>
             <p className="font-satoshi text-[15px] font-medium text-[#6F6F6F] dark:text-[#E6E6E6] leading-[1.4]">{timeline}</p>
           </div>
           <div className="flex flex-col gap-3">
-            <p className="font-satoshi text-[11px] font-bold uppercase tracking-[0.08em] text-[#6F6F6F] dark:text-[#ADADAD] leading-normal">Tool</p>
+            <p className="font-satoshi text-[11px] font-bold uppercase tracking-[0.08em] text-primary dark:text-[#ADADAD] leading-normal">Tool</p>
             <div className="flex flex-wrap gap-2">
               {tools.map(({ name, src, bg, textColor, phosphorIcon }) => {
                 const PhosphorIcon = phosphorIcon ? PHOSPHOR_ICONS[phosphorIcon] : null;
@@ -187,7 +187,7 @@ export default function CaseHero({
                   href={`#${id}`}
                   className={`font-satoshi flex gap-3 items-start text-sm leading-[1.5] transition-colors duration-150 ${
                     isActive
-                      ? 'translate-x-1 font-semibold text-[#1E1E1E] opacity-100 dark:text-[#E6E6E6]'
+                      ? 'translate-x-1 font-semibold text-primary opacity-100 dark:text-[#E6E6E6]'
                       : 'font-medium text-black/35 hover:text-black/60 dark:text-white/30 dark:hover:text-white/65'
                   }`}
                 >
