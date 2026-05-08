@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { BirdIcon, CatIcon, RabbitIcon } from '@phosphor-icons/react/ssr';
 import ProjectLayout from '@/components/casestudy/ProjectLayout';
 import HoverVideo from '@/components/casestudy/HoverVideo';
 import CaseHero from '@/components/casestudy/CaseHero';
@@ -6,6 +7,7 @@ import CaseSection from '@/components/casestudy/CaseSection';
 import SeeMore from '@/components/casestudy/SeeMore';
 import NumberCountUp from '@/components/casestudy/NumberCountUp';
 import HeroMediaReveal from '@/components/motion/HeroMediaReveal';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
@@ -18,6 +20,21 @@ const NAV = [
   { id: 'system',     label: 'Design Direction'   },
   { id: 'results',    label: 'Testing & Results'  },
   { id: 'reflection', label: 'Reflection'         },
+];
+
+const PARTICIPANT_QUOTES = [
+  {
+    icon: BirdIcon,
+    quote: 'I thought I was on the right path until it was too late.',
+  },
+  {
+    icon: CatIcon,
+    quote: "I kept checking the map, but I still wasn't sure.",
+  },
+  {
+    icon: RabbitIcon,
+    quote: "I didn't know if turning back was overreacting.",
+  },
 ];
 
 export default function AltraPage() {
@@ -74,7 +91,7 @@ export default function AltraPage() {
               <h2 className="type-hero text-primary dark:text-[#E6E6E6] mb-12 max-w-3xl">
                 ALTRA is a hiking safety navigation concept designed for beginner hikers.
               </h2>
-              <div className="type-body-lg text-[#868686] dark:text-[#999] space-y-5 max-w-2xl mb-16">
+              <div className="type-body-lg text-[#6F6F6F] dark:text-[#999] space-y-5 max-w-2xl mb-16">
                 <p>
                   Instead of focusing on route precision, the system prioritizes real-time risk awareness through a state-first interface.
                 </p>
@@ -86,7 +103,7 @@ export default function AltraPage() {
                 <CardContent className="grid gap-10 md:grid-cols-[1.2fr_0.8fr]">
                   <div>
                     <Badge>System shift</Badge>
-                    <p className="mt-8 text-[28px] font-medium leading-[125%] text-[#868686] dark:text-[#E6E6E6]">
+                    <p className="mt-8 text-[28px] font-medium leading-[125%] text-[#6F6F6F] dark:text-[#E6E6E6]">
                       The interface moves from location accuracy to decision confidence.
                     </p>
                   </div>
@@ -95,17 +112,17 @@ export default function AltraPage() {
                     <div className="grid grid-cols-2 gap-6">
                       <div>
                         <p className="text-xs uppercase tracking-[0.18em] text-[#ADADAD] dark:text-[#555]">Recognition</p>
-                        <p className="mt-2 text-[32px] font-semibold leading-none text-[#868686] dark:text-[#E6E6E6]">
+                        <p className="mt-2 text-[32px] font-semibold leading-none text-[#6F6F6F] dark:text-[#E6E6E6]">
                           <NumberCountUp to={58} suffix="%" />
                         </p>
-                        <p className="mt-2 text-sm text-[#868686] dark:text-[#777]">faster</p>
+                        <p className="mt-2 text-sm text-[#6F6F6F] dark:text-[#777]">faster</p>
                       </div>
                       <div>
                         <p className="text-xs uppercase tracking-[0.18em] text-[#ADADAD] dark:text-[#555]">Awareness</p>
-                        <p className="mt-2 text-[32px] font-semibold leading-none text-[#868686] dark:text-[#E6E6E6]">
+                        <p className="mt-2 text-[32px] font-semibold leading-none text-[#6F6F6F] dark:text-[#E6E6E6]">
                           <NumberCountUp to={75} suffix="%" />
                         </p>
-                        <p className="mt-2 text-sm text-[#868686] dark:text-[#777]">accuracy</p>
+                        <p className="mt-2 text-sm text-[#6F6F6F] dark:text-[#777]">accuracy</p>
                       </div>
                     </div>
                   </div>
@@ -121,17 +138,17 @@ export default function AltraPage() {
               <h2 className="type-hero text-primary dark:text-[#E6E6E6] mb-10 max-w-3xl">
                 Vancouver&apos;s trails are crowded.<br />Search and rescue calls keep rising.
               </h2>
-              <p className="type-body-lg max-w-2xl text-[#868686] dark:text-[#999] mb-16">
+              <p className="type-body-lg max-w-[720px] text-[#6F6F6F] dark:text-[#999] mb-16">
                 The North Shore sits twenty minutes from downtown. Grouse, Seymour, and the Chief draw thousands of casual hikers every weekend, many of them new to the trails.
               </p>
 
               <Card className="mb-10 w-full">
                 <CardContent className="space-y-8">
                   <Badge>System insight</Badge>
-                  <p className="text-[30px] font-medium leading-[125%] text-[#868686] dark:text-[#E6E6E6]">
+                  <p className="text-[30px] font-medium leading-[125%] text-[#6F6F6F] dark:text-[#E6E6E6]">
                     The pattern is rarely &ldquo;lost in the wilderness.&rdquo;
                   </p>
-                  <p className="max-w-2xl text-base leading-[170%] text-[#868686] dark:text-[#999]">
+                  <p className="max-w-2xl text-base leading-[170%] text-[#6F6F6F] dark:text-[#999]">
                     It is hikers continuing forward after something already felt wrong. That gap between having information and acting on it became the starting point of this project.
                   </p>
                 </CardContent>
@@ -146,13 +163,13 @@ export default function AltraPage() {
                 <div className="grid gap-8 md:grid-cols-2">
                   <div>
                     <p className="mb-4 text-sm font-medium text-[#1E1E1E] dark:text-[#E6E6E6]">What they solve</p>
-                    <p className="text-base leading-[170%] text-[#868686] dark:text-[#999]">
+                    <p className="text-base leading-[170%] text-[#6F6F6F] dark:text-[#999]">
                       Where am I, where is the trail, and how do I keep following the route.
                     </p>
                   </div>
                   <div>
                     <p className="mb-4 text-sm font-medium text-[#1E1E1E] dark:text-[#E6E6E6]">What remains unresolved</p>
-                    <p className="text-base leading-[170%] text-[#868686] dark:text-[#999]">
+                    <p className="text-base leading-[170%] text-[#6F6F6F] dark:text-[#999]">
                       Whether the current situation still supports continuing forward.
                     </p>
                   </div>
@@ -161,9 +178,9 @@ export default function AltraPage() {
               </div>
 
               <Card className="w-full bg-[#F5F5F5]/50 dark:bg-[#2A2A2A]/50">
-                <CardContent className="space-y-8">
+                <CardContent className="space-y-6">
                   <Badge>The question</Badge>
-                  <h3 className="mt-6 text-5xl leading-none tracking-[-0.04em] text-primary dark:text-[#E6E6E6]">
+                  <h3 className="text-[34px] font-medium leading-[1.15] tracking-[-0.02em] text-primary dark:text-[#E6E6E6]">
                     Should I keep going?
                   </h3>
                 </CardContent>
@@ -186,27 +203,27 @@ export default function AltraPage() {
               <h2 className="type-hero text-primary dark:text-[#E6E6E6] mb-10 max-w-4xl">
                 Knowing where you are isn&apos;t the same as knowing what to do next.
               </h2>
-              <p className="type-body-lg max-w-2xl text-[#868686] dark:text-[#999] mb-16">
-                Most hiking interfaces assume information automatically creates confidence. In reality, hikers hesitate even when the map is technically accurate.
+              <p className="type-body-lg max-w-2xl text-[#6F6F6F] dark:text-[#999] mb-16">
+                Most hiking interfaces assume information automatically creates confidence. <span className="whitespace-nowrap">In reality</span>, hikers hesitate even when the map is technically accurate.
               </p>
 
               <Card className="mb-10 w-full">
                 <CardContent className="space-y-8">
                   <Badge>Behavior gap</Badge>
-                  <p className="text-[30px] font-medium leading-[125%] text-[#868686] dark:text-[#E6E6E6]">
+                  <p className="text-[30px] font-medium leading-[125%] text-[#6F6F6F] dark:text-[#E6E6E6]">
                     The issue wasn&apos;t a lack of information. It was the absence of interpretation.
                   </p>
                   <Separator />
                   <div className="grid gap-8 md:grid-cols-2">
                     <div>
                       <p className="mb-3 text-xs uppercase tracking-[0.18em] text-[#ADADAD] dark:text-[#555]">Map gives</p>
-                      <p className="text-base leading-[170%] text-[#868686] dark:text-[#999]">
+                      <p className="text-base leading-[170%] text-[#6F6F6F] dark:text-[#999]">
                         Position, route, elevation, ETA, and a dense set of environmental details.
                       </p>
                     </div>
                     <div>
                       <p className="mb-3 text-xs uppercase tracking-[0.18em] text-[#ADADAD] dark:text-[#555]">Hiker needs</p>
-                      <p className="text-base leading-[170%] text-[#868686] dark:text-[#999]">
+                      <p className="text-base leading-[170%] text-[#6F6F6F] dark:text-[#999]">
                         A readable signal that clarifies whether continuing still makes sense.
                       </p>
                     </div>
@@ -233,9 +250,9 @@ export default function AltraPage() {
                 15 hikers. One question. When do you stop trusting the map?
               </h2>
               <p className="mb-12 text-xs uppercase tracking-[0.16em] text-[#ADADAD] dark:text-[#555]">
-                Exploratory survey · Google Forms · 12 beginner + 3 peer hikers · ages 25-40 · Lower Mainland
+                Exploratory survey · Google Forms · 12 beginner + 3 peer hikers · ages 25-40 · Vancouver
               </p>
-              <div className="type-body-lg max-w-2xl text-[#868686] dark:text-[#999] space-y-5 mb-16">
+              <div className="type-body-lg max-w-2xl text-[#6F6F6F] dark:text-[#999] space-y-5 mb-16">
                 <p>
                   This was lightweight, directional research. The goal was to surface patterns of hesitation, not measure prevalence.
                 </p>
@@ -245,15 +262,15 @@ export default function AltraPage() {
               </div>
 
               <div className="grid gap-4 md:grid-cols-3 mb-10">
-                {[
-                  'I thought I was on the right path until it was too late.',
-                  "I kept checking the map, but I still wasn't sure.",
-                  "I didn't know if turning back was overreacting.",
-                ].map((quote) => (
+                {PARTICIPANT_QUOTES.map(({ icon: Icon, quote }) => (
                   <Card key={quote}>
                     <CardContent className="flex min-h-[180px] flex-col justify-between">
-                      <Badge>Participant</Badge>
-                      <p className="text-base leading-[160%] text-[#868686] dark:text-[#999]">&ldquo;{quote}&rdquo;</p>
+                      <Avatar className="h-8 w-8 bg-primary text-white dark:bg-[#E6E6E6] dark:text-[#1E1E1E]">
+                        <AvatarFallback className="bg-transparent text-white dark:text-[#1E1E1E]">
+                          <Icon size={17} weight="bold" />
+                        </AvatarFallback>
+                      </Avatar>
+                      <p className="text-base leading-[160%] text-[#6F6F6F] dark:text-[#999]">&ldquo;{quote}&rdquo;</p>
                     </CardContent>
                   </Card>
                 ))}
@@ -277,7 +294,7 @@ export default function AltraPage() {
               <h2 className="type-hero text-primary dark:text-[#E6E6E6] mb-10 max-w-3xl">
                 From route to state.
               </h2>
-              <p className="type-body-lg max-w-2xl text-[#868686] dark:text-[#999] mb-16">
+              <p className="type-body-lg max-w-2xl text-[#6F6F6F] dark:text-[#999] mb-16">
                 Testing revealed users still hesitated when too many metrics competed for attention. The interface needed to communicate a decision, not just information.
               </p>
 
@@ -286,11 +303,11 @@ export default function AltraPage() {
                   <div className="mb-8">
                     <div className="mb-6 flex items-center gap-3">
                       <Badge>01</Badge>
-                      <p className="text-[20px] font-medium leading-[125%] text-[#868686] dark:text-[#E6E6E6]">
+                      <p className="text-[20px] font-medium leading-[125%] text-[#6F6F6F] dark:text-[#E6E6E6]">
                         Route to State
                       </p>
                     </div>
-                    <p className="max-w-2xl text-base leading-[170%] text-[#868686] dark:text-[#999]">
+                    <p className="max-w-2xl text-base leading-[170%] text-[#6F6F6F] dark:text-[#999]">
                       Instead of focusing on the path, the interface centers on the current safety state.
                     </p>
                   </div>
@@ -304,7 +321,7 @@ export default function AltraPage() {
                           height={586}
                           className="aspect-[393/293] h-auto w-full object-cover"
                         />
-                        <p className="mt-5 text-center text-base text-[#868686] dark:text-[#D9D9D9]">Safe</p>
+                        <p className="mt-5 text-center text-base text-[#6F6F6F] dark:text-[#D9D9D9]">Safe</p>
                       </div>
                       <div>
                         <Image
@@ -314,7 +331,7 @@ export default function AltraPage() {
                           height={586}
                           className="aspect-[393/293] h-auto w-full object-cover"
                         />
-                        <p className="mt-5 text-center text-base text-[#868686] dark:text-[#D9D9D9]">Critical</p>
+                        <p className="mt-5 text-center text-base text-[#6F6F6F] dark:text-[#D9D9D9]">Critical</p>
                       </div>
                     </div>
                   </div>
@@ -324,11 +341,11 @@ export default function AltraPage() {
                   <div className="mb-8">
                     <div className="mb-6 flex items-center gap-3">
                       <Badge>02</Badge>
-                      <p className="text-[20px] font-medium leading-[125%] text-[#868686] dark:text-[#E6E6E6]">
+                      <p className="text-[20px] font-medium leading-[125%] text-[#6F6F6F] dark:text-[#E6E6E6]">
                         Metrics to Signals
                       </p>
                     </div>
-                    <p className="max-w-2xl text-base leading-[170%] text-[#868686] dark:text-[#999]">
+                    <p className="max-w-2xl text-base leading-[170%] text-[#6F6F6F] dark:text-[#999]">
                       ETA, daylight, and route progress collapse into a single judgment line.
                     </p>
                   </div>
@@ -347,11 +364,11 @@ export default function AltraPage() {
                   <div className="mb-8">
                     <div className="mb-6 flex items-center gap-3">
                       <Badge>03</Badge>
-                      <p className="text-[20px] font-medium leading-[125%] text-[#868686] dark:text-[#E6E6E6]">
+                      <p className="text-[20px] font-medium leading-[125%] text-[#6F6F6F] dark:text-[#E6E6E6]">
                         Safety State Model
                       </p>
                     </div>
-                    <p className="max-w-2xl text-base leading-[170%] text-[#868686] dark:text-[#999]">
+                    <p className="max-w-2xl text-base leading-[170%] text-[#6F6F6F] dark:text-[#999]">
                       Each state has defined temporal and environmental thresholds.
                     </p>
                   </div>
@@ -365,7 +382,7 @@ export default function AltraPage() {
                           height={672}
                           className="mx-auto h-auto w-full max-w-[310px] rounded-[8px]"
                         />
-                        <p className="mt-5 text-center text-base text-[#868686] dark:text-[#D9D9D9]">Safe</p>
+                        <p className="mt-5 text-center text-base text-[#6F6F6F] dark:text-[#D9D9D9]">Safe</p>
                       </div>
                       <div>
                         <Image
@@ -375,7 +392,7 @@ export default function AltraPage() {
                           height={672}
                           className="mx-auto h-auto w-full max-w-[310px] rounded-[8px]"
                         />
-                        <p className="mt-5 text-center text-base text-[#868686] dark:text-[#D9D9D9]">Critical</p>
+                        <p className="mt-5 text-center text-base text-[#6F6F6F] dark:text-[#D9D9D9]">Critical</p>
                       </div>
                     </div>
                   </div>
@@ -385,11 +402,11 @@ export default function AltraPage() {
                   <div className="mb-8">
                     <div className="mb-6 flex items-center gap-3">
                       <Badge>04</Badge>
-                      <p className="text-[20px] font-medium leading-[125%] text-[#868686] dark:text-[#E6E6E6]">
+                      <p className="text-[20px] font-medium leading-[125%] text-[#6F6F6F] dark:text-[#E6E6E6]">
                         State to Tokens
                       </p>
                     </div>
-                    <p className="max-w-2xl text-base leading-[170%] text-[#868686] dark:text-[#999]">
+                    <p className="max-w-2xl text-base leading-[170%] text-[#6F6F6F] dark:text-[#999]">
                       Color, weight, and hierarchy shift with risk. Not brand.
                     </p>
                   </div>
@@ -427,7 +444,7 @@ export default function AltraPage() {
               <p className="mb-12 text-xs uppercase tracking-[0.16em] text-[#ADADAD] dark:text-[#555]">
                 Pilot study · 4 participants · Figma prototype · A/B comparison
               </p>
-              <p className="type-body-lg max-w-2xl text-[#868686] dark:text-[#999] mb-20">
+              <p className="type-body-lg max-w-2xl text-[#6F6F6F] dark:text-[#999] mb-20">
                 Each test isolated one decision: how users read the state, the time pressure, and the next action. Findings fed directly back into the layout.
               </p>
 
@@ -436,20 +453,20 @@ export default function AltraPage() {
                 <div>
                   <div className="mb-8 flex items-center gap-3">
                     <Badge>Test 01</Badge>
-                    <p className="text-[20px] font-medium leading-[125%] text-[#868686] dark:text-[#E6E6E6]">
+                    <p className="text-[20px] font-medium leading-[125%] text-[#6F6F6F] dark:text-[#E6E6E6]">
                       Label clarity
                     </p>
                   </div>
                   <div className="mb-8 grid gap-8 md:grid-cols-2">
                     <div>
-                      <p className="mb-3 text-base font-medium leading-[140%] text-[#868686] dark:text-[#E6E6E6]">What we tested</p>
-                      <p className="text-base leading-[170%] text-[#868686] dark:text-[#999]">
+                      <p className="mb-3 text-base font-medium leading-[140%] text-[#6F6F6F] dark:text-[#E6E6E6]">What we tested</p>
+                      <p className="text-base leading-[170%] text-[#6F6F6F] dark:text-[#999]">
                         Whether explicit state labels would improve recognition over visual warning structure alone.
                       </p>
                     </div>
                     <div>
-                      <p className="mb-3 text-base font-medium leading-[140%] text-[#868686] dark:text-[#E6E6E6]">What we found</p>
-                      <p className="text-base leading-[170%] text-[#868686] dark:text-[#999]">
+                      <p className="mb-3 text-base font-medium leading-[140%] text-[#6F6F6F] dark:text-[#E6E6E6]">What we found</p>
+                      <p className="text-base leading-[170%] text-[#6F6F6F] dark:text-[#999]">
                         A named state — Safe, Caution, Critical — was identified almost immediately. Without it, users scanned and second-guessed.
                       </p>
                     </div>
@@ -464,7 +481,7 @@ export default function AltraPage() {
                           height={866}
                           className="mx-auto h-auto w-full rounded-[8px]"
                         />
-                        <p className="mt-5 text-center text-base text-[#868686] dark:text-[#D9D9D9]">Before</p>
+                        <p className="mt-5 text-center text-base text-[#6F6F6F] dark:text-[#D9D9D9]">Before</p>
                       </div>
                       <div>
                         <Image
@@ -474,14 +491,14 @@ export default function AltraPage() {
                           height={866}
                           className="mx-auto h-auto w-full rounded-[8px]"
                         />
-                        <p className="mt-5 text-center text-base text-[#868686] dark:text-[#D9D9D9]">After</p>
+                        <p className="mt-5 text-center text-base text-[#6F6F6F] dark:text-[#D9D9D9]">After</p>
                       </div>
                     </div>
                   </div>
                   <div className="mt-8 flex items-baseline justify-between gap-6 border-t border-[#E6E6E6] pt-6 dark:border-[#3A3A3A]">
                     <p className="text-xs uppercase tracking-[0.18em] text-[#ADADAD] dark:text-[#555]">Recognition time</p>
                     <p className="text-[24px] font-medium leading-none text-primary dark:text-[#E6E6E6]">
-                      4.88s → 2.06s <span className="ml-2 text-sm text-[#868686] dark:text-[#777]">58% faster</span>
+                      4.88s → 2.06s <span className="ml-2 text-sm text-[#6F6F6F] dark:text-[#777]">58% faster</span>
                     </p>
                   </div>
                 </div>
@@ -490,20 +507,20 @@ export default function AltraPage() {
                 <div>
                   <div className="mb-8 flex items-center gap-3">
                     <Badge>Test 02</Badge>
-                    <p className="text-[20px] font-medium leading-[125%] text-[#868686] dark:text-[#E6E6E6]">
+                    <p className="text-[20px] font-medium leading-[125%] text-[#6F6F6F] dark:text-[#E6E6E6]">
                       Timeline orientation
                     </p>
                   </div>
                   <div className="mb-8 grid gap-8 md:grid-cols-2">
                     <div>
-                      <p className="mb-3 text-base font-medium leading-[140%] text-[#868686] dark:text-[#E6E6E6]">What we tested</p>
-                      <p className="text-base leading-[170%] text-[#868686] dark:text-[#999]">
+                      <p className="mb-3 text-base font-medium leading-[140%] text-[#6F6F6F] dark:text-[#E6E6E6]">What we tested</p>
+                      <p className="text-base leading-[170%] text-[#6F6F6F] dark:text-[#999]">
                         Whether users could read time pressure more intuitively when markers were aligned in one direction.
                       </p>
                     </div>
                     <div>
-                      <p className="mb-3 text-base font-medium leading-[140%] text-[#868686] dark:text-[#E6E6E6]">What we found</p>
-                      <p className="text-base leading-[170%] text-[#868686] dark:text-[#999]">
+                      <p className="mb-3 text-base font-medium leading-[140%] text-[#6F6F6F] dark:text-[#E6E6E6]">What we found</p>
+                      <p className="text-base leading-[170%] text-[#6F6F6F] dark:text-[#999]">
                         A single-direction timeline let users compare now, arrival, and sunset in one glance instead of mentally re-orienting.
                       </p>
                     </div>
@@ -518,7 +535,7 @@ export default function AltraPage() {
                           height={321}
                           className="mx-auto h-auto w-full"
                         />
-                        <p className="mt-5 text-center text-base text-[#868686] dark:text-[#D9D9D9]">Before</p>
+                        <p className="mt-5 text-center text-base text-[#6F6F6F] dark:text-[#D9D9D9]">Before</p>
                       </div>
                       <div>
                         <Image
@@ -528,14 +545,14 @@ export default function AltraPage() {
                           height={321}
                           className="mx-auto h-auto w-full"
                         />
-                        <p className="mt-5 text-center text-base text-[#868686] dark:text-[#D9D9D9]">After</p>
+                        <p className="mt-5 text-center text-base text-[#6F6F6F] dark:text-[#D9D9D9]">After</p>
                       </div>
                     </div>
                   </div>
                   <div className="mt-8 flex items-baseline justify-between gap-6 border-t border-[#E6E6E6] pt-6 dark:border-[#3A3A3A]">
                     <p className="text-xs uppercase tracking-[0.18em] text-[#ADADAD] dark:text-[#555]">Risk awareness</p>
                     <p className="text-[24px] font-medium leading-none text-primary dark:text-[#E6E6E6]">
-                      25% → 75% <span className="ml-2 text-sm text-[#868686] dark:text-[#777]">3× accuracy</span>
+                      25% → 75% <span className="ml-2 text-sm text-[#6F6F6F] dark:text-[#777]">3× accuracy</span>
                     </p>
                   </div>
                 </div>
@@ -544,20 +561,20 @@ export default function AltraPage() {
                 <div>
                   <div className="mb-8 flex items-center gap-3">
                     <Badge>Test 03</Badge>
-                    <p className="text-[20px] font-medium leading-[125%] text-[#868686] dark:text-[#E6E6E6]">
+                    <p className="text-[20px] font-medium leading-[125%] text-[#6F6F6F] dark:text-[#E6E6E6]">
                       Critical action
                     </p>
                   </div>
                   <div className="mb-8 grid gap-8 md:grid-cols-2">
                     <div>
-                      <p className="mb-3 text-base font-medium leading-[140%] text-[#868686] dark:text-[#E6E6E6]">What we tested</p>
-                      <p className="text-base leading-[170%] text-[#868686] dark:text-[#999]">
+                      <p className="mb-3 text-base font-medium leading-[140%] text-[#6F6F6F] dark:text-[#E6E6E6]">What we tested</p>
+                      <p className="text-base leading-[170%] text-[#6F6F6F] dark:text-[#999]">
                         Whether critical-state guidance helped users understand what action to take next.
                       </p>
                     </div>
                     <div>
-                      <p className="mb-3 text-base font-medium leading-[140%] text-[#868686] dark:text-[#E6E6E6]">What we found</p>
-                      <p className="text-base leading-[170%] text-[#868686] dark:text-[#999]">
+                      <p className="mb-3 text-base font-medium leading-[140%] text-[#6F6F6F] dark:text-[#E6E6E6]">What we found</p>
+                      <p className="text-base leading-[170%] text-[#6F6F6F] dark:text-[#999]">
                         When the critical state surfaced a clear next step, users acted decisively instead of hesitating between options.
                       </p>
                     </div>
@@ -572,7 +589,7 @@ export default function AltraPage() {
                           height={866}
                           className="mx-auto h-auto w-full rounded-[8px]"
                         />
-                        <p className="mt-5 text-center text-base text-[#868686] dark:text-[#D9D9D9]">Before</p>
+                        <p className="mt-5 text-center text-base text-[#6F6F6F] dark:text-[#D9D9D9]">Before</p>
                       </div>
                       <div>
                         <Image
@@ -582,14 +599,14 @@ export default function AltraPage() {
                           height={866}
                           className="mx-auto h-auto w-full rounded-[8px]"
                         />
-                        <p className="mt-5 text-center text-base text-[#868686] dark:text-[#D9D9D9]">After</p>
+                        <p className="mt-5 text-center text-base text-[#6F6F6F] dark:text-[#D9D9D9]">After</p>
                       </div>
                     </div>
                   </div>
                   <div className="mt-8 flex items-baseline justify-between gap-6 border-t border-[#E6E6E6] pt-6 dark:border-[#3A3A3A]">
                     <p className="text-xs uppercase tracking-[0.18em] text-[#ADADAD] dark:text-[#555]">Confidence rating</p>
                     <p className="text-[24px] font-medium leading-none text-primary dark:text-[#E6E6E6]">
-                      4.0 → 4.75 <span className="ml-2 text-sm text-[#868686] dark:text-[#777]">+0.75 pts</span>
+                      4.0 → 4.75 <span className="ml-2 text-sm text-[#6F6F6F] dark:text-[#777]">+0.75 pts</span>
                     </p>
                   </div>
                 </div>
@@ -605,7 +622,7 @@ export default function AltraPage() {
                       <p className="mt-3 text-[40px] font-medium leading-none text-primary dark:text-[#E6E6E6]">
                         <NumberCountUp to={58} suffix="%" />
                       </p>
-                      <p className="mt-3 text-sm leading-[150%] text-[#868686] dark:text-[#999]">
+                      <p className="mt-3 text-sm leading-[150%] text-[#6F6F6F] dark:text-[#999]">
                         faster with explicit labels<br />
                         <span className="text-[#ADADAD] dark:text-[#777]">4.88s → 2.06s</span>
                       </p>
@@ -615,7 +632,7 @@ export default function AltraPage() {
                       <p className="mt-3 text-[40px] font-medium leading-none text-primary dark:text-[#E6E6E6]">
                         <NumberCountUp to={0.75} decimals={2} prefix="+" />
                       </p>
-                      <p className="mt-3 text-sm leading-[150%] text-[#868686] dark:text-[#999]">
+                      <p className="mt-3 text-sm leading-[150%] text-[#6F6F6F] dark:text-[#999]">
                         confidence with spatial timeline<br />
                         <span className="text-[#ADADAD] dark:text-[#777]">4.0 → 4.75</span>
                       </p>
@@ -625,14 +642,14 @@ export default function AltraPage() {
                       <p className="mt-3 text-[40px] font-medium leading-none text-primary dark:text-[#E6E6E6]">
                         <NumberCountUp to={25} suffix="%" />
                       </p>
-                      <p className="mt-3 text-sm leading-[150%] text-[#868686] dark:text-[#999]">
+                      <p className="mt-3 text-sm leading-[150%] text-[#6F6F6F] dark:text-[#999]">
                         recognized both risks<br />
                         <span className="text-[#ADADAD] dark:text-[#777]">warning ≠ relationship</span>
                       </p>
                     </div>
                   </div>
                   <Separator />
-                  <p className="max-w-3xl text-base leading-[170%] text-[#868686] dark:text-[#999]">
+                  <p className="max-w-3xl text-base leading-[170%] text-[#6F6F6F] dark:text-[#999]">
                     Explicit labels cut recognition time by more than half. A spatial timeline lifted confidence where numbers alone could not. And under critical risk, only a quarter of users registered both threats. The warning landed, but the time relationship stayed unread.
                   </p>
                   <Separator />
@@ -646,7 +663,7 @@ export default function AltraPage() {
               <div className="mt-20">
                 <div className="mb-8 flex items-center gap-3">
                   <Badge>Final</Badge>
-                  <p className="text-[20px] font-medium leading-[125%] text-[#868686] dark:text-[#E6E6E6]">
+                  <p className="text-[20px] font-medium leading-[125%] text-[#6F6F6F] dark:text-[#E6E6E6]">
                     How the system behaves
                   </p>
                 </div>
@@ -670,7 +687,7 @@ export default function AltraPage() {
               <h2 className="type-hero text-primary dark:text-[#E6E6E6] mb-10 max-w-3xl">
                 Designing for safety means designing for certainty.
               </h2>
-              <div className="type-body-lg max-w-2xl text-[#868686] dark:text-[#999] space-y-5 mb-16">
+              <div className="type-body-lg max-w-2xl text-[#6F6F6F] dark:text-[#999] space-y-5 mb-16">
                 <p>
                   I assumed better information would build user confidence. Research showed the opposite. Under stress, more data made users less sure.
                 </p>
@@ -686,7 +703,7 @@ export default function AltraPage() {
                     ALTRA wasn&apos;t built to replace maps. It was built to reduce uncertainty.
                   </p>
                   <Separator />
-                  <p className="max-w-xl text-base leading-[170%] text-[#868686] dark:text-[#999]">
+                  <p className="max-w-xl text-base leading-[170%] text-[#6F6F6F] dark:text-[#999]">
                     Generic alerts like &ldquo;Be careful&rdquo; didn&apos;t change behavior. Explicit thresholds did.
                   </p>
                 </CardContent>

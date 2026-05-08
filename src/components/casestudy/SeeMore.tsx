@@ -12,7 +12,7 @@ export default function SeeMore({ projects }: { projects: ProjectRef[] }) {
   return (
     <section className="px-7 py-[80px] border-t border-[#ADADAD]/30 dark:border-[#555]/30">
       <p
-        className="text-sm text-[#ADADAD] dark:text-[#555] mb-6 font-satoshi"
+        className="mb-8 font-satoshi text-[28px] font-medium leading-[1.1] tracking-[-0.02em] text-[#1E1E1E] dark:text-[#E6E6E6]"
       >
         See More Projects
       </p>

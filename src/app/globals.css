@@ -60,6 +60,11 @@ button {
 
   .type-eyebrow {
     @apply text-[12px] uppercase tracking-[0.08em] opacity-80;
+    font-weight: 500;
+  }
+
+  .dark .type-eyebrow {
+    font-weight: 400;
   }
 
   .type-stat {
