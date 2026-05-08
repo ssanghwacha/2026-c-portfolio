@@ -410,7 +410,7 @@ export default function AltraPage() {
                       Color, weight, and hierarchy shift with risk. Not brand.
                     </p>
                   </div>
-                  <div className="mx-auto max-w-[760px] space-y-4">
+                  <div className="space-y-4">
                     <Image
                       src="/assets/projects/altra/token.png"
                       alt="Altra state to token system"
