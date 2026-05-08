@@ -22,16 +22,18 @@ export default function CaseHero({
   tools,
   nav,
   prototypeUrl,
+  layout = 'fixed',
 }: {
   title: string;
   headline: string;
-  description: string;
+  description?: string;
   role: string | string[];
   team: TeamMember[];
   timeline: string;
   tools: Tool[];
   nav?: NavItem[];
   prototypeUrl?: string;
+  layout?: 'fixed' | 'static';
 }) {
   const [top, setTop] = useState(200);
   const [activeSection, setActiveSection] = useState('');
@@ -64,11 +66,15 @@ export default function CaseHero({
 
   return (
     <aside
-      className="fixed left-9 w-[calc(30vw-60px)] z-30 flex flex-col gap-4 overflow-y-auto"
+      className={
+        layout === 'static'
+          ? 'sticky z-30 flex flex-col gap-4 overflow-y-auto'
+          : 'fixed left-9 w-[calc(30vw-60px)] z-30 flex flex-col gap-4 overflow-y-auto'
+      }
       style={{ top, maxHeight: `calc(100vh - ${top}px - 24px)` }}
     >
       {/* Card 1: Project info + CTA */}
-      <div className="bg-[#F5F5F5] dark:bg-[#2A2A2A] rounded-[8px] p-4 flex flex-col gap-5 shrink-0">
+      <div className="bg-[#F5F5F5] dark:bg-[#2A2A2A] rounded-[8px] p-6 flex flex-col gap-5 shrink-0">
         <div className="flex flex-col gap-5">
           <p className="font-satoshi text-sm text-primary dark:text-white leading-[1.4]">
             {title}
@@ -76,9 +82,11 @@ export default function CaseHero({
           <h1 className="font-satoshi text-[22px] font-medium text-primary dark:text-[#E6E6E6] leading-[1.2]">
             {headline}
           </h1>
-          <p className="font-satoshi text-sm text-primary dark:text-[#ADADAD] leading-[1.4]">
-            {description}
-          </p>
+          {description ? (
+            <p className="font-satoshi text-sm text-primary dark:text-[#ADADAD] leading-[1.4]">
+              {description}
+            </p>
+          ) : null}
         </div>
         {prototypeUrl && (
           <div>
@@ -86,7 +94,7 @@ export default function CaseHero({
               href={prototypeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-satoshi inline-block bg-[#191919] dark:bg-[#E6E6E6] dark:text-[#1E1E1E] text-white text-xl font-medium leading-[1.2] px-7 py-3 rounded-full"
+              className="font-satoshi inline-block rounded-full bg-[#E9E9E9] px-5 py-2.5 text-base font-medium leading-[1.2] text-[#1E1E1E] transition-colors duration-150 hover:bg-[#DEDEDE] dark:bg-[#333] dark:text-[#E6E6E6] dark:hover:bg-[#3C3C3C]"
             >
               Prototype
             </a>
@@ -95,7 +103,7 @@ export default function CaseHero({
       </div>
 
       {/* Card 2: Meta */}
-      <div className="bg-[#F5F5F5] dark:bg-[#2A2A2A] rounded-[8px] p-4 shrink-0">
+      <div className="bg-[#F5F5F5] dark:bg-[#2A2A2A] rounded-[8px] p-6 shrink-0">
         <div className="grid grid-cols-4 gap-4">
           <div className="flex flex-col gap-3">
             <p className="font-satoshi text-sm font-bold text-primary dark:text-[#ADADAD] leading-normal">Role</p>
@@ -152,7 +160,7 @@ export default function CaseHero({
 
       {/* Card 3: On this Page nav */}
       {nav?.length ? (
-        <div className="bg-[#F5F5F5] dark:bg-[#2A2A2A] rounded-[8px] p-4 shrink-0">
+        <div className="bg-[#F5F5F5] dark:bg-[#2A2A2A] rounded-[8px] p-6 shrink-0">
           <div className="flex flex-col gap-3">
             <p className="font-satoshi text-sm font-bold text-[#2B2B2B] dark:text-[#E6E6E6] leading-normal">
               On this Page
@@ -164,7 +172,7 @@ export default function CaseHero({
                   key={id}
                   href={`#${id}`}
                   className={`font-satoshi flex gap-3 items-start text-sm font-medium leading-[1.5] transition-colors duration-150 ${
-                    isActive ? 'text-primary dark:text-white' : 'text-[#868686] dark:text-[#555]'
+                    isActive ? 'translate-x-1 text-primary opacity-100 dark:text-white' : 'text-[#868686] opacity-60 dark:text-[#555]'
                   }`}
                 >
                   <span className="shrink-0">{String(i + 1).padStart(2, '0')}</span>

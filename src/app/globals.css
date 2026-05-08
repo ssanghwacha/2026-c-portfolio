@@ -18,10 +18,24 @@ html {
   scroll-behavior: smooth;
 }
 
+body,
+main,
+section,
+article,
+aside,
+div,
+a,
+button {
+  transition:
+    background-color 400ms ease,
+    color 400ms ease,
+    border-color 400ms ease;
+}
+
 /* Typography scale — case study right column */
 @layer components {
   .type-hero {
-    @apply text-[34px] font-semibold leading-[115%] tracking-[-0.02em];
+    @apply text-[30px] font-medium leading-[120%] tracking-[-0.02em];
   }
 
   .type-section {
@@ -52,4 +66,3 @@ html {
     @apply text-[72px] font-bold leading-[100%] tracking-[-0.04em];
   }
 }
-
