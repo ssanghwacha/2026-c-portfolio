@@ -312,7 +312,7 @@ export default function AltraPage() {
                     </p>
                   </div>
                   <div className="rounded-[8px] bg-[#F5F5F5] p-12 dark:bg-[#2A2A2A]">
-                    <div className="grid gap-4 md:grid-cols-2">
+                    <div className="mx-auto grid max-w-[760px] gap-4 md:grid-cols-2">
                       <div>
                         <Image
                           src="/assets/projects/altra/safe.jpg"
@@ -410,7 +410,7 @@ export default function AltraPage() {
                       Color, weight, and hierarchy shift with risk. Not brand.
                     </p>
                   </div>
-                  <div className="space-y-4">
+                  <div className="mx-auto max-w-[760px] space-y-4">
                     <Image
                       src="/assets/projects/altra/token.png"
                       alt="Altra state to token system"
