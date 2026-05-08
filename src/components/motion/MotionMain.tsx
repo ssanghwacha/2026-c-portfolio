@@ -21,8 +21,11 @@ export default function MotionMain({
     if (!el || prefersReducedMotion()) return;
 
     const ctx = gsap.context(() => {
+      const panels = el.querySelectorAll('[data-page-panel]');
+      const targets = panels.length ? Array.from(panels) : [el];
+
       gsap.fromTo(
-        el,
+        targets,
         { y: 48 },
         { y: 0, duration: 0.75, ease: 'power2.out', clearProps: 'transform' }
       );
@@ -41,7 +44,10 @@ export default function MotionMain({
       if (!isInternal || isSamePage || opensNewContext) return;
 
       event.preventDefault();
-      gsap.to(ref.current, {
+      const panels = ref.current.querySelectorAll('[data-page-panel]');
+      const targets = panels.length ? Array.from(panels) : [ref.current];
+
+      gsap.to(targets, {
         y: -24,
         duration: 0.35,
         ease: 'power2.inOut',

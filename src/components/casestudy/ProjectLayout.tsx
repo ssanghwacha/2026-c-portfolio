@@ -20,8 +20,8 @@ export default function ProjectLayout({
       {sidebar ? (
         <MotionMain className="min-h-screen bg-white dark:bg-[#1E1E1E]">
           <div className="grid grid-cols-[360px_1fr] gap-10 px-9">
-            {sidebar}
-            <section className="w-full">{children}</section>
+            <div data-page-panel>{sidebar}</div>
+            <section data-page-panel className="w-full">{children}</section>
           </div>
           {belowGrid}
         </MotionMain>
