@@ -6,7 +6,7 @@ export default function ABTestCard({
   afterContent,
   finding,
 }: {
-  objective: string;
+  objective?: string;
   beforeLabel?: string;
   afterLabel?: string;
   beforeContent: React.ReactNode;
@@ -14,13 +14,15 @@ export default function ABTestCard({
   finding: string;
 }) {
   return (
-    <div className="bg-white dark:bg-[#2A2A2A] rounded-[8px] p-6">
-      <p
-        className="text-[#ADADAD] dark:text-[#555] text-sm mb-6 font-satoshi"
-      >
-        {objective}
-      </p>
-      <div className="grid grid-cols-2 gap-6 mb-6">
+    <div className="rounded-[8px]">
+      {objective && (
+        <p
+          className="text-[#ADADAD] dark:text-[#555] text-sm mb-6 font-satoshi"
+        >
+          {objective}
+        </p>
+      )}
+      <div className="grid grid-cols-2 gap-4 mb-6">
         <div>
           <span
             className="text-xs text-[#ADADAD] dark:text-[#555] uppercase tracking-wide mb-3 block font-satoshi"

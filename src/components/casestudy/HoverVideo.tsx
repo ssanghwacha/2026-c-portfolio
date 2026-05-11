@@ -59,6 +59,7 @@ export default function HoverVideo({
       autoPlay
       preload="auto"
       poster={fallback}
+      data-fallback={fallback}
       className={className}
     >
       <source src={src} type="video/mp4" />

@@ -70,4 +70,5 @@ button {
   .type-stat {
     @apply text-[72px] font-bold leading-[100%] tracking-[-0.04em];
   }
+
 }

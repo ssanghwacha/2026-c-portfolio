@@ -16,7 +16,7 @@ export default function ProjectLayout({
 }) {
   return (
     <>
-      <Header />
+      <Header stableNav />
       {sidebar ? (
         <MotionMain className="min-h-screen bg-white dark:bg-[#1E1E1E]">
           <div className="grid grid-cols-[360px_1fr] gap-10 px-9">

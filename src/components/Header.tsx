@@ -11,11 +11,13 @@ export default function Header({
   hideScrollBtn = false,
   projectNav,
   leftClass = 'left-9',
+  stableNav = false,
 }: {
   inverted?: boolean;
   hideScrollBtn?: boolean;
   projectNav?: NavItem[];
   leftClass?: string;
+  stableNav?: boolean;
 }) {
   const { theme, toggle } = useTheme();
   const [showScrollTop, setShowScrollTop]     = useState(false);
@@ -66,8 +68,8 @@ export default function Header({
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  const hideControls    = showScrollTop && isScrollingDown;
-  const showProjectNav  = Boolean(projectNav?.length) && hideControls;
+  const hideControls    = !stableNav && showScrollTop && isScrollingDown;
+  const showProjectNav  = !stableNav && Boolean(projectNav?.length) && hideControls;
   const showCollapsedTime = hideControls && !isHeaderHovered && !showProjectNav;
 
   // 색상 토큰

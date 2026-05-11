@@ -3,13 +3,13 @@ export default function PersonaCard({
   quote,
   name,
 }: {
-  icon: string;
+  icon: React.ReactNode;
   quote: string;
   name?: string;
 }) {
   return (
     <div className="bg-white dark:bg-[#2A2A2A] rounded-[8px] p-6 flex flex-col gap-3">
-      <span className="text-2xl">{icon}</span>
+      <div className="text-[#1E1E1E] dark:text-[#E6E6E6]">{icon}</div>
       <p
         className="text-[#1E1E1E] dark:text-[#E6E6E6] text-base leading-[150%] font-satoshi"
       >
