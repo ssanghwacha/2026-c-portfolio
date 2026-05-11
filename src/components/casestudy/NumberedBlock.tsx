@@ -9,7 +9,7 @@ export default function NumberedBlock({
 }: {
   number?: number;
   title: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   icon?: React.ReactNode;
   boxIcon?: React.ReactNode;
   boxTitle?: string;
