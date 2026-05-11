@@ -53,7 +53,7 @@ export default function AltraPage() {
       sidebar={
         <CaseHero
           title="Altra"
-          meta="Product Design"
+          meta="UX Research · Safety System"
           headline="From 25% to 75% risk awareness. Making hiking safer in uncertain conditions."
           role="UI/UX Designer"
           team={[

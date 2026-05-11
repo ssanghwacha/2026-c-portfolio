@@ -211,7 +211,7 @@ export default function BillowPage() {
       sidebar={
         <CaseHero
           title="Billow"
-          meta="Product Design · AI Workspace"
+          meta="SaaS · AI Workspace"
           headline="Turning complex subscription flows into simple conversations"
           role="UX/UI Designer"
           team={[
