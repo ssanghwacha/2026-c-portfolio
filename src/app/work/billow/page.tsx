@@ -463,7 +463,7 @@ export default function BillowPage() {
           </CaseSection>
 
           <CaseSection id="workflows">
-            <TextBlock eyebrow="Workflows" headline="AI-guided onboarding, end-to-end.">
+            <TextBlock eyebrow="Workflows" headline="AI-guided onboarding, end-to-end." headlineClassName="max-w-[380px]">
               <p>
                 An end-to-end onboarding flow was built using the new system. Alex (an HR manager) opens Billow to register Lina (a new designer). She needs Figma, Adobe, and Slack. Billow scans active subscriptions, suggests available seats, and as Alex confirms tools through chat, the canvas updates in real time.
               </p>
@@ -569,15 +569,15 @@ export default function BillowPage() {
                     <h4 className="mb-6 text-[18px] font-medium text-[#1E1E1E] dark:text-[#E6E6E6]">Yes / No Buttons Added</h4>
                     <div className="grid gap-6 grid-cols-2">
                       <div>
-                        <p className="mb-3 text-xs uppercase tracking-[0.18em] text-[#ADADAD] dark:text-[#555]">Before fix</p>
+                        <p className="mb-3 text-xs uppercase tracking-[0.18em] text-[#3D5FE8]">Before</p>
                         <div className="relative w-full aspect-video rounded-[8px] overflow-hidden">
-                          <Image src="/assets/projects/billow/01_b.jpg" alt="Before fix" fill className="object-cover" />
+                          <Image src="/assets/projects/billow/01_b.jpg" alt="Before" fill className="object-cover" />
                         </div>
                       </div>
                       <div>
-                        <p className="mb-3 text-xs uppercase tracking-[0.18em] text-[#ADADAD] dark:text-[#555]">After fix</p>
+                        <p className="mb-3 text-xs uppercase tracking-[0.18em] text-[#3D5FE8]">After</p>
                         <div className="relative w-full aspect-video rounded-[8px] overflow-hidden">
-                          <Image src="/assets/projects/billow/01_a.jpg" alt="After fix" fill className="object-cover" />
+                          <Image src="/assets/projects/billow/01_a.jpg" alt="After" fill className="object-cover" />
                         </div>
                       </div>
                     </div>
@@ -586,15 +586,15 @@ export default function BillowPage() {
                     <h4 className="mb-6 text-[18px] font-medium text-[#1E1E1E] dark:text-[#E6E6E6]">Confirmation Toast Added</h4>
                     <div className="grid gap-6 grid-cols-2">
                       <div>
-                        <p className="mb-3 text-xs uppercase tracking-[0.18em] text-[#ADADAD] dark:text-[#555]">Before fix</p>
+                        <p className="mb-3 text-xs uppercase tracking-[0.18em] text-[#3D5FE8]">Before</p>
                         <div className="relative w-full h-[400px] rounded-[8px] overflow-hidden">
-                          <Image src="/assets/projects/billow/02_b.jpg" alt="Before fix" fill className="object-cover object-top" />
+                          <Image src="/assets/projects/billow/02_b.jpg" alt="Before" fill className="object-cover object-top" />
                         </div>
                       </div>
                       <div>
-                        <p className="mb-3 text-xs uppercase tracking-[0.18em] text-[#ADADAD] dark:text-[#555]">After fix</p>
+                        <p className="mb-3 text-xs uppercase tracking-[0.18em] text-[#3D5FE8]">After</p>
                         <div className="relative w-full h-[400px] rounded-[8px] overflow-hidden">
-                          <Image src="/assets/projects/billow/02_a.jpg" alt="After fix" fill className="object-cover object-top" />
+                          <Image src="/assets/projects/billow/02_a.jpg" alt="After" fill className="object-cover object-top" />
                         </div>
                       </div>
                     </div>
@@ -604,7 +604,7 @@ export default function BillowPage() {
                   To guide users more clearly, I added explicit Yes/No buttons and a confirmation toast. These changes removed confusion and helped users complete the approval step with confidence.
                 </p>
                 <div className="mt-8">
-                  <p className="mb-3 text-xs uppercase tracking-[0.18em] text-[#ADADAD] dark:text-[#555]">Result</p>
+                  <p className="mb-3 text-xs uppercase tracking-[0.18em] text-[#3D5FE8]">Result</p>
                   <div className="rounded-[14px] bg-[#F5F5F5] dark:bg-[#2A2A2A] overflow-hidden">
                     <HoverVideo
                       src="https://neon-tulumba-4b620a.netlify.app/03.mp4"
