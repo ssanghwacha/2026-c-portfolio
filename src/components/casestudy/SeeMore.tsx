@@ -16,14 +16,14 @@ export default function SeeMore({ projects }: { projects: ProjectRef[] }) {
       >
         See More Projects
       </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-[clamp(12px,1.0417vw,20px)] gap-y-6">
-        {projects.map((p) => (
+      <div className="grid grid-cols-1 gap-x-[clamp(12px,1.0417vw,20px)] gap-y-6 md:grid-cols-3">
+        {projects.map((p, index) => (
           <Link
             key={p.slug}
             href={`/work/${p.slug}`}
-            className="group flex flex-col gap-3"
+            className={`group flex flex-col gap-3 ${index > 1 ? 'hidden md:flex' : ''}`}
           >
-            <div className="relative w-full aspect-[7/10] bg-[#D9D9D9] dark:bg-[#2A2A2A] rounded-lg overflow-hidden">
+            <div className="relative w-full aspect-[7/10] bg-[#D9D9D9] dark:bg-[#2A2A2A] rounded-[6px] overflow-hidden lg:rounded-lg">
               {p.thumbnail && (
                 <Image
                   src={p.thumbnail}

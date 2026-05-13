@@ -87,19 +87,19 @@ export default function Header({
     : (theme === 'dark' ? 'translate-x-[23px] bg-[#1E1E1E]' : 'translate-x-[3px] bg-white');
   const btnBg   = inverted ? 'bg-white dark:bg-[#1E1E1E]'       : 'bg-primary dark:bg-[#E6E6E6]';
   const btnIcon = inverted ? 'text-primary dark:text-[#E6E6E6]' : 'text-white dark:text-[#1E1E1E]';
-
+  const headerPosition = leftClass === 'left-9' ? 'left-4 lg:left-9' : leftClass;
   return (
     <>
       <header
         onMouseEnter={() => setIsHeaderHovered(true)}
         onMouseLeave={() => setIsHeaderHovered(false)}
         id="main-header"
-        className={`group/header fixed top-[24px] ${leftClass} z-50 flex flex-col rounded-[8px] p-4 ${cardBg} ${
-          showProjectNav ? 'w-fit' : 'w-[281px]'
-        }`}
+        className={`group/header fixed top-[24px] ${headerPosition} z-50 flex w-[min(281px,calc(100vw-32px))] flex-col rounded-[8px] p-4 ${cardBg} transition-transform duration-300 ease-in-out ${
+          isScrollingDown ? 'max-lg:-translate-y-[calc(100%+32px)]' : 'translate-y-0'
+        } ${showProjectNav ? 'w-fit' : ''}`}
       >
         {/* 로고 */}
-        <Link href="/" className={`w-[249px] h-[21px] flex items-center justify-between px-[2px] ${logoBg}`}>
+        <Link href="/" className={`h-[21px] w-full flex items-center justify-between px-[2px] ${logoBg}`}>
           <span className={`font-rethink font-medium text-2xl leading-none ${logoText}`}>C</span>
           <span className={`font-rethink font-medium text-2xl leading-none ${logoText}`}>SANGWHA</span>
         </Link>
@@ -188,7 +188,7 @@ export default function Header({
           type="button"
           onClick={scrollToTop}
           aria-label="Scroll to top"
-          className={`group fixed top-[24px] right-9 z-50 flex h-9 w-9 items-center justify-center rounded-[8px] transition-[opacity,transform] duration-200 ${btnBg} ${
+          className={`group fixed top-[24px] right-4 z-50 flex h-9 w-9 items-center justify-center rounded-[8px] transition-[opacity,transform] duration-200 lg:right-9 ${btnBg} ${
             showScrollTop ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-90 pointer-events-none'
           }`}
         >

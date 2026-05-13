@@ -39,7 +39,7 @@ function ArrowElbowIcon() {
 
 export default function Footer() {
   return (
-    <footer className="w-full px-[28px] flex flex-col gap-[12px]" style={{ paddingBottom: '8px' }}>
+    <footer className="w-full min-w-0 px-4 sm:px-[28px] flex flex-col gap-[12px]" style={{ paddingBottom: '8px' }}>
       {/* Full-width logo bar */}
       <div className="w-full bg-primary dark:bg-[#E6E6E6] flex items-center justify-between px-[2px] h-[21px]">
         <span className="font-rethink text-white dark:text-[#1E1E1E] font-medium text-2xl leading-none">C</span>
@@ -47,15 +47,15 @@ export default function Footer() {
       </div>
 
       {/* Bottom row */}
-      <div className="flex items-center justify-between px-[2px] h-[60px] text-primary dark:text-[#E6E6E6]" style={{ fontFamily: "'Satoshi', sans-serif" }}>
-        <p className="flex items-center gap-2 text-sm font-medium leading-none">
+      <div className="flex min-w-0 flex-col items-start justify-between gap-4 px-[2px] py-4 text-primary dark:text-[#E6E6E6] sm:h-[60px] sm:flex-row sm:items-center sm:gap-6 sm:py-0" style={{ fontFamily: "'Satoshi', sans-serif" }}>
+        <p className="flex min-w-0 flex-wrap items-center gap-2 text-sm font-medium leading-none">
           <span>© 2026 · BUILT WITH</span>
           <BicycleIcon />
           <CookieIcon />
           <CoffeeIcon />
         </p>
 
-        <nav className="flex items-center gap-6">
+        <nav className="flex min-w-0 flex-wrap items-center gap-x-6 gap-y-3">
           {links.map(({ label, href }) => (
             <a
               key={label}

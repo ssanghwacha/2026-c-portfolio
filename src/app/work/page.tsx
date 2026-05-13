@@ -19,11 +19,11 @@ function WorkFilter({ active, setActive }: { active: Category; setActive: (c: Ca
 
   return (
     <div
-      className="fixed top-[24px] right-9 z-50"
+      className="hidden sm:fixed top-[24px] right-9 z-50 sm:block"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <div className="rounded-[8px] bg-white dark:bg-[#1E1E1E] p-4 flex flex-row items-center overflow-hidden transition-all duration-300 ease-out"
+      <div className="rounded-[8px] bg-white dark:bg-[#1E1E1E] p-3 sm:p-4 flex flex-row items-center overflow-hidden transition-all duration-300 ease-out"
         style={{ gap: hovered ? '24px' : '0px' }}
       >
         {filters.map(({ key, label }) => {
@@ -33,7 +33,7 @@ function WorkFilter({ active, setActive }: { active: Category; setActive: (c: Ca
             <button
               key={key}
               onClick={() => setActive(key)}
-              className={`flex items-center gap-2 text-[18px] font-medium leading-none py-[4px] whitespace-nowrap transition-all duration-300 ${
+              className={`flex items-center gap-2 text-sm sm:text-[18px] font-medium leading-none py-[4px] whitespace-nowrap transition-all duration-300 ${
                 isActive
                   ? 'text-primary dark:text-[#E6E6E6]'
                   : 'text-[#ADADAD] dark:text-[#555] hover:text-primary dark:hover:text-[#E6E6E6]'
@@ -64,7 +64,7 @@ export default function WorkPage() {
     <>
       <Header hideScrollBtn />
       <WorkFilter active={active} setActive={setActive} />
-      <main className="pt-[200px] pb-[150px]">
+      <main className="pt-[180px] sm:pt-[200px] pb-20 sm:pb-[150px]">
         <WorkGrid active={active} />
       </main>
       <Footer />

@@ -13,10 +13,10 @@ export default function WorkGrid({ active: externalActive }: { active?: Category
     active === 'all' ? projects : projects.filter((p) => p.category === active);
 
   return (
-    <section id="work" className="w-full px-8 pb-32">
+    <section id="work" className="w-full px-4 sm:px-8 pt-20 sm:pt-0 pb-20 sm:pb-32">
       {/* Filter — 외부 active 없을 때만 표시 (홈 페이지) */}
       {!externalActive && (
-      <div className="flex items-center justify-center gap-10 mb-10">
+      <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 lg:gap-10 mb-8 sm:mb-10">
         {(
           [
             { key: 'all', label: 'Everything' },
@@ -27,7 +27,7 @@ export default function WorkGrid({ active: externalActive }: { active?: Category
           <button
             key={key}
             onClick={() => setInternalActive(key)}
-            className={`flex items-center text-[18px] font-medium transition-colors ${
+            className={`flex items-center text-sm sm:text-base lg:text-[18px] font-medium transition-colors ${
               active === key
                 ? 'text-black dark:text-[#E6E6E6]'
                 : 'text-[#ADADAD] dark:text-[#555] hover:text-black dark:hover:text-[#E6E6E6]'
@@ -55,7 +55,7 @@ export default function WorkGrid({ active: externalActive }: { active?: Category
             className="flex flex-col gap-3 group"
             style={{ fontFamily: "'Satoshi', sans-serif" }}
           >
-            <div className="relative w-full aspect-[7/10] bg-[#D9D9D9] dark:bg-[#2A2A2A] rounded-lg overflow-hidden">
+            <div className="relative w-full bg-[#D9D9D9] dark:bg-[#2A2A2A] rounded-lg overflow-hidden aspect-[7/10]">
               {project.thumbnail && (
                 <Image
                   src={project.thumbnail}

@@ -81,13 +81,13 @@ export default function CaseHero({
     <aside
       className={
         layout === 'static'
-          ? 'sticky z-30 flex flex-col gap-3 overflow-y-auto'
+          ? 'w-full min-w-0 lg:sticky z-30 flex flex-col gap-3 overflow-y-auto'
           : 'fixed left-9 w-[calc(30vw-60px)] z-30 flex flex-col gap-3 overflow-y-auto'
       }
       style={{ top, maxHeight: `calc(100vh - ${top}px - 24px)` }}
     >
       {/* Card 1: Project info + meta */}
-      <div className="flex shrink-0 flex-col gap-5 overflow-hidden rounded-[14px] bg-[#F5F5F5] p-5 dark:bg-[#2A2A2A]">
+      <div className="flex shrink-0 flex-col gap-5 overflow-hidden rounded-[10px] bg-[#F5F5F5] p-5 dark:bg-[#2A2A2A] lg:rounded-[14px]">
         <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-3">
             <div className="flex w-full items-center justify-between gap-4">
@@ -220,7 +220,7 @@ export default function CaseHero({
 
       {/* Card 3: On this Page nav */}
       {nav?.length ? (
-        <div className="bg-[#F5F5F5] dark:bg-[#2A2A2A] rounded-[14px] p-5 shrink-0">
+        <div className="hidden lg:block bg-[#F5F5F5] dark:bg-[#2A2A2A] rounded-[14px] p-5 shrink-0">
           <div className="flex flex-col gap-3">
             <button
               type="button"

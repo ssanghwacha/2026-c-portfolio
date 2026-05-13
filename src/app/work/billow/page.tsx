@@ -177,9 +177,9 @@ function TextBlock({
   headlineClassName?: string;
 }) {
   return (
-    <div className={`${className} flex max-w-[839px] flex-col gap-[22px]`}>
-      <div className={`flex ${headlineClassName} flex-col items-start gap-5`}>
-        <span className="inline-flex items-center justify-center rounded-[11px] border border-primary/90 px-2 py-0.5 font-satoshi text-[11px] font-medium uppercase leading-[1.5] tracking-[0.08em] text-primary">
+    <div className={`${className} flex w-full min-w-0 max-w-[839px] flex-col gap-[22px]`}>
+      <div className={`flex w-full min-w-0 ${headlineClassName} flex-col items-start gap-5`}>
+        <span className="inline-flex items-center justify-center rounded-[11px] border border-primary/90 px-2 py-0.5 font-satoshi text-[11px] font-medium uppercase leading-[1.5] tracking-[0.08em] text-primary dark:border-[#555] dark:text-[#999]">
           {eyebrow}
         </span>
         <h2 className="font-rethink text-[38px] font-medium leading-[1.2] tracking-[-0.02em] text-primary dark:text-[#E6E6E6]">
@@ -203,7 +203,7 @@ export default function BillowPage() {
         <SeeMore
           projects={[
             { slug: 'altra', title: 'Altra', category: 'Product · UXUI', thumbnail: '/assets/projects/altra/thumbnail.jpg' },
-            { slug: 'velot', title: 'Velot', category: 'Branding', thumbnail: '/assets/projects/VELOT.jpg' },
+            { slug: 'velot', title: 'Velot', category: 'Branding', thumbnail: '/assets/projects/velot/thumbnail.jpg' },
             { slug: 'fianchetto', title: 'Fianchetto', category: 'Branding', thumbnail: '/assets/projects/fianchetto/thumbnail.jpg' },
           ]}
         />
@@ -228,25 +228,37 @@ export default function BillowPage() {
           layout="static"
         />
       }
-    >
-      <div>
-        <div className="pt-[40px]">
+      heroSlot={
+        <div className="w-full min-w-0 lg:pt-[40px]">
           <HeroMediaReveal>
+            {/* Mobile */}
+            <video
+              src="https://polite-dusk-2d7fe6.netlify.app/001.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="lg:hidden w-full h-auto rounded-[6px] lg:rounded-[8px]"
+            />
+            {/* Desktop */}
             <HoverVideo
               src="https://ephemeral-monstera-5edf4b.netlify.app/001.mp4"
               fallback="https://cdn.prod.website-files.com/67cf995ac794a925d9518c2e/69b1dfe2299975f683ba812e_4be5097a2e5208bfcb4357594d6060a4_Slide%2016_9%20-%204.jpg"
               alt="Billow preview"
-              className="hover-video w-full h-auto block rounded-[8px]"
+              className="hover-video hidden lg:block w-full h-auto rounded-[8px]"
             />
           </HeroMediaReveal>
         </div>
+      }
+    >
+      <div>
 
-        <div className="mx-auto max-w-[980px] pt-12">
+        <div className="w-full min-w-0 pt-12 lg:mx-auto lg:max-w-[980px]">
           <CaseSection id="overview">
             <div className="mb-6 flex flex-col gap-10">
-              <div className="flex max-w-[839px] flex-col gap-[22px]">
-                <div className="flex max-w-[520px] flex-col items-start gap-5">
-                  <span className="inline-flex items-center justify-center rounded-[11px] border border-primary/90 px-2 py-0.5 font-satoshi text-[11px] font-medium uppercase leading-[1.5] tracking-[0.08em] text-primary">
+              <div className="flex w-full min-w-0 max-w-[839px] flex-col gap-[22px]">
+                <div className="flex w-full min-w-0 max-w-[520px] flex-col items-start gap-5">
+                  <span className="inline-flex items-center justify-center rounded-[11px] border border-primary/90 px-2 py-0.5 font-satoshi text-[11px] font-medium uppercase leading-[1.5] tracking-[0.08em] text-primary dark:border-[#555] dark:text-[#999]">
                     Overview
                   </span>
                   <h2 className="font-rethink text-[38px] font-medium leading-[1.2] tracking-[-0.02em] text-primary dark:text-[#E6E6E6]">
@@ -258,17 +270,17 @@ export default function BillowPage() {
                 </p>
               </div>
 
-              <div className="flex flex-col gap-3 md:flex-row md:flex-wrap md:justify-between">
-                {OVERVIEW_STEPS.map(({ roman, label, body }) => (
+              <div className="grid grid-cols-2 gap-3 lg:flex lg:flex-row lg:flex-wrap lg:justify-between">
+                {OVERVIEW_STEPS.map(({ roman, label, body }, index) => (
                   <div
                     key={roman}
-                    className="flex h-[205px] flex-col justify-between overflow-hidden rounded-[14px] bg-[#F5F5F5] px-[15px] py-4 dark:bg-[#1C1C1C] md:w-[calc((100%_-_48px)_/_5)]"
+                    className={`flex min-h-[172px] flex-col justify-between overflow-hidden rounded-[10px] bg-[#F5F5F5] px-3 py-4 dark:bg-[#1C1C1C] lg:h-[205px] lg:w-[calc((100%_-_48px)_/_5)] lg:rounded-[14px] lg:px-[15px] ${index === OVERVIEW_STEPS.length - 1 ? 'col-span-2' : ''}`}
                   >
-                    <div className="flex items-center gap-2 font-satoshi text-[11px] font-bold uppercase leading-[1.5] tracking-[0.08em] text-primary">
+                    <div className="flex flex-col gap-1 font-satoshi text-[10px] font-bold uppercase leading-[1.3] tracking-[0.08em] text-primary dark:text-[#999] sm:flex-row sm:items-center sm:gap-2 sm:text-[11px]">
                       <span>{roman}</span>
                       <span>{label}</span>
                     </div>
-                    <p className="font-satoshi text-[14px] font-medium leading-[1.4] tracking-[-0.02em] text-[#6F6F6F] dark:text-[#999]">
+                    <p className="font-satoshi text-[12px] font-medium leading-[1.35] tracking-[-0.02em] text-[#6F6F6F] dark:text-[#999] sm:text-[13px] lg:text-[14px] lg:leading-[1.4]">
                       {body}
                     </p>
                   </div>
@@ -281,7 +293,7 @@ export default function BillowPage() {
               alt="Billow overview dashboard showing subscription management through chat"
               width={3092}
               height={1370}
-              className="h-auto w-full rounded-[8px]"
+              className="h-auto w-full rounded-[6px] lg:rounded-[8px]"
             />
           </CaseSection>
 
@@ -296,7 +308,7 @@ export default function BillowPage() {
               </p>
             </TextBlock>
 
-            <div className="mb-[38px] flex max-w-[839px] items-center gap-4 overflow-hidden py-1">
+            <div className="mb-[38px] flex w-full min-w-0 max-w-[839px] items-center gap-4 overflow-hidden py-1">
               <div className="h-[54px] w-[3px] shrink-0 bg-[#D9D9D9] dark:bg-[#555]" />
               <p className="font-satoshi text-[18px] font-medium leading-[1.6] text-[#6F6F6F] dark:text-[#999]">
                 In small teams, software subscriptions are often managed informally. Responsibilities shift as people join or leave.
@@ -304,7 +316,7 @@ export default function BillowPage() {
             </div>
 
             <div className="flex flex-col gap-6 md:flex-row md:items-stretch">
-              <div className="flex min-h-[313px] flex-col justify-between overflow-hidden rounded-[14px] bg-[#3D5FE8] p-6 dark:bg-[#2A2A2A] md:w-[56%]">
+              <div className="flex min-h-[313px] flex-col justify-between overflow-hidden rounded-[10px] bg-[#3D5FE8] p-6 dark:bg-[#2A2A2A] md:w-[56%] lg:rounded-[14px]">
                 <p className="font-satoshi text-[11px] font-bold uppercase leading-[1.5] tracking-[0.08em] text-[#D9D9D9]">
                   Finding
                 </p>
@@ -331,13 +343,13 @@ export default function BillowPage() {
                     name: 'Individual user',
                   },
                 ].map(({ icon, quote, name }) => (
-                  <div key={name} className="flex gap-3 overflow-hidden rounded-[8px] px-2 py-2.5">
+                  <div key={name} className="flex gap-3 overflow-hidden rounded-[6px] px-2 py-2.5 lg:rounded-[8px]">
                     <div className="shrink-0 text-[#3F3F3F] dark:text-[#ADADAD]">{icon}</div>
                     <div className="flex min-w-0 flex-1 flex-col gap-2.5">
                       <p className="font-satoshi text-[18px] font-medium leading-[1.2] text-[#3F3F3F] dark:text-[#D9D9D9]">
                         &quot;{quote}&quot;
                       </p>
-                      <p className="font-satoshi text-[14px] font-medium leading-none text-primary">
+                      <p className="font-satoshi text-[14px] font-medium leading-none text-[#ADADAD] dark:text-[#555]">
                         {name}
                       </p>
                     </div>
@@ -346,14 +358,17 @@ export default function BillowPage() {
               </div>
             </div>
 
-            <div className="mt-[38px] overflow-hidden rounded-[8px] bg-[#F5F5F5] px-8 py-10 dark:bg-[#2A2A2A]">
-              <Image
-                src="/assets/projects/billow/friction_01.png"
-                alt="Examples of inactive business email subscriptions and expired platform licenses"
-                width={2728}
-                height={1389}
-                className="mx-auto h-auto w-[86%]"
-              />
+            <div className="mt-[38px] overflow-hidden rounded-[6px] bg-[#F5F5F5] px-4 py-5 dark:bg-[#2A2A2A] lg:rounded-[8px] lg:px-8 lg:py-10">
+              <div className="relative mx-auto aspect-square w-full overflow-hidden rounded-[6px] lg:aspect-auto lg:w-[86%] lg:max-w-none lg:overflow-visible lg:rounded-none">
+                <Image
+                  src="/assets/projects/billow/friction_01.png"
+                  alt="Examples of inactive business email subscriptions and expired platform licenses"
+                  width={2728}
+                  height={1389}
+                  sizes="(max-width: 1024px) calc(100vw - 96px), 843px"
+                  className="h-full w-full object-contain lg:h-auto"
+                />
+              </div>
             </div>
           </CaseSection>
 
@@ -373,9 +388,9 @@ export default function BillowPage() {
           </CaseSection>
 
           <CaseSection id="system">
-            <div className="mb-12 flex max-w-[839px] flex-col gap-[22px]">
-              <div className="flex max-w-[520px] flex-col items-start gap-5">
-                <span className="inline-flex items-center justify-center rounded-[11px] border border-primary/90 px-2 py-0.5 font-satoshi text-[11px] font-medium uppercase leading-[1.5] tracking-[0.08em] text-primary">
+            <div className="mb-12 flex w-full min-w-0 max-w-[839px] flex-col gap-[22px]">
+              <div className="flex w-full min-w-0 max-w-[520px] flex-col items-start gap-5">
+                <span className="inline-flex items-center justify-center rounded-[11px] border border-primary/90 px-2 py-0.5 font-satoshi text-[11px] font-medium uppercase leading-[1.5] tracking-[0.08em] text-primary dark:border-[#555] dark:text-[#999]">
                   Building the System
                 </span>
                 <h2 className="font-rethink text-[38px] font-medium leading-[1.2] tracking-[-0.02em] text-primary dark:text-[#E6E6E6]">
@@ -387,7 +402,7 @@ export default function BillowPage() {
               </p>
             </div>
 
-            <div className="rounded-[14px] bg-[#F5F5F5] dark:bg-[#1F1F1F] px-[26px] py-[32px]">
+            <div className="rounded-[10px] bg-[#F5F5F5] px-4 py-5 dark:bg-[#1F1F1F] lg:rounded-[14px] lg:px-[26px] lg:py-[32px]">
               <div className="flex flex-col gap-8">
                 <div className="grid gap-3 md:grid-cols-3">
                   {SYSTEM_FOUNDATIONS.map(({ title, body, image, imageAlt }, index) => (
@@ -395,7 +410,7 @@ export default function BillowPage() {
                       key={title}
                       className="overflow-hidden flex flex-col"
                     >
-                      <div className="relative h-[416px] overflow-hidden rounded-[14px] bg-[#0C0F16]">
+                      <div className="relative aspect-square overflow-hidden rounded-[10px] bg-[#0C0F16] lg:h-[416px] lg:aspect-auto lg:rounded-[14px]">
                         <Image
                           src={image}
                           alt={imageAlt}
@@ -424,7 +439,7 @@ export default function BillowPage() {
                 {[SYSTEM_RESULT].map(({ title }) => (
                   <div key={title} className="flex flex-col gap-6">
                     <div className="space-y-4">
-                      <div className="relative aspect-[1.6] overflow-hidden rounded-[14px] bg-[#0C0F16]">
+                      <div className="relative aspect-[1.6] overflow-hidden rounded-[10px] bg-[#0C0F16] lg:rounded-[14px]">
                         <Image
                           src="/assets/projects/billow/Color System.jpg"
                           alt="Billow color system"
@@ -433,7 +448,7 @@ export default function BillowPage() {
                           className="object-cover"
                         />
                       </div>
-                      <div className="relative aspect-[1.714] overflow-hidden rounded-[14px] bg-[#0C0F16]">
+                      <div className="relative aspect-[1.714] overflow-hidden rounded-[10px] bg-[#0C0F16] lg:rounded-[14px]">
                         <Image
                           src="/assets/projects/billow/scalable.jpg"
                           alt="Billow scalable interface set overview"
@@ -479,7 +494,7 @@ export default function BillowPage() {
                 {STORY_CHARACTERS.map(({ name, role, needs, image }) => (
                   <div
                     key={name}
-                    className="overflow-hidden rounded-[14px] bg-[#F5F5F5] dark:bg-[#2A2A2A] p-5 flex flex-col justify-between min-h-[200px] transition-all duration-300 hover:rotate-[-5deg] hover:bg-[#D9D9D9] dark:hover:bg-[#3A3A3A]"
+                    className="overflow-hidden rounded-[10px] bg-[#F5F5F5] dark:bg-[#2A2A2A] p-5 flex flex-col justify-between min-h-[200px] transition-all duration-300 hover:rotate-[-5deg] hover:bg-[#D9D9D9] dark:hover:bg-[#3A3A3A] lg:rounded-[14px]"
                   >
                     <div className="flex items-center gap-2">
                       <div className="relative h-[48px] w-[48px] rounded-full overflow-hidden shrink-0">
@@ -540,7 +555,7 @@ export default function BillowPage() {
                       src={step.video}
                       fallback={step.fallback}
                       alt={`Workflow step: ${step.title}`}
-                      className="w-full h-auto rounded-[14px]"
+                      className="w-full h-auto rounded-[10px] lg:rounded-[14px]"
                     />
                   </div>
                 );
@@ -555,28 +570,28 @@ export default function BillowPage() {
               <ABTestCard
                 beforeLabel="Expected"
                 afterLabel="What actually happened"
-                beforeContent={<div className="relative w-full h-[480px] rounded-[8px] overflow-hidden"><Image src="/assets/projects/billow/expected.jpg" alt="Expected behavior" fill className="object-cover object-left" /></div>}
-                afterContent={<div className="relative w-full h-[480px] rounded-[8px] overflow-hidden"><Image src="/assets/projects/billow/actually_happened.jpg" alt="What actually happened" fill className="object-cover object-left" /></div>}
+                beforeContent={<div className="relative w-full aspect-[4/3] rounded-[6px] overflow-hidden lg:h-[480px] lg:aspect-auto lg:rounded-[8px]"><Image src="/assets/projects/billow/expected.jpg" alt="Expected behavior" fill className="object-cover object-left" /></div>}
+                afterContent={<div className="relative w-full aspect-[4/3] rounded-[6px] overflow-hidden lg:h-[480px] lg:aspect-auto lg:rounded-[8px]"><Image src="/assets/projects/billow/actually_happened.jpg" alt="What actually happened" fill className="object-cover object-left" /></div>}
                 finding="Users assumed the tool cards were interactive and clicked them instead of approving via chat. As a result, the onboarding flow stopped because the system was waiting for a chat response."
               />
             </div>
 
             <Card className="w-full mt-10">
-              <CardContent className="space-y-8">
+              <CardContent className="space-y-8 p-4 lg:p-6">
                 <Badge>Outcome</Badge>
                 <div className="space-y-10">
                   <div>
                     <h4 className="mb-6 text-[18px] font-medium text-[#1E1E1E] dark:text-[#E6E6E6]">Yes / No Buttons Added</h4>
-                    <div className="grid gap-6 grid-cols-2">
+                    <div className="grid gap-6 lg:grid-cols-2">
                       <div>
-                        <p className="mb-3 text-xs uppercase tracking-[0.18em] text-[#3D5FE8]">Before</p>
-                        <div className="relative w-full aspect-video rounded-[8px] overflow-hidden">
+                        <p className="mb-3 text-xs uppercase tracking-[0.18em] text-[#3D5FE8] dark:text-[#555]">Before</p>
+                        <div className="relative w-full aspect-video rounded-[6px] overflow-hidden lg:rounded-[8px]">
                           <Image src="/assets/projects/billow/01_b.jpg" alt="Before" fill className="object-cover" />
                         </div>
                       </div>
                       <div>
-                        <p className="mb-3 text-xs uppercase tracking-[0.18em] text-[#3D5FE8]">After</p>
-                        <div className="relative w-full aspect-video rounded-[8px] overflow-hidden">
+                        <p className="mb-3 text-xs uppercase tracking-[0.18em] text-[#3D5FE8] dark:text-[#555]">After</p>
+                        <div className="relative w-full aspect-video rounded-[6px] overflow-hidden lg:rounded-[8px]">
                           <Image src="/assets/projects/billow/01_a.jpg" alt="After" fill className="object-cover" />
                         </div>
                       </div>
@@ -584,16 +599,16 @@ export default function BillowPage() {
                   </div>
                   <div>
                     <h4 className="mb-6 text-[18px] font-medium text-[#1E1E1E] dark:text-[#E6E6E6]">Confirmation Toast Added</h4>
-                    <div className="grid gap-6 grid-cols-2">
+                    <div className="grid gap-6 md:grid-cols-2">
                       <div>
-                        <p className="mb-3 text-xs uppercase tracking-[0.18em] text-[#3D5FE8]">Before</p>
-                        <div className="relative w-full h-[400px] rounded-[8px] overflow-hidden">
+                        <p className="mb-3 text-xs uppercase tracking-[0.18em] text-[#3D5FE8] dark:text-[#555]">Before</p>
+                        <div className="relative w-full aspect-[3/4] rounded-[6px] overflow-hidden lg:h-[400px] lg:aspect-auto lg:rounded-[8px]">
                           <Image src="/assets/projects/billow/02_b.jpg" alt="Before" fill className="object-cover object-top" />
                         </div>
                       </div>
                       <div>
-                        <p className="mb-3 text-xs uppercase tracking-[0.18em] text-[#3D5FE8]">After</p>
-                        <div className="relative w-full h-[400px] rounded-[8px] overflow-hidden">
+                        <p className="mb-3 text-xs uppercase tracking-[0.18em] text-[#3D5FE8] dark:text-[#555]">After</p>
+                        <div className="relative w-full aspect-[3/4] rounded-[6px] overflow-hidden lg:h-[400px] lg:aspect-auto lg:rounded-[8px]">
                           <Image src="/assets/projects/billow/02_a.jpg" alt="After" fill className="object-cover object-top" />
                         </div>
                       </div>
@@ -604,8 +619,8 @@ export default function BillowPage() {
                   To guide users more clearly, I added explicit Yes/No buttons and a confirmation toast. These changes removed confusion and helped users complete the approval step with confidence.
                 </p>
                 <div className="mt-8">
-                  <p className="mb-3 text-xs uppercase tracking-[0.18em] text-[#3D5FE8]">Result</p>
-                  <div className="rounded-[14px] bg-[#F5F5F5] dark:bg-[#2A2A2A] overflow-hidden">
+                  <p className="mb-3 text-xs uppercase tracking-[0.18em] text-[#3D5FE8] dark:text-[#555]">Result</p>
+                  <div className="rounded-[10px] bg-[#F5F5F5] dark:bg-[#2A2A2A] overflow-hidden lg:rounded-[14px]">
                     <HoverVideo
                       src="https://neon-tulumba-4b620a.netlify.app/03.mp4"
                       fallback="/assets/projects/billow/chat.png"
@@ -629,7 +644,7 @@ export default function BillowPage() {
                   <NumberCircleThree size={24} weight="fill" />,
                 ];
                 return (
-                  <div key={learning.title} className="bg-[#F5F5F5] dark:bg-[#2A2A2A] rounded-[14px] p-6 flex gap-4 items-start">
+                  <div key={learning.title} className="bg-[#F5F5F5] dark:bg-[#2A2A2A] rounded-[10px] p-6 flex gap-4 items-start lg:rounded-[14px]">
                     <div className="flex-shrink-0 flex items-center justify-center text-[#373737] dark:text-[#777]">
                       {icons[index]}
                     </div>

@@ -22,7 +22,7 @@ export default function ABTestCard({
           {objective}
         </p>
       )}
-      <div className="grid grid-cols-2 gap-4 mb-6">
+      <div className="grid gap-4 mb-6 lg:grid-cols-2">
         <div>
           <span
             className="text-xs text-[#ADADAD] dark:text-[#555] uppercase tracking-wide mb-3 block font-satoshi"

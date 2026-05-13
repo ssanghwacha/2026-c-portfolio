@@ -52,7 +52,8 @@ export default function FianchettoPage() {
       }
       sidebar={
         <CaseHero
-          title="FIANCHETTO • 2025"
+          title="Fianchetto"
+          meta="Branding · 2025"
           headline="From 25% to 75% risk awareness. Making hiking safer in uncertain conditions."
           role="UI/UX Designer"
           team={[

@@ -35,23 +35,22 @@ function VancouverTime() {
 
 export default function Hero() {
   return (
-    <section className="w-full flex flex-col items-center justify-center min-h-[70vh] px-8">
+    <section className="w-full flex flex-col items-center justify-center min-h-[60vh] sm:min-h-[70vh] px-4 sm:px-8 pt-[180px] sm:pt-0">
       <div className="translate-y-[50px]" style={{ textAlign: 'justify', textAlignLast: 'justify', textJustify: 'inter-word' }}>
       {/* Location + live time */}
       <p
-        className="text-primary dark:text-accent tracking-wide mb-8"
-        style={{ fontFamily: "'Satoshi', sans-serif", fontWeight: 500, fontSize: '18px', textAlign: 'center', textAlignLast: 'center' }}
+        className="text-primary dark:text-accent tracking-wide mb-8 text-sm sm:text-[18px]"
+        style={{ fontFamily: "'Satoshi', sans-serif", fontWeight: 500, textAlign: 'center', textAlignLast: 'center' }}
       >
-        I&apos;m Here — Vancouver, BC · <VancouverTime /> PT
+        I&apos;m Here — <VancouverTime /> <span className="hidden sm:inline">Vancouver, BC</span><span className="sm:hidden">YVR</span>
       </p>
 
       {/* Main copy — VT323, 48px fluid, 100% line-height, 8% letter-spacing */}
       <h1
-        className="text-primary dark:text-accent"
+        className="text-primary dark:text-accent max-w-[700px]"
         style={{
           fontFamily: "'Instrument Serif', serif",
-          fontSize: '36px',
-          width: '700px',
+          fontSize: 'clamp(24px, 5vw, 36px)',
           lineHeight: '110%',
           letterSpacing: '0.04em',
         }}

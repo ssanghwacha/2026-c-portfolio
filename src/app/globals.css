@@ -18,6 +18,25 @@ html {
   scroll-behavior: smooth;
 }
 
+@keyframes velot-color-pan {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-42%);
+  }
+}
+
+@media (max-width: 639px) {
+  .velot-color-strip {
+    width: 620px;
+    pointer-events: none;
+    animation: velot-color-pan 9s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+}
+
 body,
 main,
 section,

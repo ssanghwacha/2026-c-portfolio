@@ -37,8 +37,8 @@ export default function ShiftRulesShowcase() {
   }, []);
 
   return (
-    <div className="grid items-start gap-8 md:grid-cols-[1.25fr_0.9fr]">
-      <div className="relative aspect-square overflow-hidden rounded-[14px] bg-[#0A0A0A]">
+    <div className="grid w-full min-w-0 items-start gap-8 md:grid-cols-[1.25fr_0.9fr]">
+      <div className="relative aspect-square w-full min-w-0 overflow-hidden rounded-[10px] bg-[#0A0A0A] lg:rounded-[14px]">
         <Image
           key={activeRule.image}
           src={activeRule.image}
@@ -49,11 +49,8 @@ export default function ShiftRulesShowcase() {
         />
       </div>
 
-      <div>
-        <p className="mb-4 font-satoshi text-[14px] font-medium leading-[1.5] text-[#ADADAD] dark:text-[#777]">
-          This led to three design rules:
-        </p>
-        <div className="flex flex-col gap-3">
+      <div className="w-full min-w-0">
+        <div className="flex w-full min-w-0 flex-col gap-3">
           {RULES.map(({ title, body }, index) => {
             const isActive = index === activeIndex;
 
@@ -62,7 +59,7 @@ export default function ShiftRulesShowcase() {
                 key={title}
                 type="button"
                 onClick={() => setActiveIndex(index)}
-                className={`rounded-[14px] px-5 py-4 text-left transition-colors duration-300 ${
+                className={`w-full rounded-[10px] px-5 py-4 text-left transition-colors duration-300 lg:rounded-[14px] ${
                   isActive
                     ? 'bg-primary text-white'
                     : 'bg-[#F5F5F5] text-[#3F3F3F] hover:bg-[#ECECEC] dark:bg-[#2A2A2A] dark:text-[#E6E6E6] dark:hover:bg-[#333]'

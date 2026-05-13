@@ -53,7 +53,7 @@ function TextBlock({
   return (
     <div className={`${className} flex max-w-[839px] flex-col gap-[22px]`}>
       <div className={`flex ${headlineClassName} flex-col items-start gap-5`}>
-        <span className="inline-flex items-center justify-center rounded-[11px] border border-primary/90 px-2 py-0.5 font-satoshi text-[11px] font-medium uppercase leading-[1.5] tracking-[0.08em] text-primary">
+        <span className="inline-flex items-center justify-center rounded-[11px] border border-primary/90 px-2 py-0.5 font-satoshi text-[11px] font-medium uppercase leading-[1.5] tracking-[0.08em] text-primary dark:border-[#555] dark:text-[#999]">
           {eyebrow}
         </span>
         <h2 className="font-rethink text-[38px] font-medium leading-[1.2] tracking-[-0.02em] text-primary dark:text-[#E6E6E6]">
@@ -78,7 +78,7 @@ export default function AltraPage() {
         <SeeMore
           projects={[
             { slug: 'billow',     title: 'Billow',     category: 'Product · UXUI', thumbnail: '/assets/projects/billow/thumbnail.jpg' },
-            { slug: 'velot',      title: 'Velot',      category: 'Branding',       thumbnail: '/assets/projects/VELOT.jpg' },
+            { slug: 'velot',      title: 'Velot',      category: 'Branding',       thumbnail: '/assets/projects/velot/thumbnail.jpg' },
             { slug: 'fianchetto', title: 'Fianchetto', category: 'Branding',       thumbnail: '/assets/projects/fianchetto/thumbnail.jpg' },
           ]}
         />
@@ -104,18 +104,30 @@ export default function AltraPage() {
           layout="static"
         />
       }
-    >
-      <div>
-        <div className="pt-[40px]">
+      heroSlot={
+        <div className="lg:pt-[40px]">
           <HeroMediaReveal>
+            {/* Mobile */}
+            <video
+              src="https://fastidious-bombolone-8ee4b7.netlify.app/001.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="lg:hidden w-full h-auto rounded-[8px]"
+            />
+            {/* Desktop */}
             <HoverVideo
               src="https://golden-parfait-60a7b7.netlify.app/001.mp4"
               fallback="https://cdn.prod.website-files.com/67cf995ac794a925d9518c2e/69b1dd97e3c9f0b640b0d1df_alltra-main01.png"
               alt="Altra"
-              className="w-full h-auto block rounded-[8px]"
+              className="hidden lg:block w-full h-auto rounded-[8px]"
             />
           </HeroMediaReveal>
         </div>
+      }
+    >
+      <div>
 
         <div className="mx-auto max-w-[980px] pt-12">
 
@@ -175,27 +187,27 @@ export default function AltraPage() {
                 At unclear junctions, hikers rely on a blue dot that shows location, not confidence. The pattern is rarely getting lost. It is continuing forward after something already felt wrong, and only realizing it later.
               </TextBlock>
 
-              <div className="mb-4 overflow-hidden rounded-[8px]">
+              <div className="relative mb-4 aspect-[4/3] overflow-hidden rounded-[8px] lg:aspect-auto">
                 <Image
                   src="/assets/projects/altra/alert.png"
                   alt="No hiking, not a trail sign on a rocky slope"
                   width={1200}
                   height={600}
-                  className="h-auto w-full object-cover"
+                  className="h-full w-full object-cover lg:h-auto"
                 />
               </div>
 
               <div className="flex flex-col gap-4 md:flex-row md:items-stretch">
                 {/* Left: Finding box */}
-                <div className="flex min-h-[280px] flex-col justify-between overflow-hidden rounded-[14px] bg-[#3D5FE8] p-6 md:w-[56%]">
-                  <p className="font-satoshi text-[11px] font-bold uppercase leading-[1.5] tracking-[0.08em] text-[#D9D9D9]">
+                <div className="flex min-h-[280px] flex-col justify-between overflow-hidden rounded-[14px] bg-[#F5F5F5] p-6 dark:bg-[#2A2A2A] md:w-[56%]">
+                  <p className="font-satoshi text-[11px] font-bold uppercase leading-[1.5] tracking-[0.08em] text-[#ADADAD] dark:text-[#555]">
                     Finding
                   </p>
                   <div className="space-y-3">
-                    <p className="font-satoshi text-[24px] font-medium leading-[1.35] text-white">
+                    <p className="font-satoshi text-[24px] font-medium leading-[1.35] text-primary dark:text-[#E6E6E6]">
                       The problem is not knowing where you are. It is knowing what to do next.
                     </p>
-                    <p className="text-sm leading-[170%] text-white/70">
+                    <p className="text-sm leading-[170%] text-[#6F6F6F] dark:text-[#999]">
                       Even if location were exact, hikers would still encounter moments where the right choice is unclear.
                     </p>
                   </div>
@@ -240,7 +252,7 @@ export default function AltraPage() {
               />
 
               {/* Method strip */}
-              <div className="mb-8 grid grid-cols-4 gap-6">
+              <div className="mb-8 grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
                 {[
                   { label: 'Method',       body: 'Google Form questionnaire + online community review + informal peer feedback' },
                   { label: 'Participants', body: '12 beginner hikers, 3 peer hikers (ages 25–40)' },
@@ -279,11 +291,11 @@ export default function AltraPage() {
                 <div className="h-12 w-px bg-[#E6E6E6] dark:bg-[#3A3A3A]" />
               </div>
 
-              <div className="flex min-h-[200px] flex-col justify-between overflow-hidden rounded-[14px] bg-[#3D5FE8] p-6">
-                <p className="font-satoshi text-[11px] font-bold uppercase leading-[1.5] tracking-[0.08em] text-[#D9D9D9]">
+              <div className="flex min-h-[200px] flex-col justify-between overflow-hidden rounded-[14px] bg-[#F5F5F5] p-6 dark:bg-[#2A2A2A]">
+                <p className="font-satoshi text-[11px] font-bold uppercase leading-[1.5] tracking-[0.08em] text-[#ADADAD] dark:text-[#555]">
                   Reframing
                 </p>
-                <p className="font-satoshi text-[24px] font-medium leading-[1.35] text-white">
+                <p className="font-satoshi text-[24px] font-medium leading-[1.35] text-primary dark:text-[#E6E6E6]">
                   Hikers don&apos;t need more accurate navigation. They need a clear standard to judge whether continuing is still safe.
                 </p>
               </div>
@@ -397,7 +409,7 @@ export default function AltraPage() {
                 {/* Test 01 */}
                 <div>
                   <div className="mb-8 flex items-center gap-3 pt-6">
-                    <Badge style={{ backgroundColor: '#3D5FE8', color: '#fff' }}>Test 01</Badge>
+                    <Badge className="!bg-[#3D5FE8] !text-white dark:!bg-[#333] dark:!text-[#ADADAD]">Test 01</Badge>
                     <p className="text-[20px] font-medium leading-[125%] text-[#6F6F6F] dark:text-[#E6E6E6]">
                       Label clarity
                     </p>
@@ -439,7 +451,7 @@ export default function AltraPage() {
                 {/* Test 02 */}
                 <div>
                   <div className="mb-8 flex items-center gap-3">
-                    <Badge style={{ backgroundColor: '#3D5FE8', color: '#fff' }}>Test 02</Badge>
+                    <Badge className="!bg-[#3D5FE8] !text-white dark:!bg-[#333] dark:!text-[#ADADAD]">Test 02</Badge>
                     <p className="text-[20px] font-medium leading-[125%] text-[#6F6F6F] dark:text-[#E6E6E6]">
                       Timeline orientation
                     </p>
@@ -481,7 +493,7 @@ export default function AltraPage() {
                 {/* Test 03 */}
                 <div>
                   <div className="mb-8 flex items-center gap-3">
-                    <Badge style={{ backgroundColor: '#3D5FE8', color: '#fff' }}>Test 03</Badge>
+                    <Badge className="!bg-[#3D5FE8] !text-white dark:!bg-[#333] dark:!text-[#ADADAD]">Test 03</Badge>
                     <p className="text-[20px] font-medium leading-[125%] text-[#6F6F6F] dark:text-[#E6E6E6]">
                       Critical action
                     </p>
@@ -576,15 +588,17 @@ export default function AltraPage() {
                     How the system behaves
                   </p>
                 </div>
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="h-auto w-full rounded-[8px]"
-                >
-                  <source src="https://sprightly-licorice-9f95a4.netlify.app/001.mp4" type="video/mp4" />
-                </video>
+                <div className="aspect-square overflow-hidden rounded-[8px] lg:aspect-auto">
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="h-full w-full object-cover lg:h-auto lg:object-contain"
+                  >
+                    <source src="https://sprightly-licorice-9f95a4.netlify.app/001.mp4" type="video/mp4" />
+                  </video>
+                </div>
               </div>
             </div>
           </CaseSection>
