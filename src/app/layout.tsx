@@ -21,6 +21,22 @@ export const metadata: Metadata = {
       { url: '/assets/favicon/Favicon16.png', sizes: '16x16', type: 'image/png' },
     ],
   },
+  openGraph: {
+    title: "Sangwha Cha — Designer",
+    description:
+      "Designer in Vancouver, shaping brands and digital products with a refined eye for systems and user experience.",
+    url: "https://sangwhacha.com",
+    siteName: "Sangwha Cha",
+    images: [
+      {
+        url: '/assets/og/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: "Sangwha Cha — Designer",
+      },
+    ],
+    type: "website",
+  },
 };
 
 export default function RootLayout({
