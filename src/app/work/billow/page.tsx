@@ -270,17 +270,17 @@ export default function BillowPage() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-2 gap-3 lg:flex lg:flex-row lg:flex-wrap lg:justify-between">
+              <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:flex lg:flex-row lg:flex-wrap lg:justify-between">
                 {OVERVIEW_STEPS.map(({ roman, label, body }, index) => (
                   <div
                     key={roman}
-                    className={`flex min-h-[172px] flex-col justify-between overflow-hidden rounded-[10px] bg-[#F5F5F5] px-3 py-4 dark:bg-[#1C1C1C] lg:h-[205px] lg:w-[calc((100%_-_48px)_/_5)] lg:rounded-[14px] lg:px-[15px] ${index === OVERVIEW_STEPS.length - 1 ? 'col-span-2' : ''}`}
+                    className={`flex min-h-[190px] flex-col justify-between overflow-hidden rounded-[10px] bg-[#F5F5F5] px-4 py-5 dark:bg-[#1C1C1C] sm:min-h-[205px] sm:px-5 sm:py-5 lg:h-[205px] lg:w-[calc((100%_-_48px)_/_5)] lg:rounded-[14px] lg:px-[15px] ${index === OVERVIEW_STEPS.length - 1 ? 'col-span-2' : ''}`}
                   >
-                    <div className="flex flex-col gap-1 font-satoshi text-[10px] font-bold uppercase leading-[1.3] tracking-[0.08em] text-primary dark:text-[#999] sm:flex-row sm:items-center sm:gap-2 sm:text-[11px]">
+                    <div className="flex flex-col gap-1 font-satoshi text-[12px] font-bold uppercase leading-[1.3] tracking-[0.08em] text-primary dark:text-[#999] sm:flex-row sm:items-center sm:gap-2 sm:text-[13px] lg:text-[11px]">
                       <span>{roman}</span>
                       <span>{label}</span>
                     </div>
-                    <p className="font-satoshi text-[12px] font-medium leading-[1.35] tracking-[-0.02em] text-[#6F6F6F] dark:text-[#999] sm:text-[13px] lg:text-[14px] lg:leading-[1.4]">
+                    <p className="font-satoshi text-[14px] font-medium leading-[1.4] tracking-[-0.02em] text-[#6F6F6F] dark:text-[#999]">
                       {body}
                     </p>
                   </div>
