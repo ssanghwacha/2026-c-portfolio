@@ -6,6 +6,22 @@ import Image from 'next/image';
 import Header from '@/components/Header';
 import TextType from '@/components/TextType';
 import { useTheme } from '@/providers/ThemeProvider';
+import { ArrowsOut } from '@phosphor-icons/react';
+
+const getCursorUrl = (color: string) => {
+  const svgData = `<svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 3H13V9H11V3ZM11 15H13V21H11V15ZM15 11H21V13H15V11ZM3 11H9V13H3V11ZM12 11C11.7348 11 11.4804 11.1054 11.2929 11.2929C11.1054 11.4804 11 11.7348 11 12C11 12.2652 11.1054 12.5196 11.2929 12.7071C11.4804 12.8946 11.7348 13 12 13C12.2652 13 12.5196 12.8946 12.7071 12.7071C12.8946 12.5196 13 12.2652 13 12C13 11.7348 12.8946 11.4804 12.7071 11.2929C12.5196 11.1054 12.2652 11 12 11Z" fill="${color}"/></svg>`;
+  return `data:image/svg+xml;utf8,${encodeURIComponent(svgData)}`;
+};
+
+const getArrowCursorUrl = (color: string) => {
+  const svgData = `<svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 24H16V20H14V18H12V16H18V14H16V12H14V10H12V8H10V6H8V4H6V2H4V22H6V20H8V18H10V20H12V24Z" fill="${color}"/></svg>`;
+  return `data:image/svg+xml;utf8,${encodeURIComponent(svgData)}`;
+};
+
+const getClickCursorUrl = (color: string) => {
+  const svgData = `<svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_306_583)"><path d="M14.1827 24H16.7282V21.4545H15.4554V20.1818H14.1827V18.9091H18.0009V17.6364H16.7282V16.3636H15.4554V15.0909H14.1827V13.8182H12.91V12.5455H11.6373V11.2727H10.3645V10H9.0918V22.7273H10.3645V21.4545H11.6373V20.1818H12.91V21.4545H14.1827V24Z" fill="${color}"/><path d="M3.9282 3L5.66025 2L8.66025 7.19615L6.9282 8.19615L3.9282 3ZM11.3923 7.9282L16.5885 4.9282L17.5885 6.66025L12.3923 9.66025L11.3923 7.9282ZM1 13.9282L6.19615 10.9282L7.19615 12.6603L2 15.6603L1 13.9282Z" fill="${color}"/></g><defs><clipPath id="clip0_306_583"><rect width="48" height="48" fill="white"/></clipPath></defs></svg>`;
+  return `data:image/svg+xml;utf8,${encodeURIComponent(svgData)}`;
+};
 
 const introText = "Hi! I'm Sangwha";
 const recentItems = ['Experience', 'Education', 'Outside of Design'];
@@ -72,14 +88,6 @@ function SettingsIcon() {
   );
 }
 
-function ArrowLeftIcon() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M10.5 6.5 5.5 12l5 5.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M6 12h12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-    </svg>
-  );
-}
 
 function ShortcutKey({ children }: { children: ReactNode }) {
   return (
@@ -120,8 +128,9 @@ function CommandRow({
   active?: boolean;
   onClick: () => void;
 }) {
+  const { theme } = useTheme();
   return (
-    <button type="button" onClick={onClick} className="w-full px-[9px] py-0.5 text-left">
+    <button type="button" onClick={onClick} className="w-full px-[9px] py-0.5 text-left" style={{ cursor: theme === 'dark' ? `url('${getClickCursorUrl('#00FF00')}') 24 24, pointer` : 'url(/assets/info/click.svg) 24 24, pointer' }}>
       <div className={`flex w-full items-center gap-[9px] rounded-[9px] p-[9px] transition-colors ${active ? 'bg-primary dark:bg-[#2A2A2A]' : ''}`}>
         <Avatar active={active} />
         <span className={`font-satoshi text-[15px] font-medium leading-none ${active ? 'text-white dark:text-white' : 'text-primary dark:text-[#999999]'}`}>
@@ -133,6 +142,7 @@ function CommandRow({
 }
 
 function ExperiencePanel() {
+  const { theme } = useTheme();
   const [position, setPosition] = useState({ x: 960, y: 260 });
   const [isDragging, setIsDragging] = useState(false);
   const [hasMoved, setHasMoved] = useState(false);
@@ -171,7 +181,11 @@ function ExperiencePanel() {
   return (
     <section
       className="fixed z-30 hidden h-[450px] w-[552px] flex-col overflow-hidden rounded-[11px] bg-primary shadow-[0_18px_42px_-16px_rgba(0,0,0,0.25)] dark:bg-[#1E1E1E] lg:flex"
-      style={{ left: `${position.x}px`, top: `${position.y}px` }}
+      style={{
+        left: `${position.x}px`,
+        top: `${position.y}px`,
+        cursor: `url('${getCursorUrl(theme === 'dark' ? '#00FF00' : '#000000')}') 24 24, auto`
+      }}
       onPointerDown={(event) => {
         dragStartRef.current = { x: event.clientX, y: event.clientY };
         dragOffsetRef.current = {
@@ -185,7 +199,7 @@ function ExperiencePanel() {
         className="flex h-[48px] select-none items-center gap-[10px] border-b border-white/20 px-[13px] text-[14px] font-medium text-white/60 dark:border-white/10"
       >
         <span className="flex h-[21px] w-[21px] items-center justify-center rounded-[5px] bg-white/10 text-white/60">
-          <ArrowLeftIcon />
+          <ArrowsOut size={16} />
         </span>
         <span className="font-satoshi">Search Career...</span>
       </div>
@@ -221,12 +235,7 @@ function ExperiencePanel() {
       </div>
 
       <div className="flex h-[49px] items-center justify-between border-t border-black/10 bg-black/10 px-[14px] text-[12px] font-medium text-white/60">
-        <div className="flex items-center gap-[8px]">
-          <span>Use</span>
-          <PanelKey>↓</PanelKey>
-          <PanelKey>↑</PanelKey>
-          <span>to navigate</span>
-        </div>
+        <span>Drag to move</span>
         <div className="flex items-center gap-[8px]">
           <span className="text-white/40">Settings</span>
           <PanelKey>⌘</PanelKey>
@@ -238,6 +247,7 @@ function ExperiencePanel() {
 }
 
 function OutsideOfDesignPanel({ index, imageSrc, initialPosition, width, height, aspectRatio }: { index: number; imageSrc: string; initialPosition: { x: number; y: number }; width: number; height: number; aspectRatio?: string }) {
+  const { theme } = useTheme();
   const [position, setPosition] = useState(initialPosition);
   const [isDragging, setIsDragging] = useState(false);
   const [hasMoved, setHasMoved] = useState(false);
@@ -276,7 +286,13 @@ function OutsideOfDesignPanel({ index, imageSrc, initialPosition, width, height,
   return (
     <section
       className="fixed z-30 hidden flex-col overflow-hidden rounded-[11px] bg-white shadow-[0_18px_42px_-16px_rgba(0,0,0,0.18)] dark:bg-[#1E1E1E] lg:flex"
-      style={{ left: `${position.x}px`, top: `${position.y}px`, width: `${width}px`, height: `${height}px` }}
+      style={{
+        left: `${position.x}px`,
+        top: `${position.y}px`,
+        width: `${width}px`,
+        height: `${height}px`,
+        cursor: `url('${getCursorUrl(theme === 'dark' ? '#00FF00' : '#000000')}') 24 24, auto`
+      }}
       onPointerDown={(event) => {
         dragStartRef.current = { x: event.clientX, y: event.clientY };
         dragOffsetRef.current = {
@@ -288,19 +304,21 @@ function OutsideOfDesignPanel({ index, imageSrc, initialPosition, width, height,
     >
       <div className="flex h-[44px] select-none items-center gap-[10px] border-b border-[#E9EAEB] px-[13px] text-[13px] font-medium text-[#9EA2AD] dark:border-white/10 dark:text-white/60">
         <span className="flex h-[21px] w-[21px] items-center justify-center rounded-[5px] border border-[#E9EAEB] bg-white text-[#9EA2AD] dark:border-[#2E2E2E] dark:bg-[#1E1E1E] dark:text-[#ADADAD]">
-          <ArrowLeftIcon />
+          <ArrowsOut size={16} />
         </span>
-        <span className="font-satoshi">Outside of Design {index + 1}</span>
+        <span className="font-satoshi">
+          {['Love nature', 'Travel', 'City views I love', 'Cat Person', 'Figure skating', 'My favorite ice rink'][index]}
+        </span>
       </div>
 
-      <div className="flex min-h-0 flex-1">
+      <div className="flex min-h-0 flex-1 select-none">
         <div className="relative w-full" style={aspectRatio ? { aspectRatio } : {}}>
           <Image
             src={imageSrc}
             alt={`Outside of Design ${index + 1}`}
             fill
             sizes="300px"
-            className="object-cover"
+            className="object-cover pointer-events-none"
           />
         </div>
       </div>
@@ -315,6 +333,7 @@ function OutsideOfDesignPanel({ index, imageSrc, initialPosition, width, height,
 }
 
 function EducationPanel() {
+  const { theme } = useTheme();
   const [position, setPosition] = useState({ x: 1100, y: 500 });
   const [isDragging, setIsDragging] = useState(false);
   const [hasMoved, setHasMoved] = useState(false);
@@ -353,7 +372,11 @@ function EducationPanel() {
   return (
     <section
       className="fixed z-30 hidden h-[280px] w-[480px] flex-col overflow-hidden rounded-[11px] bg-white shadow-[0_18px_42px_-16px_rgba(0,0,0,0.18)] dark:bg-[#1E1E1E] lg:flex"
-      style={{ left: `${position.x}px`, top: `${position.y}px` }}
+      style={{
+        left: `${position.x}px`,
+        top: `${position.y}px`,
+        cursor: `url('${getCursorUrl(theme === 'dark' ? '#00FF00' : '#000000')}') 24 24, auto`
+      }}
       onPointerDown={(event) => {
         dragStartRef.current = { x: event.clientX, y: event.clientY };
         dragOffsetRef.current = {
@@ -365,7 +388,7 @@ function EducationPanel() {
     >
       <div className="flex h-[44px] select-none items-center gap-[10px] border-b border-[#E9EAEB] px-[13px] text-[13px] font-medium text-[#9EA2AD] dark:border-white/10 dark:text-white/60">
         <span className="flex h-[21px] w-[21px] items-center justify-center rounded-[5px] border border-[#E9EAEB] bg-white text-[#9EA2AD] dark:border-[#2E2E2E] dark:bg-[#1E1E1E] dark:text-[#ADADAD]">
-          <ArrowLeftIcon />
+          <ArrowsOut size={16} />
         </span>
         <span className="font-satoshi">Search Education...</span>
       </div>
@@ -401,12 +424,7 @@ function EducationPanel() {
       </div>
 
       <div className="flex h-[44px] items-center justify-between border-t border-[#E9EAEB] bg-white px-[14px] text-[11px] font-medium text-[#9EA2AD] dark:border-[#2E2E2E] dark:bg-[#1E1E1E] dark:text-[#ADADAD]">
-        <div className="flex items-center gap-[8px]">
-          <span>Use</span>
-          <span className="flex min-w-[21px] items-center justify-center rounded-[4.929px] border border-[#E9EAEB] bg-white px-1 py-1 text-[12px] font-medium leading-none text-[#9EA2AD] dark:border-[#2E2E2E] dark:bg-[#242424] dark:text-[#D9D9D9]">↓</span>
-          <span className="flex min-w-[21px] items-center justify-center rounded-[4.929px] border border-[#E9EAEB] bg-white px-1 py-1 text-[12px] font-medium leading-none text-[#9EA2AD] dark:border-[#2E2E2E] dark:bg-[#242424] dark:text-[#D9D9D9]">↑</span>
-          <span>to navigate</span>
-        </div>
+        <span>Drag to move</span>
         <div className="flex items-center gap-[8px]">
           <span className="hidden sm:inline">Settings</span>
           <span className="flex min-w-[21px] items-center justify-center rounded-[4.929px] border border-[#E9EAEB] bg-white px-1 py-1 text-[12px] font-medium leading-none text-[#9EA2AD] dark:border-[#2E2E2E] dark:bg-[#242424] dark:text-[#D9D9D9]">⌘</span>
@@ -577,7 +595,7 @@ export default function InfoPage() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const { theme } = useTheme();
   const backgroundVideo = theme === 'dark' ? '/assets/info/Info_BG-02.mp4' : '/assets/info/Info_BG.mp4';
-  const meImage = theme === 'dark' ? '/assets/info/me-02.png' : '/assets/info/me.png';
+  const meImage = theme === 'dark' ? '/assets/info/image_me2.png' : '/assets/info/image_me 1.png';
 
   useEffect(() => {
     const previousBodyOverflow = document.body.style.overflow;
@@ -601,9 +619,11 @@ export default function InfoPage() {
   }, [backgroundVideo]);
 
   return (
-    <>
-      <Header />
-      <main className="relative isolate h-screen flex flex-col overflow-hidden">
+    <div style={{ cursor: theme === 'dark' ? `url('${getArrowCursorUrl('#00FF00')}') 24 24, auto` : 'url(/assets/info/dinkie-icons_cursor-arrow-filled.svg) 24 24, auto' }}>
+      <Header showClickCursor={true} />
+      <main
+        className="relative isolate h-screen flex flex-col overflow-hidden"
+      >
         <Image
           src="/assets/info/bg.png"
           alt=""
@@ -644,6 +664,6 @@ export default function InfoPage() {
           />
         </div>
       </main>
-    </>
+    </div>
   );
 }
