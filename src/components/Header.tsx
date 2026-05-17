@@ -98,8 +98,10 @@ export default function Header({
   const btnBg   = inverted ? 'bg-white dark:bg-[#1E1E1E]'       : 'bg-primary dark:bg-[#E6E6E6]';
   const btnIcon = inverted ? 'text-primary dark:text-[#E6E6E6]' : 'text-white dark:text-[#1E1E1E]';
   const desktopHeaderPosition = leftClass === 'left-9' ? 'lg:top-9 lg:left-9' : `lg:top-9 ${leftClass}`;
-  const mobileHeaderPosition = inlineOnMobile ? 'relative left-auto top-auto z-50 xl:fixed xl:top-[24px]' : 'fixed top-3 left-3 sm:top-4 sm:left-4';
-  const mobileHeaderWidth = inlineOnMobile ? 'w-full' : 'w-[calc(100vw-24px)] sm:w-[calc(100vw-32px)] lg:w-[min(281px,calc(100vw-32px))]';
+  const mobileHeaderPosition = inlineOnMobile ? 'relative left-auto top-auto z-50 xl:fixed xl:top-[24px]' : 'fixed top-3 left-1/2 -translate-x-1/2 sm:top-4 lg:left-9 lg:top-9 lg:translate-x-0';
+  const mobileHeaderWidth = inlineOnMobile
+    ? 'w-full'
+    : 'w-[calc(100vw-40px)] sm:w-[calc(100vw-48px)] md:w-[calc(100vw-80px)] md:max-w-[960px] lg:w-[min(281px,calc(100vw-32px))]';
   const isInfoActive = pathname === '/info';
   const isWorkActive = pathname === '/work' || pathname.startsWith('/work/');
   const navItems = [
