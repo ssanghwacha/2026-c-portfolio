@@ -97,8 +97,8 @@ export default function Header({
     : (theme === 'dark' ? 'translate-x-[23px] bg-[#1E1E1E]' : 'translate-x-[3px] bg-white');
   const btnBg   = inverted ? 'bg-white dark:bg-[#1E1E1E]'       : 'bg-primary dark:bg-[#E6E6E6]';
   const btnIcon = inverted ? 'text-primary dark:text-[#E6E6E6]' : 'text-white dark:text-[#1E1E1E]';
-  const desktopHeaderPosition = leftClass === 'left-9' ? 'lg:left-9' : leftClass;
-  const mobileHeaderPosition = inlineOnMobile ? 'relative left-auto top-auto z-50 xl:fixed xl:top-[24px]' : 'fixed top-6 left-3 sm:left-4';
+  const desktopHeaderPosition = leftClass === 'left-9' ? 'lg:top-9 lg:left-9' : `lg:top-9 ${leftClass}`;
+  const mobileHeaderPosition = inlineOnMobile ? 'relative left-auto top-auto z-50 xl:fixed xl:top-[24px]' : 'fixed top-3 left-3 sm:top-4 sm:left-4';
   const mobileHeaderWidth = inlineOnMobile ? 'w-full' : 'w-[calc(100vw-24px)] sm:w-[calc(100vw-32px)] lg:w-[min(281px,calc(100vw-32px))]';
   const isInfoActive = pathname === '/info';
   const isWorkActive = pathname === '/work' || pathname.startsWith('/work/');

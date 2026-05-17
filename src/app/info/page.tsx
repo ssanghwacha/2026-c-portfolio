@@ -763,6 +763,7 @@ export default function InfoPage() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const { theme } = useTheme();
   const backgroundVideo = theme === 'dark' ? '/assets/info/Info_BG-02.mp4' : '/assets/info/Info_BG.mp4';
+  const meImage = theme === 'dark' ? '/assets/info/image_me2.png' : '/assets/info/image_me 1.png';
 
   useEffect(() => {
     const previousBodyOverflow = document.body.style.overflow;
@@ -822,6 +823,16 @@ export default function InfoPage() {
           <source src={backgroundVideo} type="video/mp4" />
         </video>
         <InfoCommandMenu />
+        <div className="pointer-events-none fixed bottom-0 left-[175px] z-30 hidden w-[min(390px,72vw)] xl:block">
+          <Image
+            src={meImage}
+            alt="Sangwha Cha"
+            width={940}
+            height={912}
+            priority
+            className="h-auto w-full"
+          />
+        </div>
       </main>
     </div>
   );
