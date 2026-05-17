@@ -84,7 +84,6 @@ export default function Header({
   const showCollapsedTime = hideControls && !isHeaderHovered && !showProjectNav;
 
   // 색상 토큰
-  const cardBg      = inverted ? 'bg-primary dark:bg-[#E6E6E6]'    : 'bg-white dark:bg-[#1E1E1E]';
   const logoBg      = inverted ? 'bg-white dark:bg-[#1E1E1E]'       : 'bg-primary dark:bg-[#E6E6E6]';
   const logoText    = inverted ? 'text-primary dark:text-[#E6E6E6]' : 'text-white dark:text-[#1E1E1E]';
   const navBar      = inverted ? 'bg-white dark:bg-[#1E1E1E]'       : 'bg-primary dark:bg-[#E6E6E6]';
@@ -98,7 +97,9 @@ export default function Header({
     : (theme === 'dark' ? 'translate-x-[23px] bg-[#1E1E1E]' : 'translate-x-[3px] bg-white');
   const btnBg   = inverted ? 'bg-white dark:bg-[#1E1E1E]'       : 'bg-primary dark:bg-[#E6E6E6]';
   const btnIcon = inverted ? 'text-primary dark:text-[#E6E6E6]' : 'text-white dark:text-[#1E1E1E]';
-  const headerPosition = leftClass === 'left-9' ? 'left-4 lg:left-9' : leftClass;
+  const desktopHeaderPosition = leftClass === 'left-9' ? 'lg:left-9' : leftClass;
+  const mobileHeaderPosition = inlineOnMobile ? 'relative left-auto top-auto z-50 xl:fixed xl:top-[24px]' : 'fixed top-6 left-3 sm:left-4';
+  const mobileHeaderWidth = inlineOnMobile ? 'w-full' : 'w-[calc(100vw-24px)] sm:w-[calc(100vw-32px)] lg:w-[min(281px,calc(100vw-32px))]';
   const isInfoActive = pathname === '/info';
   const isWorkActive = pathname === '/work' || pathname.startsWith('/work/');
   const navItems = [
@@ -112,9 +113,7 @@ export default function Header({
         onMouseEnter={() => setIsHeaderHovered(true)}
         onMouseLeave={() => setIsHeaderHovered(false)}
         id={inlineOnMobile ? undefined : 'main-header'}
-        className={`group/header ${inlineOnMobile ? 'relative left-auto top-auto z-50 xl:fixed xl:top-[24px]' : `fixed top-[24px] ${headerPosition} z-50`} flex w-[min(281px,calc(100vw-32px))] flex-col rounded-[8px] p-4 ${cardBg} transition-transform duration-300 ease-in-out ${
-          !inlineOnMobile && isScrollingDown ? 'max-lg:-translate-y-[calc(100%+32px)]' : 'translate-y-0'
-        } ${showProjectNav ? 'w-fit' : ''}`}
+        className={`group/header ${mobileHeaderPosition} ${desktopHeaderPosition} ${mobileHeaderWidth} z-[60] flex flex-col rounded-[12px] bg-white p-4 dark:bg-[#1E1E1E] transition-transform duration-300 ease-in-out translate-y-0 ${showProjectNav ? 'w-fit' : ''}`}
       >
         {/* 로고 */}
         <Link href="/" className={`h-[21px] w-full flex items-center justify-between px-[2px] ${logoBg}`}>
@@ -221,7 +220,7 @@ export default function Header({
           type="button"
           onClick={scrollToTop}
           aria-label="Scroll to top"
-          className={`group fixed top-[24px] right-4 z-50 flex h-9 w-9 items-center justify-center rounded-[8px] transition-[opacity,transform] duration-200 lg:right-9 ${btnBg} ${
+        className={`group fixed bottom-4 right-4 z-[70] flex h-9 w-9 items-center justify-center rounded-[8px] transition-[opacity,transform] duration-200 lg:bottom-auto lg:top-[24px] lg:right-9 ${btnBg} ${
             showScrollTop ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-90 pointer-events-none'
           }`}
           style={showClickCursor ? { cursor: theme === 'dark' ? `url('${getClickCursorUrl('#00FF00')}') 24 24, pointer` : 'url(/assets/info/click.svg) 24 24, pointer' } : {}}

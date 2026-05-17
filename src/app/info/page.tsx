@@ -150,7 +150,7 @@ function CommandRow({
   );
 }
 
-function ExperiencePanel({ inline = false }: { inline?: boolean }) {
+function ExperiencePanel({ mobile = false }: { mobile?: boolean }) {
   const { theme } = useTheme();
   const [position, setPosition] = useState({ x: 960, y: 260 });
   const [isDragging, setIsDragging] = useState(false);
@@ -159,7 +159,7 @@ function ExperiencePanel({ inline = false }: { inline?: boolean }) {
   const dragStartRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
-    if (inline) return;
+    if (mobile) return;
 
     const updatePosition = () => {
       const margin = 24;
@@ -176,7 +176,7 @@ function ExperiencePanel({ inline = false }: { inline?: boolean }) {
     updatePosition();
     window.addEventListener('resize', updatePosition);
     return () => window.removeEventListener('resize', updatePosition);
-  }, [inline]);
+  }, [mobile]);
 
   useEffect(() => {
     if (!isDragging) return;
@@ -209,13 +209,13 @@ function ExperiencePanel({ inline = false }: { inline?: boolean }) {
 
   return (
     <section
-      className={`${inline ? 'flex h-auto w-full' : 'fixed z-20 hidden h-auto w-[552px] xl:flex'} flex-col overflow-hidden rounded-[12px] bg-primary shadow-[0_18px_42px_-16px_rgba(0,0,0,0.25)] dark:bg-[#1E1E1E]`}
-      style={inline ? undefined : {
+      className={`${mobile ? 'flex h-auto w-full' : 'fixed z-20 hidden h-auto w-[552px] xl:flex'} flex-col overflow-hidden rounded-[12px] bg-primary shadow-[0_18px_42px_-16px_rgba(0,0,0,0.25)] dark:bg-[#1E1E1E]`}
+      style={mobile ? undefined : {
         left: `${position.x}px`,
         top: `${position.y}px`,
         cursor: `url('${getCursorUrl(theme === 'dark' ? '#00FF00' : '#000000')}') 24 24, auto`
       }}
-      onPointerDown={inline ? undefined : (event) => {
+      onPointerDown={mobile ? undefined : (event) => {
         dragStartRef.current = { x: event.clientX, y: event.clientY };
         dragOffsetRef.current = {
           x: event.clientX - position.x,
@@ -270,7 +270,7 @@ function ExperiencePanel({ inline = false }: { inline?: boolean }) {
       </div>
 
       <div className="flex h-[49px] items-center justify-between border-t border-black/10 bg-black/10 px-[14px] text-[12px] font-medium text-white/60">
-        <span>{inline ? 'Use arrows to navigate' : 'Drag to move'}</span>
+        <span>{mobile ? 'Use arrows to navigate' : 'Drag to move'}</span>
         <div className="flex items-center gap-[8px]">
           <span className="text-white/40">Settings</span>
           <PanelKey>⌘</PanelKey>
@@ -420,7 +420,7 @@ function OutsideOfDesignPanel({ index, imageSrc, initialPosition, initialPositio
   );
 }
 
-function EducationPanel({ inline = false }: { inline?: boolean }) {
+function EducationPanel({ mobile = false }: { mobile?: boolean }) {
   const { theme } = useTheme();
   const [position, setPosition] = useState({ x: 1100, y: 500 });
   const [isDragging, setIsDragging] = useState(false);
@@ -429,7 +429,7 @@ function EducationPanel({ inline = false }: { inline?: boolean }) {
   const dragStartRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
-    if (inline) return;
+    if (mobile) return;
 
     const updatePosition = () => {
       const margin = 24;
@@ -446,7 +446,7 @@ function EducationPanel({ inline = false }: { inline?: boolean }) {
     updatePosition();
     window.addEventListener('resize', updatePosition);
     return () => window.removeEventListener('resize', updatePosition);
-  }, [inline]);
+  }, [mobile]);
 
   useEffect(() => {
     if (!isDragging) return;
@@ -479,13 +479,13 @@ function EducationPanel({ inline = false }: { inline?: boolean }) {
 
   return (
     <section
-      className={`${inline ? 'flex h-[min(270px,calc(100vh-348px))] w-full' : 'fixed z-30 hidden h-[280px] w-[480px] xl:flex'} flex-col overflow-hidden rounded-[12px] bg-white shadow-[0_18px_42px_-16px_rgba(0,0,0,0.18)] dark:bg-[#1E1E1E]`}
-      style={inline ? undefined : {
+      className={`${mobile ? 'flex h-[min(270px,calc(100vh-348px))] w-full' : 'fixed z-30 hidden h-[280px] w-[480px] xl:flex'} flex-col overflow-hidden rounded-[12px] bg-white shadow-[0_18px_42px_-16px_rgba(0,0,0,0.18)] dark:bg-[#1E1E1E]`}
+      style={mobile ? undefined : {
         left: `${position.x}px`,
         top: `${position.y}px`,
         cursor: `url('${getCursorUrl(theme === 'dark' ? '#00FF00' : '#000000')}') 24 24, auto`
       }}
-      onPointerDown={inline ? undefined : (event) => {
+      onPointerDown={mobile ? undefined : (event) => {
         dragStartRef.current = { x: event.clientX, y: event.clientY };
         dragOffsetRef.current = {
           x: event.clientX - position.x,
@@ -536,7 +536,7 @@ function EducationPanel({ inline = false }: { inline?: boolean }) {
       </div>
 
       <div className="flex h-[44px] items-center justify-between border-t border-[#E9EAEB] bg-white px-[14px] text-[11px] font-medium text-[#9EA2AD] dark:border-[#2E2E2E] dark:bg-[#1E1E1E] dark:text-[#ADADAD]">
-        <span>{inline ? 'Use arrows to navigate' : 'Drag to move'}</span>
+        <span>{mobile ? 'Use arrows to navigate' : 'Drag to move'}</span>
         <div className="flex items-center gap-[8px]">
           <span className="hidden sm:inline">Settings</span>
           <span className="flex min-w-[21px] items-center justify-center rounded-[4.929px] border border-[#E9EAEB] bg-white px-1 py-1 text-[12px] font-medium leading-none text-[#9EA2AD] dark:border-[#2E2E2E] dark:bg-[#242424] dark:text-[#D9D9D9]">⌘</span>
@@ -548,27 +548,14 @@ function EducationPanel({ inline = false }: { inline?: boolean }) {
 }
 
 function InfoCommandMenu() {
-  const [activeItem, setActiveItem] = useState('Outside');
+  const [activeItem, setActiveItem] = useState('Experience');
   const [outsideOfDesignIndex, setOutsideOfDesignIndex] = useState(0);
   const showExperiencePanel = activeItem === 'Experience';
   const showEducationPanel = activeItem === 'Education';
   const showOutsideOfDesignPanel = activeItem === 'Outside';
   const selectActiveItem = useCallback((item: string) => {
-    setActiveItem(item);
+    setActiveItem((currentItem) => (currentItem === item ? '' : item));
     if (item === 'Outside') setOutsideOfDesignIndex(0);
-  }, []);
-
-  useEffect(() => {
-    const intervalId = window.setInterval(() => {
-      setActiveItem((currentItem) => {
-        const currentIndex = recentItems.indexOf(currentItem);
-        const nextItem = recentItems[(currentIndex + 1) % recentItems.length];
-        if (nextItem === 'Outside') setOutsideOfDesignIndex(0);
-        return nextItem;
-      });
-    }, 5000);
-
-    return () => window.clearInterval(intervalId);
   }, []);
 
   useEffect(() => {
@@ -605,10 +592,10 @@ function InfoCommandMenu() {
   return (
     <>
       <div className="no-scrollbar fixed bottom-0 left-3 top-6 z-20 flex w-[calc(100vw-24px)] max-w-[686px] flex-col gap-4 overflow-y-auto pb-6 sm:left-4 sm:w-[calc(100vw-32px)] xl:contents xl:overflow-visible xl:pb-0">
-      <div className="shrink-0 xl:hidden">
-        <Header showClickCursor={true} hideScrollBtn={true} inlineOnMobile={true} />
-      </div>
-      <section className="flex h-auto w-full shrink-0 flex-col overflow-hidden rounded-[12px] border border-[#E9EAEB] bg-white shadow-[0_17px_34px_-13px_rgba(88,92,95,0.1)] dark:border-[#2E2E2E] dark:bg-[#1E1E1E] xl:fixed xl:left-9 xl:top-[188px] xl:z-20 xl:h-[min(524px,calc(100vh-220px))] xl:w-[calc(100vw-32px)] xl:max-w-[686px]">
+        <div className="shrink-0 xl:hidden">
+          <Header showClickCursor={true} hideScrollBtn={true} inlineOnMobile={true} />
+        </div>
+        <section className="flex h-auto w-full shrink-0 flex-col overflow-hidden rounded-[12px] border border-[#E9EAEB] bg-white shadow-[0_17px_34px_-13px_rgba(88,92,95,0.1)] dark:border-[#2E2E2E] dark:bg-[#1E1E1E] xl:fixed xl:left-9 xl:top-[188px] xl:z-20 xl:h-[min(524px,calc(100vh-220px))] xl:w-[calc(100vw-32px)] xl:max-w-[686px]">
         <div className="flex h-[61px] shrink-0 items-center border-b border-[#E9EAEB] bg-white px-[21px] dark:border-[#2E2E2E] dark:bg-[#1E1E1E]">
           <div className="flex min-w-0 flex-1 items-center gap-[9px]">
             <span className="shrink-0 text-primary dark:text-[#E6E6E6]">
@@ -679,32 +666,32 @@ function InfoCommandMenu() {
           </div>
         </div>
       </section>
-      {/* Mobile/Tablet */}
-      <div className="pointer-events-none min-h-0 shrink-0 xl:hidden">
-        {showExperiencePanel ? (
-          <div className="pointer-events-auto">
-            <ExperiencePanel inline />
-          </div>
-        ) : null}
-        {showEducationPanel ? (
-          <div className="pointer-events-auto">
-            <EducationPanel inline />
-          </div>
-        ) : null}
-        {showOutsideOfDesignPanel && (
-          <div className="pointer-events-auto pb-4">
-            <OutsideOfDesignPanel
-              key={outsideOfDesignIndex}
-              index={outsideOfDesignIndex}
-              imageSrc={outsideOfDesignImages[outsideOfDesignIndex]}
-              initialPosition={{ x: 0, y: 0 }}
-              width={100}
-              height={340}
-              isMobile
-            />
-          </div>
-        )}
-      </div>
+        <div className="pointer-events-none min-h-0 shrink-0 xl:hidden">
+          {showExperiencePanel ? (
+            <div className="pointer-events-auto">
+              <ExperiencePanel mobile />
+            </div>
+          ) : null}
+          {showEducationPanel ? (
+            <div className="pointer-events-auto">
+              <EducationPanel mobile />
+            </div>
+          ) : null}
+          {showOutsideOfDesignPanel && (
+            <div className="pointer-events-auto">
+              <OutsideOfDesignPanel
+                key={outsideOfDesignIndex}
+                index={outsideOfDesignIndex}
+                imageSrc={outsideOfDesignImages[outsideOfDesignIndex]}
+                initialPosition={{ x: 0, y: 0 }}
+                width={100}
+                height={340}
+                isMobile
+              />
+            </div>
+          )}
+        </div>
+        <div className="h-4 shrink-0 xl:hidden" />
       </div>
       {/* Desktop */}
       <div className="hidden xl:block">
@@ -776,7 +763,6 @@ export default function InfoPage() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const { theme } = useTheme();
   const backgroundVideo = theme === 'dark' ? '/assets/info/Info_BG-02.mp4' : '/assets/info/Info_BG.mp4';
-  const meImage = theme === 'dark' ? '/assets/info/image_me2.png' : '/assets/info/image_me 1.png';
 
   useEffect(() => {
     const previousBodyOverflow = document.body.style.overflow;
@@ -836,16 +822,6 @@ export default function InfoPage() {
           <source src={backgroundVideo} type="video/mp4" />
         </video>
         <InfoCommandMenu />
-        <div className="pointer-events-none fixed bottom-0 left-[145px] z-30 hidden w-[min(390px,72vw)] xl:block">
-          <Image
-            src={meImage}
-            alt="Sangwha Cha"
-            width={940}
-            height={912}
-            priority
-            className="h-auto w-full"
-          />
-        </div>
       </main>
     </div>
   );

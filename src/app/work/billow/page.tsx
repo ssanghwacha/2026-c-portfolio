@@ -269,11 +269,11 @@ export default function BillowPage() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:flex lg:flex-row lg:flex-wrap lg:justify-between">
+              <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3 xl:grid-cols-5">
                 {OVERVIEW_STEPS.map(({ roman, label, body }, index) => (
                   <div
                     key={roman}
-                    className={`flex min-h-[190px] flex-col justify-between overflow-hidden rounded-[12px] bg-[#F5F5F5] px-4 py-5 dark:bg-[#1C1C1C] sm:min-h-[205px] sm:px-5 sm:py-5 lg:h-[205px] lg:w-[calc((100%_-_48px)_/_5)] lg:px-[15px] ${index === OVERVIEW_STEPS.length - 1 ? 'col-span-2' : ''}`}
+                    className={`flex min-h-[190px] flex-col justify-between overflow-hidden rounded-[12px] bg-[#F5F5F5] px-4 py-5 dark:bg-[#1C1C1C] sm:min-h-[205px] sm:px-5 sm:py-5 lg:col-span-1 lg:h-[205px] lg:px-[15px] ${index === OVERVIEW_STEPS.length - 1 ? 'col-span-2 lg:col-span-1' : 'col-span-1'}`}
                   >
                     <div className="flex flex-col gap-1 font-satoshi text-[12px] font-bold uppercase leading-[1.3] tracking-[0.08em] text-primary dark:text-[#999] sm:flex-row sm:items-center sm:gap-2 sm:text-[13px] lg:text-[11px]">
                       <span>{roman}</span>
