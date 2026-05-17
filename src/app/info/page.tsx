@@ -25,6 +25,15 @@ const getClickCursorUrl = (color: string) => {
 
 const introText = "Hi! I'm Sangwha";
 const recentItems = ['Experience', 'Education', 'Outside of Design'];
+const outsideOfDesignLabels = ['Love nature', 'Travel', 'City views I love', 'Cat Person', 'Figure skating', 'My favorite ice rink'];
+const outsideOfDesignImages = [
+  '/assets/info/od-01.jpg',
+  '/assets/info/od-02.jpg',
+  '/assets/info/od-03.jpg',
+  '/assets/info/od-04.jpg',
+  '/assets/info/od-05.jpg',
+  '/assets/info/od-06.jpg',
+];
 const experienceItems = [
   {
     label: 'Web Designer',
@@ -107,7 +116,7 @@ function PanelKey({ children }: { children: ReactNode }) {
 
 function Avatar({ active = false }: { active?: boolean }) {
   return (
-    <span className="relative flex h-[26px] w-[26px] shrink-0 items-center justify-center">
+    <span className="relative flex h-[16px] w-[16px] shrink-0 items-center justify-center sm:h-[18px] sm:w-[18px] xl:h-[26px] xl:w-[26px]">
       <Image
         src="/assets/icons/smile.svg"
         alt=""
@@ -130,10 +139,10 @@ function CommandRow({
 }) {
   const { theme } = useTheme();
   return (
-    <button type="button" onClick={onClick} className="w-full px-[9px] py-0.5 text-left" style={{ cursor: theme === 'dark' ? `url('${getClickCursorUrl('#00FF00')}') 24 24, pointer` : 'url(/assets/info/click.svg) 24 24, pointer' }}>
-      <div className={`flex w-full items-center gap-[9px] rounded-[9px] p-[9px] transition-colors ${active ? 'bg-primary dark:bg-[#2A2A2A]' : ''}`}>
+    <button type="button" onClick={onClick} className="w-full px-0 py-0.5 text-left xl:px-[9px]" style={{ cursor: theme === 'dark' ? `url('${getClickCursorUrl('#00FF00')}') 24 24, pointer` : 'url(/assets/info/click.svg) 24 24, pointer' }}>
+      <div className={`flex h-full w-full items-center justify-center gap-[4px] rounded-[9px] px-[4px] py-[9px] transition-colors sm:gap-[6px] sm:px-[6px] xl:justify-start xl:gap-[9px] xl:p-[9px] ${active ? 'bg-primary dark:bg-[#2A2A2A]' : ''}`}>
         <Avatar active={active} />
-        <span className={`font-satoshi text-[15px] font-medium leading-none ${active ? 'text-white dark:text-white' : 'text-primary dark:text-[#999999]'}`}>
+        <span className={`min-w-0 truncate font-satoshi text-[10px] font-medium leading-none sm:text-[12px] xl:text-[15px] ${active ? 'text-white dark:text-white' : 'text-primary dark:text-[#999999]'}`}>
           {label}
         </span>
       </div>
@@ -141,13 +150,33 @@ function CommandRow({
   );
 }
 
-function ExperiencePanel() {
+function ExperiencePanel({ inline = false }: { inline?: boolean }) {
   const { theme } = useTheme();
   const [position, setPosition] = useState({ x: 960, y: 260 });
   const [isDragging, setIsDragging] = useState(false);
   const [hasMoved, setHasMoved] = useState(false);
   const dragOffsetRef = useRef({ x: 0, y: 0 });
   const dragStartRef = useRef({ x: 0, y: 0 });
+
+  useEffect(() => {
+    if (inline) return;
+
+    const updatePosition = () => {
+      const margin = 24;
+      const width = 552;
+      const height = 450;
+      const maxX = Math.max(margin, window.innerWidth - width - margin);
+      const maxY = Math.max(margin, window.innerHeight - height - margin);
+      const nextX = Math.min(Math.max(window.innerWidth * 0.56, margin), maxX);
+      const nextY = Math.min(Math.max(window.innerHeight * 0.29, margin), maxY);
+
+      setPosition({ x: nextX, y: nextY });
+    };
+
+    updatePosition();
+    window.addEventListener('resize', updatePosition);
+    return () => window.removeEventListener('resize', updatePosition);
+  }, [inline]);
 
   useEffect(() => {
     if (!isDragging) return;
@@ -180,13 +209,13 @@ function ExperiencePanel() {
 
   return (
     <section
-      className="fixed z-30 hidden h-[450px] w-[552px] flex-col overflow-hidden rounded-[11px] bg-primary shadow-[0_18px_42px_-16px_rgba(0,0,0,0.25)] dark:bg-[#1E1E1E] lg:flex"
-      style={{
+      className={`${inline ? 'flex h-[min(392px,calc(100vh-348px))] w-full' : 'fixed z-20 hidden h-[450px] w-[552px] xl:flex'} flex-col overflow-hidden rounded-[11px] bg-primary shadow-[0_18px_42px_-16px_rgba(0,0,0,0.25)] dark:bg-[#1E1E1E]`}
+      style={inline ? undefined : {
         left: `${position.x}px`,
         top: `${position.y}px`,
         cursor: `url('${getCursorUrl(theme === 'dark' ? '#00FF00' : '#000000')}') 24 24, auto`
       }}
-      onPointerDown={(event) => {
+      onPointerDown={inline ? undefined : (event) => {
         dragStartRef.current = { x: event.clientX, y: event.clientY };
         dragOffsetRef.current = {
           x: event.clientX - position.x,
@@ -204,7 +233,7 @@ function ExperiencePanel() {
         <span className="font-satoshi">Search Career...</span>
       </div>
 
-      <div className="flex min-h-0 flex-1 flex-col px-[14px] pt-[21px] text-white">
+      <div className="flex min-h-0 flex-1 flex-col overflow-auto px-[14px] pt-[21px] text-white">
         <p className="mb-[20px] px-[8px] font-satoshi text-[13px] font-medium uppercase leading-none text-white/60 dark:text-[#777]">
           CAREER
         </p>
@@ -213,16 +242,16 @@ function ExperiencePanel() {
           {experienceItems.map((item, index) => (
             <div key={`${item.company}-${item.year}`}>
               <div
-                className="flex h-[42px] items-center justify-between rounded-[5px] px-[8px] py-[10px] text-[13px] font-medium leading-none text-white/80"
+                className="flex min-h-[42px] items-center justify-between gap-3 rounded-[5px] px-[8px] py-[10px] text-[11px] font-medium leading-none text-white/80 sm:text-[12px] xl:h-[42px] xl:text-[13px]"
               >
-                <div className="flex items-center gap-[13px]">
+                <div className="flex min-w-0 items-center gap-[10px] xl:gap-[13px]">
                   <span className="relative h-6 w-6 shrink-0 overflow-hidden rounded-full bg-white">
                     <Image src={item.logo} alt="" fill sizes="20px" className="object-cover" />
                   </span>
-                  <span className="w-[162px] font-satoshi font-semibold">{item.label}</span>
+                  <span className="min-w-0 truncate font-satoshi font-semibold xl:w-[162px]">{item.label}</span>
                 </div>
-                <div className="flex w-[188px] items-center justify-end gap-[15px] whitespace-nowrap font-satoshi">
-                  <span>{item.company}</span>
+                <div className="flex shrink-0 items-center justify-end gap-[10px] whitespace-nowrap font-satoshi xl:w-[188px] xl:gap-[15px]">
+                  <span className="hidden sm:inline">{item.company}</span>
                   <span>{item.year}</span>
                 </div>
               </div>
@@ -235,7 +264,7 @@ function ExperiencePanel() {
       </div>
 
       <div className="flex h-[49px] items-center justify-between border-t border-black/10 bg-black/10 px-[14px] text-[12px] font-medium text-white/60">
-        <span>Drag to move</span>
+        <span>{inline ? 'Use arrows to navigate' : 'Drag to move'}</span>
         <div className="flex items-center gap-[8px]">
           <span className="text-white/40">Settings</span>
           <PanelKey>⌘</PanelKey>
@@ -246,13 +275,34 @@ function ExperiencePanel() {
   );
 }
 
-function OutsideOfDesignPanel({ index, imageSrc, initialPosition, width, height, aspectRatio }: { index: number; imageSrc: string; initialPosition: { x: number; y: number }; width: number; height: number; aspectRatio?: string }) {
+function OutsideOfDesignPanel({ index, imageSrc, initialPosition, initialPositionRatio, width, height, aspectRatio, isMobile = false, wideViewportLeftShift = 0 }: { index: number; imageSrc: string; initialPosition: { x: number; y: number }; initialPositionRatio?: { x: number; y: number }; width: number; height: number; aspectRatio?: string; isMobile?: boolean; wideViewportLeftShift?: number }) {
   const { theme } = useTheme();
   const [position, setPosition] = useState(initialPosition);
   const [isDragging, setIsDragging] = useState(false);
   const [hasMoved, setHasMoved] = useState(false);
+  const ratioX = initialPositionRatio?.x;
+  const ratioY = initialPositionRatio?.y;
   const dragOffsetRef = useRef({ x: 0, y: 0 });
   const dragStartRef = useRef({ x: 0, y: 0 });
+
+  useEffect(() => {
+    if (isMobile || ratioX == null || ratioY == null) return;
+
+    const updatePosition = () => {
+      const margin = 24;
+      const maxX = Math.max(margin, window.innerWidth - width - margin);
+      const maxY = Math.max(margin, window.innerHeight - height - margin);
+      const wideViewportOffset = Math.max(0, window.innerWidth - 1366) * wideViewportLeftShift;
+      const nextX = Math.min(Math.max((window.innerWidth * ratioX) - wideViewportOffset, margin), maxX);
+      const nextY = Math.min(Math.max(window.innerHeight * ratioY, margin), maxY);
+
+      setPosition({ x: nextX, y: nextY });
+    };
+
+    updatePosition();
+    window.addEventListener('resize', updatePosition);
+    return () => window.removeEventListener('resize', updatePosition);
+  }, [height, isMobile, ratioX, ratioY, wideViewportLeftShift, width]);
 
   useEffect(() => {
     if (!isDragging) return;
@@ -283,9 +333,41 @@ function OutsideOfDesignPanel({ index, imageSrc, initialPosition, width, height,
     };
   }, [hasMoved, isDragging]);
 
+  if (isMobile) {
+    return (
+      <section
+        className="flex w-[60%] flex-col overflow-hidden rounded-[11px] bg-white shadow-[0_18px_42px_-16px_rgba(0,0,0,0.18)] dark:bg-[#1E1E1E]"
+        style={{
+          height: `${height}px`,
+        }}
+      >
+        <div className="flex h-[44px] select-none items-center gap-[10px] border-b border-[#E9EAEB] px-[13px] text-[13px] font-medium text-[#9EA2AD] dark:border-white/10 dark:text-white/60">
+          <span className="flex h-[21px] w-[21px] items-center justify-center rounded-[5px] border border-[#E9EAEB] bg-white text-[#9EA2AD] dark:border-[#2E2E2E] dark:bg-[#1E1E1E] dark:text-[#ADADAD]">
+            <ArrowsOut size={16} />
+          </span>
+          <span className="truncate font-satoshi text-xs">
+            {outsideOfDesignLabels[index]}
+          </span>
+        </div>
+
+        <div className="flex min-h-0 flex-1 select-none justify-start bg-white dark:bg-[#1E1E1E]">
+          <div className="relative h-full w-full" style={aspectRatio ? { aspectRatio } : {}}>
+            <Image
+              src={imageSrc}
+              alt={`Outside of Design ${index + 1}`}
+              fill
+              sizes="60vw"
+              className="object-cover pointer-events-none"
+            />
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section
-      className="fixed z-30 hidden flex-col overflow-hidden rounded-[11px] bg-white shadow-[0_18px_42px_-16px_rgba(0,0,0,0.18)] dark:bg-[#1E1E1E] lg:flex"
+      className="fixed z-20 hidden flex-col overflow-hidden rounded-[11px] bg-white shadow-[0_18px_42px_-16px_rgba(0,0,0,0.18)] dark:bg-[#1E1E1E] xl:flex"
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
@@ -307,7 +389,7 @@ function OutsideOfDesignPanel({ index, imageSrc, initialPosition, width, height,
           <ArrowsOut size={16} />
         </span>
         <span className="font-satoshi">
-          {['Love nature', 'Travel', 'City views I love', 'Cat Person', 'Figure skating', 'My favorite ice rink'][index]}
+          {outsideOfDesignLabels[index]}
         </span>
       </div>
 
@@ -332,13 +414,33 @@ function OutsideOfDesignPanel({ index, imageSrc, initialPosition, width, height,
   );
 }
 
-function EducationPanel() {
+function EducationPanel({ inline = false }: { inline?: boolean }) {
   const { theme } = useTheme();
   const [position, setPosition] = useState({ x: 1100, y: 500 });
   const [isDragging, setIsDragging] = useState(false);
   const [hasMoved, setHasMoved] = useState(false);
   const dragOffsetRef = useRef({ x: 0, y: 0 });
   const dragStartRef = useRef({ x: 0, y: 0 });
+
+  useEffect(() => {
+    if (inline) return;
+
+    const updatePosition = () => {
+      const margin = 24;
+      const width = 480;
+      const height = 280;
+      const maxX = Math.max(margin, window.innerWidth - width - margin);
+      const maxY = Math.max(margin, window.innerHeight - height - margin);
+      const nextX = Math.min(Math.max(window.innerWidth * 0.64, margin), maxX);
+      const nextY = Math.min(Math.max(window.innerHeight * 0.49, margin), maxY);
+
+      setPosition({ x: nextX, y: nextY });
+    };
+
+    updatePosition();
+    window.addEventListener('resize', updatePosition);
+    return () => window.removeEventListener('resize', updatePosition);
+  }, [inline]);
 
   useEffect(() => {
     if (!isDragging) return;
@@ -371,13 +473,13 @@ function EducationPanel() {
 
   return (
     <section
-      className="fixed z-30 hidden h-[280px] w-[480px] flex-col overflow-hidden rounded-[11px] bg-white shadow-[0_18px_42px_-16px_rgba(0,0,0,0.18)] dark:bg-[#1E1E1E] lg:flex"
-      style={{
+      className={`${inline ? 'flex h-[min(270px,calc(100vh-348px))] w-full' : 'fixed z-30 hidden h-[280px] w-[480px] xl:flex'} flex-col overflow-hidden rounded-[11px] bg-white shadow-[0_18px_42px_-16px_rgba(0,0,0,0.18)] dark:bg-[#1E1E1E]`}
+      style={inline ? undefined : {
         left: `${position.x}px`,
         top: `${position.y}px`,
         cursor: `url('${getCursorUrl(theme === 'dark' ? '#00FF00' : '#000000')}') 24 24, auto`
       }}
-      onPointerDown={(event) => {
+      onPointerDown={inline ? undefined : (event) => {
         dragStartRef.current = { x: event.clientX, y: event.clientY };
         dragOffsetRef.current = {
           x: event.clientX - position.x,
@@ -393,7 +495,7 @@ function EducationPanel() {
         <span className="font-satoshi">Search Education...</span>
       </div>
 
-      <div className="flex min-h-0 flex-1 flex-col px-[14px] pt-[18px] text-[#545454] dark:text-white">
+      <div className="flex min-h-0 flex-1 flex-col overflow-auto px-[14px] pt-[18px] text-[#545454] dark:text-white">
         <p className="mb-[16px] px-[8px] font-satoshi text-[13px] font-medium uppercase leading-none text-[#9EA2AD] dark:text-[#777]">
           EDUCATION
         </p>
@@ -401,16 +503,16 @@ function EducationPanel() {
         <div className="flex flex-col">
           {educationItems.map((item, index) => (
             <div key={`${item.school}-${item.year}`}>
-              <div className="flex h-[49px] items-center justify-between rounded-[6px] px-[8px] py-[8px] text-[12px] font-medium leading-none text-[#545454] dark:text-white/80">
-                <div className="flex items-center gap-[11px]">
+              <div className="flex min-h-[49px] items-center justify-between gap-3 rounded-[6px] px-[8px] py-[8px] text-[11px] font-medium leading-none text-[#545454] dark:text-white/80 sm:text-[12px] xl:h-[49px]">
+                <div className="flex min-w-0 items-center gap-[11px]">
                   <span className="relative h-[24px] w-[24px] shrink-0 overflow-hidden rounded-full bg-white">
                     <Image src={item.logo} alt="" fill sizes="24px" className="object-cover" />
                   </span>
-                  <span className="w-[214px] font-satoshi font-semibold leading-[1.15] text-[#2F3133] dark:text-white">
+                  <span className="min-w-0 font-satoshi font-semibold leading-[1.15] text-[#2F3133] dark:text-white xl:w-[214px]">
                     {item.label}
                   </span>
                 </div>
-                <div className="flex w-[134px] flex-col items-end gap-[4px] whitespace-nowrap font-satoshi">
+                <div className="flex shrink-0 flex-col items-end gap-[4px] whitespace-nowrap font-satoshi xl:w-[134px]">
                   <span className="text-[#545454] dark:text-white/80">{item.school}</span>
                   <span className="text-[#9EA2AD] dark:text-[#BDBDBD]">{item.year}</span>
                 </div>
@@ -424,7 +526,7 @@ function EducationPanel() {
       </div>
 
       <div className="flex h-[44px] items-center justify-between border-t border-[#E9EAEB] bg-white px-[14px] text-[11px] font-medium text-[#9EA2AD] dark:border-[#2E2E2E] dark:bg-[#1E1E1E] dark:text-[#ADADAD]">
-        <span>Drag to move</span>
+        <span>{inline ? 'Use arrows to navigate' : 'Drag to move'}</span>
         <div className="flex items-center gap-[8px]">
           <span className="hidden sm:inline">Settings</span>
           <span className="flex min-w-[21px] items-center justify-center rounded-[4.929px] border border-[#E9EAEB] bg-white px-1 py-1 text-[12px] font-medium leading-none text-[#9EA2AD] dark:border-[#2E2E2E] dark:bg-[#242424] dark:text-[#D9D9D9]">⌘</span>
@@ -437,9 +539,23 @@ function EducationPanel() {
 
 function InfoCommandMenu() {
   const [activeItem, setActiveItem] = useState('Outside of Design');
+  const [outsideOfDesignIndex, setOutsideOfDesignIndex] = useState(0);
   const showExperiencePanel = activeItem === 'Experience';
   const showEducationPanel = activeItem === 'Education';
   const showOutsideOfDesignPanel = activeItem === 'Outside of Design';
+
+  useEffect(() => {
+    if (!showOutsideOfDesignPanel) {
+      setOutsideOfDesignIndex(0);
+      return;
+    }
+
+    const intervalId = window.setInterval(() => {
+      setOutsideOfDesignIndex((currentIndex) => (currentIndex + 1) % outsideOfDesignImages.length);
+    }, 3500);
+
+    return () => window.clearInterval(intervalId);
+  }, [showOutsideOfDesignPanel]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -464,7 +580,11 @@ function InfoCommandMenu() {
 
   return (
     <>
-      <section className="fixed left-4 top-[188px] z-20 flex h-[min(560px,calc(100vh-220px))] w-[calc(100vw-32px)] max-w-[686px] flex-col overflow-hidden rounded-[13px] border border-[#E9EAEB] bg-white shadow-[0_17px_34px_-13px_rgba(88,92,95,0.1)] dark:border-[#2E2E2E] dark:bg-[#1E1E1E] lg:left-9">
+      <div className="no-scrollbar fixed bottom-0 left-3 top-6 z-20 flex w-[calc(100vw-24px)] max-w-[686px] flex-col gap-4 overflow-y-auto pb-6 sm:left-4 sm:w-[calc(100vw-32px)] xl:contents xl:overflow-visible xl:pb-0">
+      <div className="shrink-0 xl:hidden">
+        <Header showClickCursor={true} hideScrollBtn={true} inlineOnMobile={true} />
+      </div>
+      <section className="flex h-auto w-full shrink-0 flex-col overflow-hidden rounded-[13px] border border-[#E9EAEB] bg-white shadow-[0_17px_34px_-13px_rgba(88,92,95,0.1)] dark:border-[#2E2E2E] dark:bg-[#1E1E1E] xl:fixed xl:left-9 xl:top-[188px] xl:z-20 xl:h-[min(524px,calc(100vh-220px))] xl:w-[calc(100vw-32px)] xl:max-w-[686px]">
         <div className="flex h-[61px] shrink-0 items-center border-b border-[#E9EAEB] bg-white px-[21px] dark:border-[#2E2E2E] dark:bg-[#1E1E1E]">
           <div className="flex min-w-0 flex-1 items-center gap-[9px]">
             <span className="shrink-0 text-primary dark:text-[#E6E6E6]">
@@ -485,16 +605,13 @@ function InfoCommandMenu() {
           </div>
         </div>
 
-        <div className="flex min-h-0 flex-1 flex-col gap-1 pt-[17px]">
-          <div className="w-full max-w-none space-y-4 px-[17px] font-satoshi text-[16px] font-medium leading-[1.25] text-[#545454] dark:text-[#E6E6E6]">
+        <div className="flex flex-none flex-col gap-1 pt-[17px] xl:min-h-0 xl:flex-1">
+          <div className="w-full max-w-none space-y-3 px-[17px] font-satoshi text-[12px] font-medium leading-[1.3] text-[#545454] dark:text-[#E6E6E6] sm:text-[13px] xl:space-y-4 xl:text-[16px] xl:leading-[1.25]">
             <p>
               I&apos;ve always been interested in how small visual details can change the way people experience something.
             </p>
             <p>
               That curiosity started with branding and gradually expanded into UX and digital product design. Today, I work across visual systems, interfaces, and digital experiences with a focus on clarity, usability, and consistency.
-            </p>
-            <p>
-              I enjoy refining the small details that make products feel more thoughtful and connected.
             </p>
             <p>
               Find me on{' '}
@@ -504,23 +621,25 @@ function InfoCommandMenu() {
             </p>
           </div>
 
-          <div className="h-[22px] shrink-0" />
+          <div className="h-[10px] shrink-0 xl:h-[22px]" />
 
           <p className="px-[17px] font-satoshi text-[13px] font-medium leading-none text-[#9EA2AD] dark:text-[#777]">
             RECENT
           </p>
 
-          {recentItems.map((item) => (
-            <CommandRow
-              key={item}
-              label={item}
-              active={activeItem === item}
-              onClick={() => setActiveItem(item)}
-            />
-          ))}
+          <div className="grid grid-cols-3 gap-2 px-[17px] py-2 xl:block xl:px-0 xl:py-0">
+            {recentItems.map((item) => (
+              <CommandRow
+                key={item}
+                label={item}
+                active={activeItem === item}
+                onClick={() => setActiveItem(item)}
+              />
+            ))}
+          </div>
         </div>
 
-        <div className="flex shrink-0 items-center justify-between gap-4 border-t border-[#E9EAEB] bg-white p-[17px] font-satoshi text-[15px] font-medium text-[#9EA2AD] dark:border-[#2E2E2E] dark:bg-[#1E1E1E] dark:text-[#ADADAD]">
+        <div className="flex shrink-0 items-center justify-between gap-4 border-t border-[#E9EAEB] bg-white p-[14px] font-satoshi text-[11px] font-medium text-[#9EA2AD] dark:border-[#2E2E2E] dark:bg-[#1E1E1E] dark:text-[#ADADAD] sm:text-[12px] xl:p-[17px] xl:text-[15px]">
           <div className="flex min-w-0 items-center gap-[9px]">
             <span>Use</span>
             <ShortcutKey>↓</ShortcutKey>
@@ -536,57 +655,95 @@ function InfoCommandMenu() {
           </div>
         </div>
       </section>
-      {showExperiencePanel ? <ExperiencePanel /> : null}
-      {showEducationPanel ? <EducationPanel /> : null}
-      {showOutsideOfDesignPanel && (
-        <>
-          <OutsideOfDesignPanel
-            index={0}
-            imageSrc="/assets/info/od-01.jpg"
-            initialPosition={{ x: 1010, y: 200 }}
-            width={220}
-            height={280}
-          />
-          <OutsideOfDesignPanel
-            index={1}
-            imageSrc="/assets/info/od-02.jpg"
-            initialPosition={{ x: 1200, y: 100 }}
-            width={180}
-            height={240}
-          />
-          <OutsideOfDesignPanel
-            index={2}
-            imageSrc="/assets/info/od-03.jpg"
-            initialPosition={{ x: 1340, y: 420 }}
-            width={260}
-            height={320}
-          />
-          <OutsideOfDesignPanel
-            index={3}
-            imageSrc="/assets/info/od-04.jpg"
-            initialPosition={{ x: 1010, y: 530 }}
-            width={180}
-            height={240}
-            aspectRatio="4/3"
-          />
-          <OutsideOfDesignPanel
-            index={4}
-            imageSrc="/assets/info/od-05.jpg"
-            initialPosition={{ x: 790, y: 300 }}
-            width={180}
-            height={240}
-            aspectRatio="4/3"
-          />
-          <OutsideOfDesignPanel
-            index={5}
-            imageSrc="/assets/info/od-06.jpg"
-            initialPosition={{ x: 1240, y: 620 }}
-            width={180}
-            height={240}
-            aspectRatio="4/3"
-          />
-        </>
-      )}
+      {/* Mobile/Tablet */}
+      <div className="pointer-events-none min-h-0 shrink-0 xl:hidden">
+        {showExperiencePanel ? (
+          <div className="pointer-events-auto">
+            <ExperiencePanel inline />
+          </div>
+        ) : null}
+        {showEducationPanel ? (
+          <div className="pointer-events-auto">
+            <EducationPanel inline />
+          </div>
+        ) : null}
+        {showOutsideOfDesignPanel && (
+          <div className="pointer-events-auto pb-4">
+            <OutsideOfDesignPanel
+              key={outsideOfDesignIndex}
+              index={outsideOfDesignIndex}
+              imageSrc={outsideOfDesignImages[outsideOfDesignIndex]}
+              initialPosition={{ x: 0, y: 0 }}
+              width={100}
+              height={340}
+              isMobile
+            />
+          </div>
+        )}
+      </div>
+      </div>
+      {/* Desktop */}
+      <div className="hidden xl:block">
+        {showExperiencePanel ? <ExperiencePanel /> : null}
+        {showEducationPanel ? <EducationPanel /> : null}
+        {showOutsideOfDesignPanel && (
+          <>
+            <OutsideOfDesignPanel
+              index={0}
+              imageSrc="/assets/info/od-01.jpg"
+              initialPosition={{ x: 1010, y: 200 }}
+              initialPositionRatio={{ x: 0.725, y: 0.275 }}
+              width={210}
+              height={270}
+            />
+            <OutsideOfDesignPanel
+              index={1}
+              imageSrc="/assets/info/od-02.jpg"
+              initialPosition={{ x: 1200, y: 100 }}
+              initialPositionRatio={{ x: 0.84, y: 0.155 }}
+              width={174}
+              height={231}
+            />
+            <OutsideOfDesignPanel
+              index={2}
+              imageSrc="/assets/info/od-03.jpg"
+              initialPosition={{ x: 1340, y: 420 }}
+              initialPositionRatio={{ x: 0.572, y: 0.435 }}
+              wideViewportLeftShift={0.48}
+              width={252}
+              height={309}
+            />
+            <OutsideOfDesignPanel
+              index={3}
+              imageSrc="/assets/info/od-04.jpg"
+              initialPosition={{ x: 1010, y: 530 }}
+              initialPositionRatio={{ x: 0.667, y: 0.685 }}
+              width={174}
+              height={231}
+              aspectRatio="4/3"
+            />
+            <OutsideOfDesignPanel
+              index={4}
+              imageSrc="/assets/info/od-05.jpg"
+              initialPosition={{ x: 790, y: 300 }}
+              initialPositionRatio={{ x: 0.565, y: 0.112 }}
+              width={174}
+              height={231}
+              aspectRatio="4/3"
+            />
+            <OutsideOfDesignPanel
+              index={5}
+              imageSrc="/assets/info/od-06.jpg"
+              initialPosition={{ x: 1240, y: 620 }}
+              initialPositionRatio={{ x: 0.838, y: 0.62 }}
+              width={174}
+              height={231}
+              aspectRatio="4/3"
+            />
+          </>
+        )}
+      </div>
+
     </>
   );
 }
@@ -619,8 +776,10 @@ export default function InfoPage() {
   }, [backgroundVideo]);
 
   return (
-    <div style={{ cursor: theme === 'dark' ? `url('${getArrowCursorUrl('#00FF00')}') 24 24, auto` : 'url(/assets/info/dinkie-icons_cursor-arrow-filled.svg) 24 24, auto' }}>
-      <Header showClickCursor={true} />
+    <div style={{ cursor: theme === 'dark' ? `url('${getArrowCursorUrl('#00FF00')}') 8 4, auto` : 'url(/assets/info/dinkie-icons_cursor-arrow-filled.svg) 8 4, auto' }}>
+      <div className="hidden xl:block">
+        <Header showClickCursor={true} />
+      </div>
       <main
         className="relative isolate h-screen flex flex-col overflow-hidden"
       >
@@ -653,7 +812,7 @@ export default function InfoPage() {
           <source src={backgroundVideo} type="video/mp4" />
         </video>
         <InfoCommandMenu />
-        <div className="pointer-events-none fixed bottom-0 left-[145px] z-30 w-[min(390px,72vw)]">
+        <div className="pointer-events-none fixed bottom-0 left-[145px] z-30 hidden w-[min(390px,72vw)] xl:block">
           <Image
             src={meImage}
             alt="Sangwha Cha"
