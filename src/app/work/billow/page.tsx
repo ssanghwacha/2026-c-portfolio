@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Smiley, Airplay, Users, Circle, NumberCircleOne, NumberCircleTwo, NumberCircleThree, NumberCircleFour, NumberCircleFive, UserPlus, ChatDots, CheckCircle, Pause, SlidersHorizontal } from '@phosphor-icons/react/ssr';
+import { Smiley, Airplay, Users, NumberCircleOne, NumberCircleTwo, NumberCircleThree, NumberCircleFour, NumberCircleFive, UserPlus, ChatDots, CheckCircle, Pause, SlidersHorizontal } from '@phosphor-icons/react/ssr';
 import ProjectLayout from '@/components/casestudy/ProjectLayout';
 import HoverVideo from '@/components/casestudy/HoverVideo';
 import CaseHero from '@/components/casestudy/CaseHero';
@@ -7,7 +7,6 @@ import CaseSection from '@/components/casestudy/CaseSection';
 import SeeMore from '@/components/casestudy/SeeMore';
 import HeroMediaReveal from '@/components/motion/HeroMediaReveal';
 import NumberedBlock from '@/components/casestudy/NumberedBlock';
-import QuoteBlock from '@/components/casestudy/QuoteBlock';
 import ABTestCard from '@/components/casestudy/ABTestCard';
 import ShiftRulesShowcase from '@/components/casestudy/ShiftRulesShowcase';
 import { Badge } from '@/components/ui/badge';
@@ -274,7 +273,7 @@ export default function BillowPage() {
                 {OVERVIEW_STEPS.map(({ roman, label, body }, index) => (
                   <div
                     key={roman}
-                    className={`flex min-h-[190px] flex-col justify-between overflow-hidden rounded-[10px] bg-[#F5F5F5] px-4 py-5 dark:bg-[#1C1C1C] sm:min-h-[205px] sm:px-5 sm:py-5 lg:h-[205px] lg:w-[calc((100%_-_48px)_/_5)] lg:rounded-[14px] lg:px-[15px] ${index === OVERVIEW_STEPS.length - 1 ? 'col-span-2' : ''}`}
+                    className={`flex min-h-[190px] flex-col justify-between overflow-hidden rounded-[12px] bg-[#F5F5F5] px-4 py-5 dark:bg-[#1C1C1C] sm:min-h-[205px] sm:px-5 sm:py-5 lg:h-[205px] lg:w-[calc((100%_-_48px)_/_5)] lg:px-[15px] ${index === OVERVIEW_STEPS.length - 1 ? 'col-span-2' : ''}`}
                   >
                     <div className="flex flex-col gap-1 font-satoshi text-[12px] font-bold uppercase leading-[1.3] tracking-[0.08em] text-primary dark:text-[#999] sm:flex-row sm:items-center sm:gap-2 sm:text-[13px] lg:text-[11px]">
                       <span>{roman}</span>
@@ -316,7 +315,7 @@ export default function BillowPage() {
             </div>
 
             <div className="flex flex-col gap-6 md:flex-row md:items-stretch">
-              <div className="flex min-h-[313px] flex-col justify-between overflow-hidden rounded-[10px] bg-[#3D5FE8] p-6 dark:bg-[#2A2A2A] md:w-[56%] lg:rounded-[14px]">
+              <div className="flex min-h-[313px] flex-col justify-between overflow-hidden rounded-[12px] bg-[#3D5FE8] p-6 dark:bg-[#2A2A2A] md:w-[56%]">
                 <p className="font-satoshi text-[11px] font-bold uppercase leading-[1.5] tracking-[0.08em] text-[#D9D9D9]">
                   Finding
                 </p>
@@ -402,7 +401,7 @@ export default function BillowPage() {
               </p>
             </div>
 
-            <div className="rounded-[10px] bg-[#F5F5F5] px-4 py-5 dark:bg-[#1F1F1F] lg:rounded-[14px] lg:px-[26px] lg:py-[32px]">
+            <div className="rounded-[12px] bg-[#F5F5F5] px-4 py-5 dark:bg-[#1F1F1F] lg:px-[26px] lg:py-[32px]">
               <div className="flex flex-col gap-8">
                 <div className="grid gap-3 md:grid-cols-3">
                   {SYSTEM_FOUNDATIONS.map(({ title, body, image, imageAlt }, index) => (
@@ -410,7 +409,7 @@ export default function BillowPage() {
                       key={title}
                       className="overflow-hidden flex flex-col"
                     >
-                      <div className="relative aspect-square overflow-hidden rounded-[10px] bg-[#0C0F16] lg:h-[416px] lg:aspect-auto lg:rounded-[14px]">
+                      <div className="relative aspect-square overflow-hidden rounded-[8px] bg-[#0C0F16] lg:h-[416px] lg:aspect-auto">
                         <Image
                           src={image}
                           alt={imageAlt}
@@ -427,7 +426,7 @@ export default function BillowPage() {
                           <h3 className="font-rethink text-[18px] font-medium leading-[1.2] text-[#373737] dark:text-[#E6E6E6]">
                             {title}
                           </h3>
-                          <p className="font-satoshi text-[16px] font-medium leading-[1.2] text-[#868686] dark:text-[#999]">
+                          <p className="font-satoshi text-[16px] font-medium leading-[1.32] text-[#868686] dark:text-[#999]">
                             {body}
                           </p>
                         </div>
@@ -439,7 +438,7 @@ export default function BillowPage() {
                 {[SYSTEM_RESULT].map(({ title }) => (
                   <div key={title} className="flex flex-col gap-6">
                     <div className="space-y-4">
-                      <div className="relative aspect-[1.6] overflow-hidden rounded-[10px] bg-[#0C0F16] lg:rounded-[14px]">
+                      <div className="relative aspect-[1.6] overflow-hidden rounded-[8px] bg-[#0C0F16]">
                         <Image
                           src="/assets/projects/billow/Color System.jpg"
                           alt="Billow color system"
@@ -448,7 +447,7 @@ export default function BillowPage() {
                           className="object-cover"
                         />
                       </div>
-                      <div className="relative aspect-[1.714] overflow-hidden rounded-[10px] bg-[#0C0F16] lg:rounded-[14px]">
+                      <div className="relative aspect-[1.714] overflow-hidden rounded-[8px] bg-[#0C0F16]">
                         <Image
                           src="/assets/projects/billow/scalable.jpg"
                           alt="Billow scalable interface set overview"
@@ -466,8 +465,8 @@ export default function BillowPage() {
                         <h3 className="font-rethink text-[18px] font-medium leading-[1.2] text-[#373737] dark:text-[#E6E6E6]">
                           {title}
                         </h3>
-                        <p className="font-satoshi text-[16px] font-medium leading-[1.2] text-[#868686] dark:text-[#999]">
-                          Primitives, semantic tokens, and workspace structures were unified into a shared system language. This foundation allows new features to grow without breaking consistency or requiring designers to create from scratch.
+                        <p className="font-satoshi text-[16px] font-medium leading-[1.32] text-[#868686] dark:text-[#999]">
+                          Primitive values, semantic tokens, and layout patterns were unified into a consistent design system, making the product easier to scale and maintain over time.
                         </p>
                       </div>
                     </div>
@@ -494,7 +493,7 @@ export default function BillowPage() {
                 {STORY_CHARACTERS.map(({ name, role, needs, image }) => (
                   <div
                     key={name}
-                    className="overflow-hidden rounded-[10px] bg-[#F5F5F5] dark:bg-[#2A2A2A] p-5 flex flex-col justify-between min-h-[200px] transition-all duration-300 hover:rotate-[-5deg] hover:bg-[#D9D9D9] dark:hover:bg-[#3A3A3A] lg:rounded-[14px]"
+                    className="flex min-h-[200px] flex-col justify-between overflow-hidden rounded-[12px] bg-[#F5F5F5] p-5 transition-all duration-300 hover:rotate-[-5deg] hover:bg-[#D9D9D9] dark:bg-[#2A2A2A] dark:hover:bg-[#3A3A3A]"
                   >
                     <div className="flex items-center gap-2">
                       <div className="relative h-[48px] w-[48px] rounded-full overflow-hidden shrink-0">
@@ -555,7 +554,7 @@ export default function BillowPage() {
                       src={step.video}
                       fallback={step.fallback}
                       alt={`Workflow step: ${step.title}`}
-                      className="w-full h-auto rounded-[10px] lg:rounded-[14px]"
+                      className="w-full h-auto rounded-[8px]"
                     />
                   </div>
                 );
@@ -620,7 +619,7 @@ export default function BillowPage() {
                 </p>
                 <div className="mt-8">
                   <p className="mb-3 text-xs uppercase tracking-[0.18em] text-[#3D5FE8] dark:text-[#555]">Result</p>
-                  <div className="rounded-[10px] bg-[#F5F5F5] dark:bg-[#2A2A2A] overflow-hidden lg:rounded-[14px]">
+                  <div className="overflow-hidden rounded-[12px] bg-[#F5F5F5] dark:bg-[#2A2A2A]">
                     <HoverVideo
                       src="https://neon-tulumba-4b620a.netlify.app/03.mp4"
                       fallback="/assets/projects/billow/chat.png"
@@ -639,12 +638,12 @@ export default function BillowPage() {
             <div className="space-y-4 mt-10">
               {LEARNINGS.map((learning, index) => {
                 const icons = [
-                  <NumberCircleOne size={24} weight="fill" />,
-                  <NumberCircleTwo size={24} weight="fill" />,
-                  <NumberCircleThree size={24} weight="fill" />,
+                  <NumberCircleOne key="one" size={24} weight="fill" />,
+                  <NumberCircleTwo key="two" size={24} weight="fill" />,
+                  <NumberCircleThree key="three" size={24} weight="fill" />,
                 ];
                 return (
-                  <div key={learning.title} className="bg-[#F5F5F5] dark:bg-[#2A2A2A] rounded-[10px] p-6 flex gap-4 items-start lg:rounded-[14px]">
+                  <div key={learning.title} className="flex items-start gap-4 rounded-[12px] bg-[#F5F5F5] p-6 dark:bg-[#2A2A2A]">
                     <div className="flex-shrink-0 flex items-center justify-center text-[#373737] dark:text-[#777]">
                       {icons[index]}
                     </div>

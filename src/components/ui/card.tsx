@@ -8,7 +8,7 @@ export function Card({ className, ...props }: CardProps) {
   return (
     <div
       data-reveal="card"
-      className={cx('rounded-[8px] border-0 bg-[#F5F5F5]/70 text-[#1E1E1E] dark:bg-[#2A2A2A]/70 dark:text-[#E6E6E6] lg:rounded-[14px]', className)}
+      className={cx('rounded-[12px] border-0 bg-[#F5F5F5]/70 text-[#1E1E1E] dark:bg-[#2A2A2A]/70 dark:text-[#E6E6E6]', className)}
       {...props}
     />
   );

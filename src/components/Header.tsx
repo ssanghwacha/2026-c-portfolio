@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useTheme } from '@/providers/ThemeProvider';
 
@@ -29,6 +30,7 @@ export default function Header({
   inlineOnMobile?: boolean;
 }) {
   const { theme, toggle } = useTheme();
+  const pathname = usePathname();
   const [showScrollTop, setShowScrollTop]     = useState(false);
   const [isHeaderHovered, setIsHeaderHovered] = useState(false);
   const [isScrollingDown, setIsScrollingDown] = useState(false);
@@ -97,6 +99,13 @@ export default function Header({
   const btnBg   = inverted ? 'bg-white dark:bg-[#1E1E1E]'       : 'bg-primary dark:bg-[#E6E6E6]';
   const btnIcon = inverted ? 'text-primary dark:text-[#E6E6E6]' : 'text-white dark:text-[#1E1E1E]';
   const headerPosition = leftClass === 'left-9' ? 'left-4 lg:left-9' : leftClass;
+  const isInfoActive = pathname === '/info';
+  const isWorkActive = pathname === '/work' || pathname.startsWith('/work/');
+  const navItems = [
+    { href: '/work', label: 'WORK', active: isWorkActive },
+    { href: '/info', label: 'INFO', active: isInfoActive },
+  ];
+
   return (
     <>
       <header
@@ -165,30 +174,43 @@ export default function Header({
             showProjectNav
               ? 'max-h-0 opacity-0 mt-0 pointer-events-none'
               : hideControls
-                ? 'max-h-0 opacity-0 mt-0 pointer-events-none group-hover/header:max-h-[120px] group-hover/header:opacity-100 group-hover/header:mt-2 group-hover/header:pointer-events-auto'
-                : 'max-h-[120px] opacity-100 mt-2'
+                ? 'max-h-0 opacity-0 mt-0 pointer-events-none group-hover/header:max-h-[92px] group-hover/header:opacity-100 group-hover/header:mt-2 group-hover/header:pointer-events-auto'
+                : 'max-h-[92px] opacity-100 mt-2'
           }`}
         >
+          <div className="grid grid-cols-[1fr_auto] items-end gap-4">
             <nav className="flex flex-col gap-0.5">
-              <Link href="/info" className="group flex items-center py-[4px]" style={showClickCursor ? { cursor: theme === 'dark' ? `url('${getClickCursorUrl('#00FF00')}') 24 24, pointer` : 'url(/assets/info/click.svg) 24 24, pointer' } : {}}>
-                <div className={`w-0 self-stretch shrink-0 group-hover:w-[10px] transition-[width] duration-200 ease-out ${navBar}`} />
-                <span className={`text-[18px] leading-none group-hover:pl-1 transition-[padding] duration-200 ${navText}`} style={{ fontFamily: "'Satoshi', sans-serif", fontWeight: 500 }}>INFO</span>
-              </Link>
-              <Link href="/work" className="group flex items-center py-[4px]" style={showClickCursor ? { cursor: theme === 'dark' ? `url('${getClickCursorUrl('#00FF00')}') 24 24, pointer` : 'url(/assets/info/click.svg) 24 24, pointer' } : {}}>
-                <div className={`w-0 self-stretch shrink-0 group-hover:w-[10px] transition-[width] duration-200 ease-out ${navBar}`} />
-                <span className={`text-[18px] leading-none group-hover:pl-1 transition-[padding] duration-200 ${navText}`} style={{ fontFamily: "'Satoshi', sans-serif", fontWeight: 500 }}>WORK</span>
-              </Link>
+              {navItems.map(({ href, label, active }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  aria-current={active ? 'page' : undefined}
+                  className="group flex min-h-9 items-center py-[4px]"
+                  style={showClickCursor ? { cursor: theme === 'dark' ? `url('${getClickCursorUrl('#00FF00')}') 24 24, pointer` : 'url(/assets/info/click.svg) 24 24, pointer' } : {}}
+                >
+                  <div className={`${active ? 'w-[10px]' : 'w-0 group-hover:w-[10px]'} h-[21px] shrink-0 transition-[width] duration-200 ease-out ${navBar}`} />
+                  <span className={`text-[18px] leading-none transition-[padding] duration-200 ${active ? 'pl-2' : 'group-hover:pl-2'} ${navText}`} style={{ fontFamily: "'Satoshi', sans-serif", fontWeight: 500 }}>
+                    {label}
+                  </span>
+                </Link>
+              ))}
             </nav>
-            <div className="mt-2">
+            <div className="flex flex-col items-end justify-end gap-0 pb-[2px]">
+              <span className={`font-satoshi translate-y-0.5 text-[10px] font-semibold uppercase leading-none tracking-[0.08em] ${timeText}`}>
+                {theme === 'dark' ? 'Dark' : 'Light'}
+              </span>
               <button
                 onClick={toggle}
                 aria-label="Toggle dark mode"
-                className={`w-10 h-5 rounded-full relative border-0 p-0 transition-colors duration-300 pointer-events-auto ${toggleTrack}`}
+                className="relative -mr-1 flex h-9 w-12 items-end justify-end rounded-[8px] border-0 bg-transparent p-1 transition-opacity duration-200 pointer-events-auto hover:opacity-80"
                 style={showClickCursor ? { cursor: theme === 'dark' ? `url('${getClickCursorUrl('#00FF00')}') 24 24, pointer` : 'url(/assets/info/click.svg) 24 24, pointer' } : {}}
               >
-                <span className={`absolute left-0 top-[3px] h-3.5 w-3.5 rounded-full transition-all duration-300 ${toggleHandle}`} />
+                <span className={`relative block h-5 w-10 rounded-full transition-colors duration-300 ${toggleTrack}`}>
+                  <span className={`absolute left-0 top-[3px] h-3.5 w-3.5 rounded-full transition-all duration-300 ${toggleHandle}`} />
+                </span>
               </button>
             </div>
+          </div>
           </div>
 
       </header>

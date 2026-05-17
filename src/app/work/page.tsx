@@ -15,7 +15,6 @@ const filters: { key: Category; label: string }[] = [
 
 function WorkFilter({ active, setActive }: { active: Category; setActive: (c: Category) => void }) {
   const [hovered, setHovered] = useState(false);
-  const activeLabel = filters.find((f) => f.key === active)?.label ?? 'Everything';
 
   return (
     <div

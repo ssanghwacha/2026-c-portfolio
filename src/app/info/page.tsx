@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
 import Image from 'next/image';
 import Header from '@/components/Header';
@@ -209,7 +209,7 @@ function ExperiencePanel({ inline = false }: { inline?: boolean }) {
 
   return (
     <section
-      className={`${inline ? 'flex h-auto w-full' : 'fixed z-20 hidden h-auto w-[552px] xl:flex'} flex-col overflow-hidden rounded-[11px] bg-primary shadow-[0_18px_42px_-16px_rgba(0,0,0,0.25)] dark:bg-[#1E1E1E]`}
+      className={`${inline ? 'flex h-auto w-full' : 'fixed z-20 hidden h-auto w-[552px] xl:flex'} flex-col overflow-hidden rounded-[12px] bg-primary shadow-[0_18px_42px_-16px_rgba(0,0,0,0.25)] dark:bg-[#1E1E1E]`}
       style={inline ? undefined : {
         left: `${position.x}px`,
         top: `${position.y}px`,
@@ -342,7 +342,7 @@ function OutsideOfDesignPanel({ index, imageSrc, initialPosition, initialPositio
   if (isMobile) {
     return (
       <section
-        className="flex w-[60%] flex-col overflow-hidden rounded-[11px] bg-white shadow-[0_18px_42px_-16px_rgba(0,0,0,0.18)] dark:bg-[#1E1E1E]"
+        className="flex w-[60%] flex-col overflow-hidden rounded-[12px] bg-white shadow-[0_18px_42px_-16px_rgba(0,0,0,0.18)] dark:bg-[#1E1E1E]"
         style={{
           height: `${height}px`,
         }}
@@ -373,7 +373,7 @@ function OutsideOfDesignPanel({ index, imageSrc, initialPosition, initialPositio
 
   return (
     <section
-      className="fixed z-20 hidden flex-col overflow-hidden rounded-[11px] bg-white shadow-[0_18px_42px_-16px_rgba(0,0,0,0.18)] dark:bg-[#1E1E1E] xl:flex"
+      className="fixed z-20 hidden flex-col overflow-hidden rounded-[12px] bg-white shadow-[0_18px_42px_-16px_rgba(0,0,0,0.18)] dark:bg-[#1E1E1E] xl:flex"
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
@@ -479,7 +479,7 @@ function EducationPanel({ inline = false }: { inline?: boolean }) {
 
   return (
     <section
-      className={`${inline ? 'flex h-[min(270px,calc(100vh-348px))] w-full' : 'fixed z-30 hidden h-[280px] w-[480px] xl:flex'} flex-col overflow-hidden rounded-[11px] bg-white shadow-[0_18px_42px_-16px_rgba(0,0,0,0.18)] dark:bg-[#1E1E1E]`}
+      className={`${inline ? 'flex h-[min(270px,calc(100vh-348px))] w-full' : 'fixed z-30 hidden h-[280px] w-[480px] xl:flex'} flex-col overflow-hidden rounded-[12px] bg-white shadow-[0_18px_42px_-16px_rgba(0,0,0,0.18)] dark:bg-[#1E1E1E]`}
       style={inline ? undefined : {
         left: `${position.x}px`,
         top: `${position.y}px`,
@@ -553,12 +553,26 @@ function InfoCommandMenu() {
   const showExperiencePanel = activeItem === 'Experience';
   const showEducationPanel = activeItem === 'Education';
   const showOutsideOfDesignPanel = activeItem === 'Outside';
+  const selectActiveItem = useCallback((item: string) => {
+    setActiveItem(item);
+    if (item === 'Outside') setOutsideOfDesignIndex(0);
+  }, []);
 
   useEffect(() => {
-    if (!showOutsideOfDesignPanel) {
-      setOutsideOfDesignIndex(0);
-      return;
-    }
+    const intervalId = window.setInterval(() => {
+      setActiveItem((currentItem) => {
+        const currentIndex = recentItems.indexOf(currentItem);
+        const nextItem = recentItems[(currentIndex + 1) % recentItems.length];
+        if (nextItem === 'Outside') setOutsideOfDesignIndex(0);
+        return nextItem;
+      });
+    }, 5000);
+
+    return () => window.clearInterval(intervalId);
+  }, []);
+
+  useEffect(() => {
+    if (!showOutsideOfDesignPanel) return;
 
     const intervalId = window.setInterval(() => {
       setOutsideOfDesignIndex((currentIndex) => (currentIndex + 1) % outsideOfDesignImages.length);
@@ -580,13 +594,13 @@ function InfoCommandMenu() {
           newIndex = currentIndex === recentItems.length - 1 ? 0 : currentIndex + 1;
         }
 
-        setActiveItem(recentItems[newIndex]);
+        selectActiveItem(recentItems[newIndex]);
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [activeItem]);
+  }, [activeItem, selectActiveItem]);
 
   return (
     <>
@@ -594,7 +608,7 @@ function InfoCommandMenu() {
       <div className="shrink-0 xl:hidden">
         <Header showClickCursor={true} hideScrollBtn={true} inlineOnMobile={true} />
       </div>
-      <section className="flex h-auto w-full shrink-0 flex-col overflow-hidden rounded-[13px] border border-[#E9EAEB] bg-white shadow-[0_17px_34px_-13px_rgba(88,92,95,0.1)] dark:border-[#2E2E2E] dark:bg-[#1E1E1E] xl:fixed xl:left-9 xl:top-[188px] xl:z-20 xl:h-[min(524px,calc(100vh-220px))] xl:w-[calc(100vw-32px)] xl:max-w-[686px]">
+      <section className="flex h-auto w-full shrink-0 flex-col overflow-hidden rounded-[12px] border border-[#E9EAEB] bg-white shadow-[0_17px_34px_-13px_rgba(88,92,95,0.1)] dark:border-[#2E2E2E] dark:bg-[#1E1E1E] xl:fixed xl:left-9 xl:top-[188px] xl:z-20 xl:h-[min(524px,calc(100vh-220px))] xl:w-[calc(100vw-32px)] xl:max-w-[686px]">
         <div className="flex h-[61px] shrink-0 items-center border-b border-[#E9EAEB] bg-white px-[21px] dark:border-[#2E2E2E] dark:bg-[#1E1E1E]">
           <div className="flex min-w-0 flex-1 items-center gap-[9px]">
             <span className="shrink-0 text-primary dark:text-[#E6E6E6]">
@@ -643,7 +657,7 @@ function InfoCommandMenu() {
                 key={item}
                 label={item}
                 active={activeItem === item}
-                onClick={() => setActiveItem(item)}
+                onClick={() => selectActiveItem(item)}
               />
             ))}
           </div>

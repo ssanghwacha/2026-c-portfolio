@@ -45,7 +45,7 @@ export default function NumberedBlock({
         </p>
       )}
       {boxIcon && boxTitle && boxContent && (
-        <div className="rounded-[14px] bg-[#F5F5F5] dark:bg-[#2A2A2A] p-6 flex flex-col gap-4 mt-2">
+        <div className="mt-2 flex flex-col gap-4 rounded-[12px] bg-[#F5F5F5] p-6 dark:bg-[#2A2A2A]">
           <div className="flex gap-2 items-start">
             <div className="flex-shrink-0 flex items-center justify-center text-[#ADADAD] dark:text-[#777] mt-1">
               {boxIcon}
