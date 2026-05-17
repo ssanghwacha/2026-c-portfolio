@@ -18,6 +18,15 @@ html {
   scroll-behavior: smooth;
 }
 
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 @keyframes velot-color-pan {
   from {
     transform: translateX(0);

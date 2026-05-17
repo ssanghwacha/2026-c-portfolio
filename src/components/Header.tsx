@@ -18,6 +18,7 @@ export default function Header({
   leftClass = 'left-9',
   stableNav = false,
   showClickCursor = false,
+  inlineOnMobile = false,
 }: {
   inverted?: boolean;
   hideScrollBtn?: boolean;
@@ -25,6 +26,7 @@ export default function Header({
   leftClass?: string;
   stableNav?: boolean;
   showClickCursor?: boolean;
+  inlineOnMobile?: boolean;
 }) {
   const { theme, toggle } = useTheme();
   const [showScrollTop, setShowScrollTop]     = useState(false);
@@ -100,9 +102,9 @@ export default function Header({
       <header
         onMouseEnter={() => setIsHeaderHovered(true)}
         onMouseLeave={() => setIsHeaderHovered(false)}
-        id="main-header"
-        className={`group/header fixed top-[24px] ${headerPosition} z-50 flex w-[min(281px,calc(100vw-32px))] flex-col rounded-[8px] p-4 ${cardBg} transition-transform duration-300 ease-in-out ${
-          isScrollingDown ? 'max-lg:-translate-y-[calc(100%+32px)]' : 'translate-y-0'
+        id={inlineOnMobile ? undefined : 'main-header'}
+        className={`group/header ${inlineOnMobile ? 'relative left-auto top-auto z-50 xl:fixed xl:top-[24px]' : `fixed top-[24px] ${headerPosition} z-50`} flex w-[min(281px,calc(100vw-32px))] flex-col rounded-[8px] p-4 ${cardBg} transition-transform duration-300 ease-in-out ${
+          !inlineOnMobile && isScrollingDown ? 'max-lg:-translate-y-[calc(100%+32px)]' : 'translate-y-0'
         } ${showProjectNav ? 'w-fit' : ''}`}
       >
         {/* 로고 */}
@@ -181,7 +183,7 @@ export default function Header({
               <button
                 onClick={toggle}
                 aria-label="Toggle dark mode"
-                className={`w-10 h-5 rounded-full relative border-0 p-0 transition-colors duration-300 ${toggleTrack}`}
+                className={`w-10 h-5 rounded-full relative border-0 p-0 transition-colors duration-300 pointer-events-auto ${toggleTrack}`}
                 style={showClickCursor ? { cursor: theme === 'dark' ? `url('${getClickCursorUrl('#00FF00')}') 24 24, pointer` : 'url(/assets/info/click.svg) 24 24, pointer' } : {}}
               >
                 <span className={`absolute left-0 top-[3px] h-3.5 w-3.5 rounded-full transition-all duration-300 ${toggleHandle}`} />
