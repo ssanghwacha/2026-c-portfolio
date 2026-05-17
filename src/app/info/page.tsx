@@ -209,7 +209,7 @@ function ExperiencePanel({ inline = false }: { inline?: boolean }) {
 
   return (
     <section
-      className={`${inline ? 'flex h-[min(392px,calc(100vh-348px))] w-full' : 'fixed z-20 hidden h-[450px] w-[552px] xl:flex'} flex-col overflow-hidden rounded-[11px] bg-primary shadow-[0_18px_42px_-16px_rgba(0,0,0,0.25)] dark:bg-[#1E1E1E]`}
+      className={`${inline ? 'flex h-auto w-full' : 'fixed z-20 hidden h-auto w-[552px] xl:flex'} flex-col overflow-hidden rounded-[11px] bg-primary shadow-[0_18px_42px_-16px_rgba(0,0,0,0.25)] dark:bg-[#1E1E1E]`}
       style={inline ? undefined : {
         left: `${position.x}px`,
         top: `${position.y}px`,
@@ -233,7 +233,7 @@ function ExperiencePanel({ inline = false }: { inline?: boolean }) {
         <span className="font-satoshi">Search Career...</span>
       </div>
 
-      <div className="flex min-h-0 flex-1 flex-col overflow-auto px-[14px] pt-[21px] text-white">
+      <div className="flex flex-col px-[14px] pt-[21px] text-white">
         <p className="mb-[20px] px-[8px] font-satoshi text-[13px] font-medium uppercase leading-none text-white/60 dark:text-[#777]">
           CAREER
         </p>
@@ -242,17 +242,23 @@ function ExperiencePanel({ inline = false }: { inline?: boolean }) {
           {experienceItems.map((item, index) => (
             <div key={`${item.company}-${item.year}`}>
               <div
-                className="flex min-h-[42px] items-center justify-between gap-3 rounded-[5px] px-[8px] py-[10px] text-[11px] font-medium leading-none text-white/80 sm:text-[12px] xl:h-[42px] xl:text-[13px]"
+                className="flex min-h-[56px] items-center justify-between gap-3 rounded-[5px] px-[8px] py-[10px] text-[12px] font-medium text-white/80 sm:min-h-[60px] sm:text-[13px] xl:min-h-[64px] xl:text-[14px]"
               >
-                <div className="flex min-w-0 items-center gap-[10px] xl:gap-[13px]">
-                  <span className="relative h-6 w-6 shrink-0 overflow-hidden rounded-full bg-white">
-                    <Image src={item.logo} alt="" fill sizes="20px" className="object-cover" />
+                <div className="flex min-w-0 items-center gap-[12px] xl:gap-[14px]">
+                  <span className="relative h-[30px] w-[30px] shrink-0 overflow-hidden rounded-full bg-white sm:h-[32px] sm:w-[32px] xl:h-[34px] xl:w-[34px]">
+                    <Image src={item.logo} alt="" fill sizes="34px" className="object-cover" />
                   </span>
-                  <span className="min-w-0 truncate font-satoshi font-semibold xl:w-[162px]">{item.label}</span>
+                  <div className="min-w-0 font-satoshi">
+                    <p className="truncate text-[12.5px] font-semibold leading-[1.2] text-white sm:text-[13.5px] xl:text-[14px]">
+                      {item.label}
+                    </p>
+                    <p className="truncate pt-1 text-[11px] font-medium leading-[1.2] text-white/60 sm:text-[12px] xl:text-[12.5px]">
+                      {item.company}
+                    </p>
+                  </div>
                 </div>
-                <div className="flex shrink-0 items-center justify-end gap-[10px] whitespace-nowrap font-satoshi xl:w-[188px] xl:gap-[15px]">
-                  <span className="hidden sm:inline">{item.company}</span>
-                  <span>{item.year}</span>
+                <div className="flex shrink-0 items-center justify-end whitespace-nowrap font-satoshi">
+                  <span className="text-[11px] text-white/72 sm:text-[12px] xl:text-[13px]">{item.year}</span>
                 </div>
               </div>
               {index < experienceItems.length - 1 ? (
@@ -495,7 +501,7 @@ function EducationPanel({ inline = false }: { inline?: boolean }) {
         <span className="font-satoshi">Search Education...</span>
       </div>
 
-      <div className="flex min-h-0 flex-1 flex-col overflow-auto px-[14px] pt-[18px] text-[#545454] dark:text-white">
+      <div className="flex flex-col px-[14px] pt-[18px] text-[#545454] dark:text-white">
         <p className="mb-[16px] px-[8px] font-satoshi text-[13px] font-medium uppercase leading-none text-[#9EA2AD] dark:text-[#777]">
           EDUCATION
         </p>
@@ -503,18 +509,22 @@ function EducationPanel({ inline = false }: { inline?: boolean }) {
         <div className="flex flex-col">
           {educationItems.map((item, index) => (
             <div key={`${item.school}-${item.year}`}>
-              <div className="flex min-h-[49px] items-center justify-between gap-3 rounded-[6px] px-[8px] py-[8px] text-[11px] font-medium leading-none text-[#545454] dark:text-white/80 sm:text-[12px] xl:h-[49px]">
-                <div className="flex min-w-0 items-center gap-[11px]">
-                  <span className="relative h-[24px] w-[24px] shrink-0 overflow-hidden rounded-full bg-white">
-                    <Image src={item.logo} alt="" fill sizes="24px" className="object-cover" />
+              <div className="flex min-h-[56px] items-center justify-between gap-3 rounded-[6px] px-[8px] py-[10px] text-[12px] font-medium text-[#545454] dark:text-white/80 sm:min-h-[60px] sm:text-[13px] xl:min-h-[64px] xl:text-[14px]">
+                <div className="flex min-w-0 items-center gap-[12px] xl:gap-[14px]">
+                  <span className="relative h-[30px] w-[30px] shrink-0 overflow-hidden rounded-full bg-white sm:h-[32px] sm:w-[32px] xl:h-[34px] xl:w-[34px]">
+                    <Image src={item.logo} alt="" fill sizes="34px" className="object-cover" />
                   </span>
-                  <span className="min-w-0 font-satoshi font-semibold leading-[1.15] text-[#2F3133] dark:text-white xl:w-[214px]">
-                    {item.label}
-                  </span>
+                  <div className="min-w-0 font-satoshi">
+                    <p className="line-clamp-2 text-[12.5px] font-semibold leading-[1.2] text-[#2F3133] dark:text-white sm:text-[13.5px] xl:text-[14px]">
+                      {item.label}
+                    </p>
+                    <p className="truncate pt-1 text-[11px] font-medium leading-[1.2] text-[#7B7F88] dark:text-white/60 sm:text-[12px] xl:text-[12.5px]">
+                      {item.school}
+                    </p>
+                  </div>
                 </div>
-                <div className="flex shrink-0 flex-col items-end gap-[4px] whitespace-nowrap font-satoshi xl:w-[134px]">
-                  <span className="text-[#545454] dark:text-white/80">{item.school}</span>
-                  <span className="text-[#9EA2AD] dark:text-[#BDBDBD]">{item.year}</span>
+                <div className="flex shrink-0 items-center justify-end whitespace-nowrap font-satoshi">
+                  <span className="text-[11px] text-[#9EA2AD] dark:text-white/72 sm:text-[12px] xl:text-[13px]">{item.year}</span>
                 </div>
               </div>
               {index < educationItems.length - 1 ? (
