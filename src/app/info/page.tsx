@@ -776,7 +776,7 @@ export default function InfoPage() {
   }, [backgroundVideo]);
 
   return (
-    <div style={{ cursor: theme === 'dark' ? `url('${getArrowCursorUrl('#00FF00')}') 24 24, auto` : 'url(/assets/info/dinkie-icons_cursor-arrow-filled.svg) 24 24, auto' }}>
+    <div style={{ cursor: theme === 'dark' ? `url('${getArrowCursorUrl('#00FF00')}') 8 4, auto` : 'url(/assets/info/dinkie-icons_cursor-arrow-filled.svg) 8 4, auto' }}>
       <div className="hidden xl:block">
         <Header showClickCursor={true} />
       </div>
