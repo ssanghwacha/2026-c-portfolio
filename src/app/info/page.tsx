@@ -24,7 +24,7 @@ const getClickCursorUrl = (color: string) => {
 };
 
 const introText = "Hi! I'm Sangwha";
-const recentItems = ['Experience', 'Education', 'Outside of Design'];
+const recentItems = ['Experience', 'Education', 'Outside'];
 const outsideOfDesignLabels = ['Love nature', 'Travel', 'City views I love', 'Cat Person', 'Figure skating', 'My favorite ice rink'];
 const outsideOfDesignImages = [
   '/assets/info/od-01.jpg',
@@ -142,7 +142,7 @@ function CommandRow({
     <button type="button" onClick={onClick} className="w-full px-0 py-0.5 text-left xl:px-[9px]" style={{ cursor: theme === 'dark' ? `url('${getClickCursorUrl('#00FF00')}') 24 24, pointer` : 'url(/assets/info/click.svg) 24 24, pointer' }}>
       <div className={`flex h-full w-full items-center justify-center gap-[4px] rounded-[9px] px-[4px] py-[9px] transition-colors sm:gap-[6px] sm:px-[6px] xl:justify-start xl:gap-[9px] xl:p-[9px] ${active ? 'bg-primary dark:bg-[#2A2A2A]' : ''}`}>
         <Avatar active={active} />
-        <span className={`min-w-0 truncate font-satoshi text-[10px] font-medium leading-none sm:text-[12px] xl:text-[15px] ${active ? 'text-white dark:text-white' : 'text-primary dark:text-[#999999]'}`}>
+        <span className={`min-w-0 truncate font-satoshi text-[11.5px] font-medium leading-none sm:text-[13px] xl:text-[15px] ${active ? 'text-white dark:text-white' : 'text-primary dark:text-[#999999]'}`}>
           {label}
         </span>
       </div>
@@ -538,11 +538,11 @@ function EducationPanel({ inline = false }: { inline?: boolean }) {
 }
 
 function InfoCommandMenu() {
-  const [activeItem, setActiveItem] = useState('Outside of Design');
+  const [activeItem, setActiveItem] = useState('Outside');
   const [outsideOfDesignIndex, setOutsideOfDesignIndex] = useState(0);
   const showExperiencePanel = activeItem === 'Experience';
   const showEducationPanel = activeItem === 'Education';
-  const showOutsideOfDesignPanel = activeItem === 'Outside of Design';
+  const showOutsideOfDesignPanel = activeItem === 'Outside';
 
   useEffect(() => {
     if (!showOutsideOfDesignPanel) {
@@ -606,7 +606,7 @@ function InfoCommandMenu() {
         </div>
 
         <div className="flex flex-none flex-col gap-1 pt-[17px] xl:min-h-0 xl:flex-1">
-          <div className="w-full max-w-none space-y-3 px-[17px] font-satoshi text-[12px] font-medium leading-[1.3] text-[#545454] dark:text-[#E6E6E6] sm:text-[13px] xl:space-y-4 xl:text-[16px] xl:leading-[1.25]">
+          <div className="w-full max-w-none space-y-3 px-[17px] font-satoshi text-[14px] font-medium leading-[1.32] text-[#545454] dark:text-[#E6E6E6] sm:text-[15px] xl:space-y-4 xl:text-[16px] xl:leading-[1.25]">
             <p>
               I&apos;ve always been interested in how small visual details can change the way people experience something.
             </p>
