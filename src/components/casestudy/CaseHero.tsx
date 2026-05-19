@@ -43,15 +43,43 @@ export default function CaseHero({
   const [top, setTop] = useState(200);
   const [activeSection, setActiveSection] = useState('');
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const headerGapPx = 12;
+  const hiddenHeaderTopPx = 16;
 
   useEffect(() => {
     const header = document.getElementById('main-header');
-    if (!header) return;
-    const update = () => setTop(header.getBoundingClientRect().bottom + 12);
+    if (!header) {
+      setTop(160);
+      return;
+    }
+
+    let raf = 0;
+    const update = () => {
+      const rect = header.getBoundingClientRect();
+      const nextTop =
+        rect.bottom <= headerGapPx
+          ? hiddenHeaderTopPx
+          : Math.round(rect.bottom + headerGapPx);
+      setTop(nextTop);
+    };
+
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(update);
+    };
+
     update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
     const ro = new ResizeObserver(update);
     ro.observe(header);
-    return () => ro.disconnect();
+
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      ro.disconnect();
+    };
   }, []);
 
   useEffect(() => {
@@ -81,8 +109,8 @@ export default function CaseHero({
     <aside
       className={
         layout === 'static'
-          ? 'w-full min-w-0 lg:sticky z-30 flex flex-col gap-3 overflow-y-auto'
-          : 'fixed left-9 w-[calc(30vw-60px)] z-30 flex flex-col gap-3 overflow-y-auto'
+          ? 'w-full min-w-0 sticky z-30 flex flex-col gap-[12px] overflow-y-auto transition-[top] duration-300 ease-out lg:fixed lg:left-9 lg:w-[360px]'
+          : 'fixed left-9 w-[calc(30vw-60px)] z-30 flex flex-col gap-[12px] overflow-y-auto'
       }
       style={{ top, maxHeight: `calc(100vh - ${top}px - 24px)` }}
     >

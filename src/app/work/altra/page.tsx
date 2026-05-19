@@ -105,24 +105,28 @@ export default function AltraPage() {
         />
       }
       heroSlot={
-        <div className="lg:pt-[40px]">
+        <div>
           <HeroMediaReveal>
             {/* Mobile */}
-            <video
-              src="https://fastidious-bombolone-8ee4b7.netlify.app/001.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="lg:hidden w-full h-auto rounded-[8px]"
-            />
+            <div className="lg:hidden">
+              <video
+                src="https://fastidious-bombolone-8ee4b7.netlify.app/001.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-auto rounded-[8px]"
+              />
+            </div>
             {/* Desktop */}
-            <HoverVideo
-              src="https://golden-parfait-60a7b7.netlify.app/001.mp4"
-              fallback="https://cdn.prod.website-files.com/67cf995ac794a925d9518c2e/69b1dd97e3c9f0b640b0d1df_alltra-main01.png"
-              alt="Altra"
-              className="hidden lg:block w-full h-auto rounded-[8px]"
-            />
+            <div className="hidden lg:block">
+              <HoverVideo
+                src="https://golden-parfait-60a7b7.netlify.app/001.mp4"
+                fallback="https://cdn.prod.website-files.com/67cf995ac794a925d9518c2e/69b1dd97e3c9f0b640b0d1df_alltra-main01.png"
+                alt="Altra"
+                className="w-full h-auto rounded-[8px]"
+              />
+            </div>
           </HeroMediaReveal>
         </div>
       }

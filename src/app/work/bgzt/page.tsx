@@ -45,7 +45,7 @@ export default function BgztPage() {
         />
       }
       heroSlot={
-        <div className="lg:pt-[40px]">
+        <div>
           <HeroMediaReveal>
             <Image
               src="/assets/projects/bgzt/bgzt_main.jpg"

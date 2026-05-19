@@ -71,7 +71,7 @@ export default function FianchettoPage() {
         />
       }
       heroSlot={
-        <div className="lg:pt-[40px]">
+        <div>
           <HeroMediaReveal>
             <Image
               src="/assets/projects/fianchetto/fian_main.png"

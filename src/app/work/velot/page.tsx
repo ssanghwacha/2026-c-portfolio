@@ -76,7 +76,7 @@ export default function VelotPage() {
         />
       }
       heroSlot={
-        <div className="lg:pt-[40px]">
+        <div>
           <HeroMediaReveal>
             <div className="relative w-full overflow-hidden rounded-[8px]" style={{ aspectRatio: '1920/959' }}>
               <Image

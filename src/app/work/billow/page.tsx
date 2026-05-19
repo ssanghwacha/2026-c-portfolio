@@ -228,24 +228,28 @@ export default function BillowPage() {
         />
       }
       heroSlot={
-        <div className="w-full min-w-0 lg:pt-[40px]">
+        <div className="w-full min-w-0">
           <HeroMediaReveal>
             {/* Mobile */}
-            <video
-              src="https://polite-dusk-2d7fe6.netlify.app/001.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="lg:hidden w-full h-auto rounded-[6px] lg:rounded-[8px]"
-            />
+            <div className="lg:hidden">
+              <video
+                src="https://polite-dusk-2d7fe6.netlify.app/001.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-auto rounded-[6px] lg:rounded-[8px]"
+              />
+            </div>
             {/* Desktop */}
-            <HoverVideo
-              src="https://ephemeral-monstera-5edf4b.netlify.app/001.mp4"
-              fallback="https://cdn.prod.website-files.com/67cf995ac794a925d9518c2e/69b1dfe2299975f683ba812e_4be5097a2e5208bfcb4357594d6060a4_Slide%2016_9%20-%204.jpg"
-              alt="Billow preview"
-              className="hover-video hidden lg:block w-full h-auto rounded-[8px]"
-            />
+            <div className="hidden lg:block">
+              <HoverVideo
+                src="https://ephemeral-monstera-5edf4b.netlify.app/001.mp4"
+                fallback="https://cdn.prod.website-files.com/67cf995ac794a925d9518c2e/69b1dfe2299975f683ba812e_4be5097a2e5208bfcb4357594d6060a4_Slide%2016_9%20-%204.jpg"
+                alt="Billow preview"
+                className="hover-video w-full h-auto rounded-[8px]"
+              />
+            </div>
           </HeroMediaReveal>
         </div>
       }

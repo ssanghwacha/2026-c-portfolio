@@ -21,6 +21,8 @@ export default function Header({
   showClickCursor = false,
   inlineOnMobile = false,
   scrollWithPageOnMobile = false,
+  hideOnScroll = false,
+  inlineOnDesktop = false,
 }: {
   inverted?: boolean;
   hideScrollBtn?: boolean;
@@ -30,6 +32,8 @@ export default function Header({
   showClickCursor?: boolean;
   inlineOnMobile?: boolean;
   scrollWithPageOnMobile?: boolean;
+  hideOnScroll?: boolean;
+  inlineOnDesktop?: boolean;
 }) {
   const { theme, toggle } = useTheme();
   const pathname = usePathname();
@@ -84,6 +88,8 @@ export default function Header({
   const hideControls    = !stableNav && showScrollTop && isScrollingDown;
   const showProjectNav  = !stableNav && Boolean(projectNav?.length) && hideControls;
   const showCollapsedTime = hideControls && !isHeaderHovered && !showProjectNav;
+  const canAutoHideHeader = !inlineOnMobile && !scrollWithPageOnMobile;
+  const hideHeader = Boolean(hideOnScroll && canAutoHideHeader && showScrollTop && isScrollingDown);
 
   // 색상 토큰
   const logoBg      = inverted ? 'bg-white dark:bg-[#1E1E1E]'       : 'bg-primary dark:bg-[#E6E6E6]';
@@ -99,7 +105,9 @@ export default function Header({
     : (theme === 'dark' ? 'translate-x-[23px] bg-[#1E1E1E]' : 'translate-x-[3px] bg-white');
   const btnBg   = inverted ? 'bg-white dark:bg-[#1E1E1E]'       : 'bg-primary dark:bg-[#E6E6E6]';
   const btnIcon = inverted ? 'text-primary dark:text-[#E6E6E6]' : 'text-white dark:text-[#1E1E1E]';
-  const desktopHeaderPosition = leftClass === 'left-9' ? 'lg:top-9 lg:left-9' : `lg:top-9 ${leftClass}`;
+  const desktopHeaderPosition = inlineOnDesktop
+    ? 'lg:static lg:left-auto lg:top-auto lg:translate-x-0'
+    : (leftClass === 'left-9' ? 'lg:top-9 lg:left-9' : `lg:top-9 ${leftClass}`);
   const mobileHeaderPosition = inlineOnMobile
     ? 'relative left-auto top-auto z-50 xl:fixed xl:top-[24px]'
     : scrollWithPageOnMobile
@@ -122,8 +130,12 @@ export default function Header({
       <header
         onMouseEnter={() => setIsHeaderHovered(true)}
         onMouseLeave={() => setIsHeaderHovered(false)}
-        id={inlineOnMobile ? undefined : 'main-header'}
-        className={`group/header ${mobileHeaderPosition} ${desktopHeaderPosition} ${mobileHeaderWidth} z-[60] flex flex-col rounded-[12px] bg-white p-4 dark:bg-[#1E1E1E] transition-transform duration-300 ease-in-out translate-y-0 ${showProjectNav ? 'w-fit' : ''}`}
+        id={inlineOnMobile || inlineOnDesktop ? undefined : 'main-header'}
+        className={`group/header ${mobileHeaderPosition} ${desktopHeaderPosition} ${mobileHeaderWidth} z-[60] flex flex-col rounded-[12px] bg-white p-4 dark:bg-[#1E1E1E] will-change-transform transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          hideHeader
+            ? '-translate-y-[calc(100%+24px)] pointer-events-none lg:translate-y-0 lg:pointer-events-auto'
+            : 'translate-y-0'
+        } ${showProjectNav ? 'w-fit' : ''}`}
       >
         {/* 로고 */}
         <Link href="/" className={`h-[21px] w-full flex items-center justify-between px-[2px] ${logoBg}`}>
