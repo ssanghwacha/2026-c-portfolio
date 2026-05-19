@@ -37,17 +37,21 @@ function ArrowElbowIcon() {
   );
 }
 
-export default function Footer() {
+export default function Footer({ lightInverted = false }: { lightInverted?: boolean }) {
+  const logoBar = lightInverted ? 'bg-white dark:bg-[#E6E6E6]' : 'bg-primary dark:bg-[#E6E6E6]';
+  const logoText = lightInverted ? 'text-primary dark:text-[#1E1E1E]' : 'text-white dark:text-[#1E1E1E]';
+  const bottomText = lightInverted ? 'text-white dark:text-[#E6E6E6]' : 'text-primary dark:text-[#E6E6E6]';
+
   return (
     <footer className="w-full min-w-0 px-4 sm:px-[28px] flex flex-col gap-[12px]" style={{ paddingBottom: '8px' }}>
       {/* Full-width logo bar */}
-      <div className="w-full bg-primary dark:bg-[#E6E6E6] flex items-center justify-between px-[2px] h-[21px]">
-        <span className="font-rethink text-white dark:text-[#1E1E1E] font-medium text-2xl leading-none">C</span>
-        <span className="font-rethink text-white dark:text-[#1E1E1E] font-medium text-2xl leading-none">SANGWHA</span>
+      <div className={`w-full ${logoBar} flex items-center justify-between px-[2px] h-[21px]`}>
+        <span className={`font-rethink ${logoText} font-medium text-2xl leading-none`}>C</span>
+        <span className={`font-rethink ${logoText} font-medium text-2xl leading-none`}>SANGWHA</span>
       </div>
 
       {/* Bottom row */}
-      <div className="flex min-w-0 flex-col items-start justify-between gap-4 px-[2px] py-4 text-primary dark:text-[#E6E6E6] sm:h-[60px] sm:flex-row sm:items-center sm:gap-6 sm:py-0" style={{ fontFamily: "'Satoshi', sans-serif" }}>
+      <div className={`flex min-w-0 flex-col items-start justify-between gap-4 px-[2px] py-4 ${bottomText} sm:h-[60px] sm:flex-row sm:items-center sm:gap-6 sm:py-0`} style={{ fontFamily: "'Satoshi', sans-serif" }}>
         <p className="flex min-w-0 flex-wrap items-center gap-2 text-sm font-medium leading-none">
           <span>© 2026 · BUILT WITH</span>
           <BicycleIcon />

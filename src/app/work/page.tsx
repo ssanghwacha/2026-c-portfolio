@@ -61,9 +61,9 @@ export default function WorkPage() {
 
   return (
     <>
-      <Header hideScrollBtn />
+      <Header hideScrollBtn scrollWithPageOnMobile />
       <WorkFilter active={active} setActive={setActive} />
-      <main className="pt-[180px] sm:pt-[200px] pb-20 sm:pb-[150px]">
+      <main className="pt-12 sm:pt-14 lg:pt-[200px] pb-20 sm:pb-[150px]">
         <WorkGrid active={active} />
       </main>
       <Footer />

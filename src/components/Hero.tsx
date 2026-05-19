@@ -35,7 +35,7 @@ function VancouverTime() {
 
 export default function Hero() {
   return (
-    <section className="w-full flex flex-col items-center justify-center min-h-[60vh] sm:min-h-[70vh] px-4 sm:px-8 pt-[180px] sm:pt-0">
+    <section className="w-full flex flex-col items-center justify-center min-h-[60vh] sm:min-h-[70vh] px-4 sm:px-8 pt-12 sm:pt-0">
       <div className="translate-y-[50px]" style={{ textAlign: 'justify', textAlignLast: 'justify', textJustify: 'inter-word' }}>
       {/* Location + live time */}
       <p

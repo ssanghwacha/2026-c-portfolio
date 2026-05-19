@@ -6,7 +6,7 @@ import Footer from '@/components/Footer';
 export default function Home() {
   return (
     <>
-      <Header />
+      <Header scrollWithPageOnMobile />
       <main className="pb-[150px]">
         <Hero />
         <WorkGrid />

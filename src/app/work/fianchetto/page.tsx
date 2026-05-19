@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import { BirdIcon, CatIcon, RabbitIcon } from '@phosphor-icons/react/ssr';
 import ProjectLayout from '@/components/casestudy/ProjectLayout';
-import HoverVideo from '@/components/casestudy/HoverVideo';
 import CaseHero from '@/components/casestudy/CaseHero';
 import CaseSection from '@/components/casestudy/CaseSection';
 import SeeMore from '@/components/casestudy/SeeMore';
@@ -71,19 +70,23 @@ export default function FianchettoPage() {
           layout="static"
         />
       }
-    >
-      <div>
-        <div className="pt-[40px]">
+      heroSlot={
+        <div className="lg:pt-[40px]">
           <HeroMediaReveal>
-            <HoverVideo
-              src="https://golden-parfait-60a7b7.netlify.app/001.mp4"
-              fallback="https://cdn.prod.website-files.com/67cf995ac794a925d9518c2e/69b1dd97e3c9f0b640b0d1df_alltra-main01.png"
-              alt="Altra"
-              className="w-full h-auto block rounded-[8px]"
+            <Image
+              src="/assets/projects/fianchetto/fian_main.png"
+              alt="Fianchetto brand identity preview"
+              width={3344}
+              height={1882}
+              className="block h-auto w-full rounded-[8px]"
+              priority
+              unoptimized
             />
           </HeroMediaReveal>
         </div>
-
+      }
+    >
+      <div>
         <div className="mx-auto max-w-[980px] pt-12">
           {/* Overview */}
           <CaseSection id="overview">
