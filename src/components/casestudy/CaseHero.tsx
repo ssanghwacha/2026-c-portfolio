@@ -109,7 +109,7 @@ export default function CaseHero({
     <aside
       className={
         layout === 'static'
-          ? 'w-full min-w-0 sticky z-30 flex flex-col gap-[12px] overflow-y-auto transition-[top] duration-300 ease-out lg:fixed lg:left-9 lg:w-[360px]'
+          ? 'w-full min-w-0 sticky z-30 flex flex-col gap-[12px] overflow-y-auto transition-[top] duration-300 ease-out lg:static lg:transition-none'
           : 'fixed left-9 w-[calc(30vw-60px)] z-30 flex flex-col gap-[12px] overflow-y-auto'
       }
       style={{ top, maxHeight: `calc(100vh - ${top}px - 24px)` }}

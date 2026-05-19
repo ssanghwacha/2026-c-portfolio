@@ -1,6 +1,7 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import MotionMain from '@/components/motion/MotionMain';
+import CaseFixedRail from '@/components/casestudy/CaseFixedRail';
 
 type NavItem = { id: string; label: string };
 
@@ -18,9 +19,18 @@ export default function ProjectLayout({
 }) {
   return (
     <>
-      <Header stableNav hideOnScroll />
+      <div className="lg:hidden">
+        <Header stableNav hideOnScroll />
+      </div>
       {sidebar ? (
         <MotionMain className="min-h-screen bg-white dark:bg-[#1E1E1E]">
+          <div className="hidden lg:block">
+            <CaseFixedRail>
+              <Header stableNav inlineOnDesktop hideScrollBtn />
+              {sidebar}
+            </CaseFixedRail>
+          </div>
+
           {/* Mobile: hero full-bleed, above info card */}
           {heroSlot && (
             <div className="w-full min-w-0 lg:hidden pt-[190px] pb-4 px-4">
@@ -43,10 +53,11 @@ export default function ProjectLayout({
 
             <div className="grid w-full min-w-0 grid-cols-1 lg:grid-cols-[360px_1fr] gap-4 lg:gap-10">
               <div data-page-panel className="w-full min-w-0">
-                {sidebar}
+                <div className="lg:hidden">{sidebar}</div>
               </div>
               <section data-page-panel className="w-full min-w-0">
                 {children}
+                <div id="case-content-end" aria-hidden="true" className="h-px" />
               </section>
             </div>
           </div>

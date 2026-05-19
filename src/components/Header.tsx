@@ -42,6 +42,7 @@ export default function Header({
   const [isScrollingDown, setIsScrollingDown] = useState(false);
   const [time, setTime]                       = useState('');
   const [activeSection, setActiveSection]     = useState('');
+  const [isPastCaseContent, setIsPastCaseContent] = useState(false);
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -83,13 +84,38 @@ export default function Header({
     return () => observer.disconnect();
   }, [projectNav]);
 
+  useEffect(() => {
+    const marker = document.getElementById('case-content-end');
+    if (!marker) return;
+
+    let raf = 0;
+    const update = () => {
+      setIsPastCaseContent(marker.getBoundingClientRect().top <= 96);
+    };
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+  }, []);
+
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   const hideControls    = !stableNav && showScrollTop && isScrollingDown;
   const showProjectNav  = !stableNav && Boolean(projectNav?.length) && hideControls;
   const showCollapsedTime = hideControls && !isHeaderHovered && !showProjectNav;
   const canAutoHideHeader = !inlineOnMobile && !scrollWithPageOnMobile;
-  const hideHeader = Boolean(hideOnScroll && canAutoHideHeader && showScrollTop && isScrollingDown);
+  const hideHeader = Boolean(
+    hideOnScroll && canAutoHideHeader && ((showScrollTop && isScrollingDown) || isPastCaseContent)
+  );
 
   // 색상 토큰
   const logoBg      = inverted ? 'bg-white dark:bg-[#1E1E1E]'       : 'bg-primary dark:bg-[#E6E6E6]';
@@ -133,7 +159,7 @@ export default function Header({
         id={inlineOnMobile || inlineOnDesktop ? undefined : 'main-header'}
         className={`group/header ${mobileHeaderPosition} ${desktopHeaderPosition} ${mobileHeaderWidth} z-[60] flex flex-col rounded-[12px] bg-white p-4 dark:bg-[#1E1E1E] will-change-transform transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
           hideHeader
-            ? '-translate-y-[calc(100%+24px)] pointer-events-none lg:translate-y-0 lg:pointer-events-auto'
+            ? '-translate-y-[calc(100%+24px)] pointer-events-none'
             : 'translate-y-0'
         } ${showProjectNav ? 'w-fit' : ''}`}
       >
