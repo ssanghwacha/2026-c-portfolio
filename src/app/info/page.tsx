@@ -626,8 +626,8 @@ function InfoCommandMenu() {
             </p>
             <p>
               Find me on{' '}
-              <a href="#" className="text-primary hover:opacity-70 dark:text-accent">LinkedIn</a>,{' '}
-              <a href="#" className="text-primary hover:opacity-70 dark:text-accent">Behance</a>, or via{' '}
+              <a href="https://www.linkedin.com/in/sangwhacha" target="_blank" rel="noopener noreferrer" className="text-primary hover:opacity-70 dark:text-accent">LinkedIn</a>,{' '}
+              <a href="https://www.behance.net/ssanghwa12b2b5" target="_blank" rel="noopener noreferrer" className="text-primary hover:opacity-70 dark:text-accent">Behance</a>, or via{' '}
               <a href="mailto:sangwhacha0@gmail.com" className="text-primary hover:opacity-70 dark:text-accent">Email</a>.
             </p>
           </div>

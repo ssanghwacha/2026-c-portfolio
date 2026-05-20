@@ -22,7 +22,7 @@ export default function HoverVideo({
 
     const timer = setTimeout(() => {
       if (video.readyState < 2) setFailed(true);
-    }, 3000);
+    }, 15000);
 
     const onCanPlay = () => {
       clearTimeout(timer);

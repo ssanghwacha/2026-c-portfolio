@@ -1,7 +1,7 @@
 const links = [
   { label: 'EMAIL', href: 'mailto:sangwhacha0@gmail.com' },
-  { label: 'LINKEDIN', href: '#' },
-  { label: 'BEHANCE', href: '#' },
+  { label: 'LINKEDIN', href: 'https://www.linkedin.com/in/sangwhacha' },
+  { label: 'BEHANCE', href: 'https://www.behance.net/ssanghwa12b2b5' },
 ];
 
 function BicycleIcon() {
