@@ -1,6 +1,5 @@
 const links = [
   { label: 'EMAIL', href: 'mailto:sangwhacha0@gmail.com' },
-  { label: 'RESUME', href: '#' },
   { label: 'LINKEDIN', href: '#' },
   { label: 'BEHANCE', href: '#' },
 ];
