@@ -15,6 +15,12 @@ export const metadata: Metadata = {
   title: "Sangwha Cha — Designer",
   description:
     "Designer in Vancouver, shaping brands and digital products with a refined eye for systems and user experience.",
+  icons: {
+    icon: [
+      { url: '/assets/favicon/Favicon32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/assets/favicon/Favicon16.png', sizes: '16x16', type: 'image/png' },
+    ],
+  },
   openGraph: {
     title: "Sangwha Cha — Designer",
     description:
