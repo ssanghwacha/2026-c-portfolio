@@ -133,7 +133,7 @@ export default function AltraPage() {
     >
       <div>
 
-        <div className="mx-auto max-w-[980px] pt-12">
+        <div className="w-full min-w-0 pt-12 lg:mx-auto lg:max-w-[980px]">
 
           {/* Overview */}
           <CaseSection id="overview">

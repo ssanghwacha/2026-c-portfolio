@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 
 export default function CaseFixedRail({ children }: { children: React.ReactNode }) {
-  const [railTop, setRailTop] = useState(9);
+  const [railTop, setRailTop] = useState(36);
   const [isAbsolute, setIsAbsolute] = useState(false);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export default function CaseFixedRail({ children }: { children: React.ReactNode 
         setRailTop(markerScrollY - railHeight - 48);
       } else {
         setIsAbsolute(false);
-        setRailTop(9);
+        setRailTop(36);
       }
     };
     const onScroll = () => {

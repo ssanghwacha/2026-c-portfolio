@@ -40,11 +40,11 @@ export default function CaseHero({
   liveDemoUrl?: string;
   layout?: 'fixed' | 'static';
 }) {
-  const [top, setTop] = useState(200);
+  const [top, setTop] = useState(36);
   const [activeSection, setActiveSection] = useState('');
   const [isNavOpen, setIsNavOpen] = useState(false);
   const headerGapPx = 12;
-  const hiddenHeaderTopPx = 16;
+  const hiddenHeaderTopPx = 12;
 
   useEffect(() => {
     const header = document.getElementById('main-header');
