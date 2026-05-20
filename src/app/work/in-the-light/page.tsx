@@ -27,15 +27,11 @@ const NAV = [
 ];
 
 const COLOR_PALETTE = [
-  { hex: '#3D4E9A', name: 'Trust Blue',     dark: true  },
-  { hex: '#006B54', name: 'Deep Green',     dark: true  },
-  { hex: '#00A37C', name: 'True Green',     dark: true  },
-  { hex: '#66CDB8', name: 'Soft Green',     dark: false },
-  { hex: '#DDF5EF', name: 'Pale Mint',      dark: false },
-  { hex: '#50A2DA', name: 'Sub Blue',       dark: true  },
-  { hex: '#A8D4EE', name: 'Light Blue',     dark: false },
-  { hex: '#F8FAF9', name: 'Base White',     dark: false },
-  { hex: '#202020', name: 'Ink Black',      dark: true  },
+  { name: 'Trust Blue', type: 'Primary color', hex: '#3D4E9A', rgb: '61 78 154',    dark: true  },
+  { name: 'Sub Blue',   type: 'Sub Color',     hex: '#50A2DA', rgb: '80 162 218',   dark: true  },
+  { name: 'Light Blue', type: 'Sub Color',     hex: '#A8D4EE', rgb: '168 212 238',  dark: false },
+  { name: 'Base Grey',  type: 'Sub Color',     hex: '#F5F5F5', rgb: '245 245 245',  dark: false },
+  { name: 'Ink Black',  type: 'Sub Color',     hex: '#202020', rgb: '32 32 32',     dark: true  },
 ];
 
 export default function InTheLight() {
@@ -72,13 +68,25 @@ export default function InTheLight() {
       heroSlot={
         <div>
           <HeroMediaReveal>
-            <div className="relative w-full overflow-hidden" style={{ aspectRatio: '3536/1970' }}>
+            {/* Mobile / Tablet */}
+            <div className="relative w-full aspect-square overflow-hidden rounded-[12px] lg:hidden">
+              <Image
+                src="/assets/projects/in-the-light/inthelight_main_2.png"
+                alt="IN THE LIGHT project hero"
+                fill
+                sizes="100vw"
+                className="object-cover"
+                priority
+              />
+            </div>
+            {/* Desktop */}
+            <div className="relative w-full aspect-[3536/1970] overflow-hidden hidden lg:block">
               <Image
                 src={inTheLightHero}
                 alt="IN THE LIGHT project hero"
                 fill
                 sizes="100vw"
-                className="object-cover"
+                className="object-cover object-center"
                 priority
               />
             </div>
@@ -200,36 +208,38 @@ export default function InTheLight() {
                 {/* Color Palette */}
                 <div>
                   <p className="text-[10px] uppercase tracking-widest text-[#ADADAD] mb-3">Color Palette</p>
-                  <div className="mb-2 flex min-h-[160px] flex-col justify-between rounded-[8px] p-5" style={{ backgroundColor: '#3D4E9A' }}>
-                    <div>
-                      <p className="mb-3 text-[10px] uppercase tracking-widest text-white/70">Color</p>
-                      <h3 className="text-[24px] font-medium leading-none text-white">Trust Blue</h3>
-                    </div>
-                    <p className="font-mono text-[10px] leading-[1.5] text-white/70">
-                      #3D4E9A
-                    </p>
+
+                  {/* Inspiration image */}
+                  <div className="relative mb-2 aspect-[2/1] w-full overflow-hidden rounded-[8px]">
+                    <Image
+                      src="/assets/projects/in-the-light/angelina-litvin-S6wHfOpdGkY-unsplash.jpg"
+                      alt="Inspiration of the color"
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 980px"
+                      className="object-cover"
+                    />
                   </div>
-                  <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-8">
-                    {COLOR_PALETTE.slice(1).map(({ hex, name, dark }) => (
-                      <div
-                        key={hex}
-                        className="flex min-h-[154px] flex-col justify-between overflow-hidden rounded-[8px] p-3"
-                        style={{ backgroundColor: hex }}
-                      >
-                        <span
-                          className="[writing-mode:vertical-rl] rotate-180 text-[15px] font-bold leading-none"
-                          style={{ color: dark ? '#FFFFFF' : '#3F3F3F' }}
+
+                  {/* Color blocks */}
+                  <div className="grid grid-cols-2 gap-0 overflow-hidden rounded-[8px] sm:grid-cols-5">
+                    {COLOR_PALETTE.map(({ name, type, hex, rgb, dark }) => {
+                      const textColor = dark ? '#FFFFFF' : '#3F3F3F';
+                      const subTextColor = dark ? 'rgba(255,255,255,0.72)' : 'rgba(0,0,0,0.55)';
+                      return (
+                        <div
+                          key={hex}
+                          className="flex flex-col gap-3 p-4 min-h-[160px] sm:min-h-[200px]"
+                          style={{ backgroundColor: hex }}
                         >
-                          {name}
-                        </span>
-                        <span
-                          className="font-mono text-[9px]"
-                          style={{ color: dark ? 'rgba(255,255,255,0.72)' : 'rgba(0,0,0,0.42)' }}
-                        >
-                          {hex.toUpperCase()}
-                        </span>
-                      </div>
-                    ))}
+                          <p className="text-[14px] font-medium" style={{ color: textColor }}>{name}</p>
+                          <div className="font-mono text-[10px] leading-[1.6]" style={{ color: subTextColor }}>
+                            <p>{type}</p>
+                            <p>RGB {rgb}</p>
+                            <p>HEX {hex.replace('#', '')}</p>
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
 

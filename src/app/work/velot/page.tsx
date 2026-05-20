@@ -78,14 +78,25 @@ export default function VelotPage() {
       heroSlot={
         <div>
           <HeroMediaReveal>
-            <div className="relative w-full overflow-hidden rounded-[8px]" style={{ aspectRatio: '1920/959' }}>
+            {/* Mobile / Tablet */}
+            <div className="relative w-full aspect-square overflow-hidden rounded-[12px] lg:hidden">
               <Image
-                src="/assets/projects/velot/signage01.jpg"
-                alt="Velot signage"
+                src="/assets/projects/velot/billow_mobile.png"
+                alt="Velot hero"
                 fill
                 sizes="100vw"
                 className="object-cover"
-                style={{ objectPosition: '50% 30%' }}
+                priority
+              />
+            </div>
+            {/* Desktop */}
+            <div className="relative w-full aspect-[3200/1823] overflow-hidden hidden lg:block">
+              <Image
+                src="/assets/projects/velot/billow_desktop.png"
+                alt="Velot hero"
+                fill
+                sizes="100vw"
+                className="object-cover object-center"
                 priority
               />
             </div>
