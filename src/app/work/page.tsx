@@ -9,8 +9,8 @@ type Category = 'all' | 'product' | 'branding';
 
 const filters: { key: Category; label: string }[] = [
   { key: 'all', label: 'Everything' },
-  { key: 'product', label: 'Product | UXUI' },
   { key: 'branding', label: 'Branding' },
+  { key: 'product', label: 'UIUX | Product' },
 ];
 
 function WorkFilter({ active, setActive }: { active: Category; setActive: (c: Category) => void }) {

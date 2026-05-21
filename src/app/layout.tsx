@@ -12,6 +12,7 @@ const rethink = Rethink_Sans({
 
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://sangwhacha.com"),
   title: "Sangwha Cha — Designer",
   description:
     "Designer in Vancouver, shaping brands and digital products with a refined eye for systems and user experience.",

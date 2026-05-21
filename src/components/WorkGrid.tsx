@@ -20,8 +20,8 @@ export default function WorkGrid({ active: externalActive }: { active?: Category
         {(
           [
             { key: 'all', label: 'Everything' },
-            { key: 'product', label: 'Product | UXUI' },
             { key: 'branding', label: 'Branding' },
+            { key: 'product', label: 'UIUX | Product' },
           ] as { key: Category; label: string }[]
         ).map(({ key, label }) => (
           <button
