@@ -110,36 +110,37 @@ export default function VelotPage() {
 
           {/* Overview */}
           <CaseSection id="overview">
-            <div className="font-satoshi max-w-4xl">
+            <div className="font-satoshi max-w-[839px] mb-16">
               <p className="type-eyebrow text-primary dark:border-[#555] dark:text-[#999] mb-8">Overview</p>
-              <h2 className="type-hero text-primary dark:text-[#E6E6E6] mb-10 max-w-3xl">
+              <h2 className="type-hero text-primary dark:text-[#E6E6E6] mb-10 max-w-[520px]">
                 A refined digital experience for urban car sharing.
               </h2>
-              <p className="type-body-lg max-w-[90%] text-[#6F6F6F] dark:text-[#999] mb-16">
+              <p className="type-body-lg text-[#6F6F6F] dark:text-[#999]">
                 Velot is a car-sharing brand designed to make urban mobility feel smoother, clearer, and more intuitive. Rather than focusing only on driving, the experience considers the entire flow of movement across the city, from navigation to arrival and parking.
               </p>
-              <video
-                src="/assets/projects/velot/logo_animation.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-auto rounded-[8px]"
-              />
             </div>
+            <video
+              src="/assets/projects/velot/logo_animation.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-auto rounded-[8px]"
+            />
           </CaseSection>
 
           {/* Brand Story */}
           <CaseSection id="story">
-            <div className="font-satoshi max-w-4xl">
+            <div className="font-satoshi max-w-[839px] mb-16">
               <p className="type-eyebrow text-primary dark:border-[#555] dark:text-[#999] mb-8">Brand Story</p>
-              <h2 className="type-hero text-primary dark:text-[#E6E6E6] mb-10 max-w-3xl">
+              <h2 className="type-hero text-primary dark:text-[#E6E6E6] mb-10 max-w-[520px]">
                 Designed around the rhythm of urban movement.
               </h2>
-              <p className="type-body-lg max-w-[90%] text-[#6F6F6F] dark:text-[#999] mb-16">
+              <p className="type-body-lg text-[#6F6F6F] dark:text-[#999]">
                 Urban mobility is not only about getting from one place to another. Velot explores the quieter transitions within the journey, moments of slowing down, arriving, and navigating the city with ease. This idea became the foundation for the brand&apos;s visual and digital identity.
               </p>
-              <div className="w-full rounded-[16px] bg-[#0c0c0c] overflow-hidden grid grid-cols-1 sm:grid-cols-2">
+            </div>
+            <div className="w-full rounded-[16px] bg-[#0c0c0c] overflow-hidden grid grid-cols-1 sm:grid-cols-2">
                 <div className="flex aspect-square items-center justify-center p-10 sm:aspect-auto sm:p-12">
                   <Image
                     src="/assets/projects/velot/logo.png"
@@ -149,30 +150,30 @@ export default function VelotPage() {
                     className="w-full max-w-[72px] h-auto rounded-[16px] transition-all duration-300 ease-out hover:shadow-[0_0_20px_4px_rgba(31,109,234,0.45)] sm:max-w-[96px] sm:rounded-[20px]"
                   />
                 </div>
-                <div className="relative overflow-hidden" style={{ aspectRatio: '1/1' }}>
-                  <Image
-                    src="/assets/projects/velot/mobile.jpg"
-                    alt="Velot mobile"
-                    fill
-                    sizes="50vw"
-                    className="object-cover"
-                  />
-                </div>
+              <div className="relative overflow-hidden" style={{ aspectRatio: '1/1' }}>
+                <Image
+                  src="/assets/projects/velot/mobile.jpg"
+                  alt="Velot mobile"
+                  fill
+                  sizes="50vw"
+                  className="object-cover"
+                />
               </div>
             </div>
           </CaseSection>
 
           {/* Approach */}
           <CaseSection id="approach">
-            <div className="font-satoshi max-w-4xl">
+            <div className="font-satoshi max-w-[839px] mb-16">
               <p className="type-eyebrow text-primary dark:border-[#555] dark:text-[#999] mb-8">Approach</p>
-              <h2 className="type-hero text-primary dark:text-[#E6E6E6] mb-10 max-w-3xl">
+              <h2 className="type-hero text-primary dark:text-[#E6E6E6] mb-10 max-w-[520px]">
                 Geometry inspired by the city.
               </h2>
-              <p className="type-body-lg max-w-[90%] text-[#6F6F6F] dark:text-[#999] mb-16">
+              <p className="type-body-lg text-[#6F6F6F] dark:text-[#999]">
                 The identity system draws from visual patterns found in urban driving environments, including road markings, parking structures, curves, and directional flow. These elements were reduced into simple geometric forms to create a system that feels structured, fluid, and modern.
               </p>
-              <div className="flex flex-col gap-4">
+            </div>
+            <div className="flex flex-col gap-4">
                 <div className="w-full rounded-[8px] bg-[#0c0c0c] flex items-center justify-center p-16">
                   <Image
                     src="/assets/projects/velot/logo_detail.png"
@@ -196,22 +197,21 @@ export default function VelotPage() {
                   height={900}
                   className="w-full h-auto rounded-[8px]"
                 />
-              </div>
             </div>
           </CaseSection>
 
           {/* Visual Identity */}
           <CaseSection id="identity">
-            <div className="font-satoshi max-w-4xl">
+            <div className="font-satoshi max-w-[839px] mb-16">
               <p className="type-eyebrow text-primary dark:border-[#555] dark:text-[#999] mb-8">Visual Identity</p>
-              <h2 className="type-hero text-primary dark:text-[#E6E6E6] mb-10 max-w-3xl">
+              <h2 className="type-hero text-primary dark:text-[#E6E6E6] mb-10 max-w-[520px]">
                 Clarity through contrast.
               </h2>
-              <p className="type-body-lg max-w-[90%] text-[#6F6F6F] dark:text-[#999] mb-16">
+              <p className="type-body-lg text-[#6F6F6F] dark:text-[#999]">
                 The visual identity combines a deep black foundation with a vibrant signature blue and soft neutrals to create a clean yet expressive system. Paired with Avenir Next, the typography reinforces the brand&apos;s geometric and contemporary character across digital touchpoints.
               </p>
-
-              <div className="flex flex-col gap-10">
+            </div>
+            <div className="flex flex-col gap-10">
 
                 {/* Color Scales */}
                 <div className="flex flex-col gap-2">
@@ -295,29 +295,28 @@ export default function VelotPage() {
                 </div>
                 </div>
 
-              </div>
             </div>
           </CaseSection>
 
           {/* Application */}
           <CaseSection id="application">
-            <div className="font-satoshi max-w-4xl">
+            <div className="font-satoshi max-w-[839px]">
               <p className="type-eyebrow text-primary dark:border-[#555] dark:text-[#999] mb-8">Application</p>
-              <h2 className="type-hero text-primary dark:text-[#E6E6E6] mb-16 max-w-3xl">
+              <h2 className="type-hero text-primary dark:text-[#E6E6E6] mb-16 max-w-[520px]">
                 The identity applied across digital experiences.
               </h2>
-              <div className="flex flex-col gap-4">
-                {['01', '02', '03', '04', '05', '06', '07'].map((n) => (
-                  <Image
-                    key={n}
-                    src={`/assets/projects/velot/application${n}.jpg`}
-                    alt={`Velot application ${n}`}
-                    width={1600}
-                    height={900}
-                    className="w-full h-auto rounded-[8px]"
-                  />
-                ))}
-              </div>
+            </div>
+            <div className="flex flex-col gap-4">
+              {['01', '02', '03', '04', '05', '06', '07'].map((n) => (
+                <Image
+                  key={n}
+                  src={`/assets/projects/velot/application${n}.jpg`}
+                  alt={`Velot application ${n}`}
+                  width={1600}
+                  height={900}
+                  className="w-full h-auto rounded-[8px]"
+                />
+              ))}
             </div>
           </CaseSection>
 

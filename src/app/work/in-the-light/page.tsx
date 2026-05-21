@@ -102,10 +102,10 @@ export default function InTheLight() {
           <CaseSection id="overview">
             <div className="font-satoshi">
               <p className="type-eyebrow text-primary dark:border-[#555] dark:text-[#999] mb-8">Overview</p>
-              <h2 className="type-hero text-primary dark:text-[#E6E6E6] mb-10 max-w-3xl">
+              <h2 className="type-hero text-primary dark:text-[#E6E6E6] mb-10 max-w-[520px]">
                 Try hobbies lightly, and find the one that's yours.
               </h2>
-              <p className="type-body-lg max-w-2xl text-[#6F6F6F] dark:text-[#999] mb-16">
+              <p className="type-body-lg max-w-[839px] text-[#6F6F6F] dark:text-[#999] mb-16">
                 Hobbies often start with excitement but end in abandoned supplies. IN THE LIGHT is designed for the explorers celebrating the discovery process itself, making it okay to try without commitment until you find what sticks.
               </p>
               <Image
@@ -122,10 +122,10 @@ export default function InTheLight() {
           <CaseSection id="story">
             <div className="font-satoshi">
               <p className="type-eyebrow text-primary dark:border-[#555] dark:text-[#999] mb-8">Brand Story</p>
-              <h2 className="type-hero text-primary dark:text-[#E6E6E6] mb-10 max-w-3xl">
+              <h2 className="type-hero text-primary dark:text-[#E6E6E6] mb-10 max-w-[520px]">
                 Finding a hobby is like sculpting.
               </h2>
-              <p className="type-body-lg max-w-2xl text-[#6F6F6F] dark:text-[#999] mb-16">
+              <p className="type-body-lg max-w-[839px] text-[#6F6F6F] dark:text-[#999] mb-16">
                 I used the sculpting process as a metaphor for hobby discovery. This concept became the visual language that drives the brand.
               </p>
               <video
@@ -143,10 +143,10 @@ export default function InTheLight() {
           <CaseSection id="concept">
             <div className="font-satoshi">
               <p className="type-eyebrow text-primary dark:border-[#555] dark:text-[#999] mb-8">Concept</p>
-              <h2 className="type-hero text-primary dark:text-[#E6E6E6] mb-10 max-w-3xl">
+              <h2 className="type-hero text-primary dark:text-[#E6E6E6] mb-10 max-w-[520px]">
                 Three values drive the brand.
               </h2>
-              <p className="type-body-lg max-w-2xl text-[#6F6F6F] dark:text-[#999] mb-16">
+              <p className="type-body-lg max-w-[839px] text-[#6F6F6F] dark:text-[#999] mb-16">
                 All hobbies begin with curiosity. This brand helps sustain that spark and nurture it into something meaningful.
               </p>
               <div className="mb-16 grid grid-cols-1 gap-12 sm:grid-cols-3 sm:gap-10">
@@ -196,10 +196,10 @@ export default function InTheLight() {
           <CaseSection id="design-system">
             <div className="font-satoshi">
               <p className="type-eyebrow text-primary dark:border-[#555] dark:text-[#999] mb-8">Design System</p>
-              <h2 className="type-hero text-primary dark:text-[#E6E6E6] mb-10 max-w-3xl">
+              <h2 className="type-hero text-primary dark:text-[#E6E6E6] mb-10 max-w-[520px]">
                 The design system
               </h2>
-              <p className="type-body-lg max-w-2xl text-[#6F6F6F] dark:text-[#999] mb-16">
+              <p className="type-body-lg max-w-[839px] text-[#6F6F6F] dark:text-[#999] mb-16">
                 I built the system around a grounded blue that establishes trust. Secondary colors and graphic elements bring energy while maintaining clarity.
               </p>
 
@@ -279,10 +279,10 @@ export default function InTheLight() {
           <CaseSection id="application">
             <div className="font-satoshi">
               <p className="type-eyebrow text-primary dark:border-[#555] dark:text-[#999] mb-8">Application</p>
-              <h2 className="type-hero text-primary dark:text-[#E6E6E6] mb-16 max-w-3xl">
+              <h2 className="type-hero text-primary dark:text-[#E6E6E6] mb-16 max-w-[520px]">
                 Applied across touchpoints.
               </h2>
-              <p className="type-body-lg max-w-2xl text-[#6F6F6F] dark:text-[#999] mb-16">
+              <p className="type-body-lg max-w-[839px] text-[#6F6F6F] dark:text-[#999] mb-16">
                 Business cards, packaging, posters, tote bags. Each touchpoint carries the same lightness the brand stands for.
               </p>
               <div className="flex flex-col gap-4">

@@ -137,7 +137,7 @@ export default function AltraPage() {
 
           {/* Overview */}
           <CaseSection id="overview">
-            <div className="font-satoshi max-w-4xl">
+            <div className="font-satoshi">
               <TextBlock
                 eyebrow="Overview"
                 headline="ALTRA is a hiking safety navigation concept designed for beginner hikers."
@@ -181,7 +181,7 @@ export default function AltraPage() {
 
           {/* The Problem */}
           <CaseSection id="problem">
-            <div className="font-satoshi max-w-4xl">
+            <div className="font-satoshi">
               <TextBlock
                 eyebrow="The Problem"
                 headline="On the trail, you do not always know which direction is correct. But you still have to choose one."
@@ -247,7 +247,7 @@ export default function AltraPage() {
 
           {/* Reframing Navigation */}
           <CaseSection id="reframing">
-            <div className="font-satoshi max-w-4xl">
+            <div className="font-satoshi">
               <TextBlock
                 eyebrow="Reframing Goal"
                 headline="The goal was supporting decisions under uncertainty rather than improving navigation accuracy."
@@ -308,7 +308,7 @@ export default function AltraPage() {
 
           {/* Direction */}
           <CaseSection id="direction">
-            <div className="font-satoshi max-w-4xl">
+            <div className="font-satoshi">
               <TextBlock
                 eyebrow="Direction"
                 headline="From route to state."
@@ -392,7 +392,7 @@ export default function AltraPage() {
 
           {/* Testing & Results */}
           <CaseSection id="results">
-            <div className="font-satoshi max-w-4xl">
+            <div className="font-satoshi">
               <TextBlock
                 eyebrow="Testing & Results"
                 headline="Three tests. One question — does the safety state register first?"
@@ -609,7 +609,7 @@ export default function AltraPage() {
 
           {/* Design System */}
           <CaseSection id="design-system">
-            <div className="font-satoshi max-w-4xl">
+            <div className="font-satoshi">
               <TextBlock
                 eyebrow="Design System"
                 headline="Each safety state has its own visual language."
@@ -636,7 +636,7 @@ export default function AltraPage() {
 
           {/* Reflection */}
           <CaseSection id="reflection">
-            <div className="font-satoshi max-w-4xl">
+            <div className="font-satoshi">
               <TextBlock eyebrow="Reflection" headline="What I learned from this project" />
 
               <div className="mt-10 space-y-4">
