@@ -71,7 +71,7 @@ export default function BgztPage() {
                 BGZT Delivery. A sub-brand for a simpler way to sell.
               </h2>
               <p className="type-body-lg max-w-2xl text-[#6F6F6F] dark:text-[#999] mb-16">
-                BGZT is a secondhand marketplace. To make selling even easier, they introduced a pickup and delivery service: you list the item, they pick it up, pack it, and ship it for you. This project builds the visual identity for that service.
+                BGZT is a secondhand marketplace. While working there, I proposed a new pickup and delivery service called BGZT Delivery to simplify selling: you list the item, they pick it up, pack it, and ship it for you. I developed the complete brand identity, including the core concept ONE WAY, visual system, and packaging design. The concept was not implemented, but the project demonstrates how I approach building a brand from strategy through to execution.
               </p>
               <Image
                 src="/assets/projects/bgzt/bgzt_overview.jpg"
@@ -118,9 +118,7 @@ export default function BgztPage() {
                 ONE WAY.
               </h2>
               <p className="type-body-lg max-w-2xl text-[#6F6F6F] dark:text-[#999] mb-16">
-                ONE WAY is the sub-brand name for BGZT&apos;s pickup and delivery flow.
-                The name reflects the simplicity of the process: pick up, pack, deliver, done.
-                No back-and-forth. No ambiguity.
+                ONE WAY is the conceptual foundation for BGZT Delivery. The name captures the simplicity of the process: pick up, pack, deliver, done. No back-and-forth. No ambiguity. This concept informed the entire visual identity, from the directional graphics to the packaging system.
               </p>
               <div className="relative aspect-video overflow-hidden rounded-[8px]">
                 <Image
