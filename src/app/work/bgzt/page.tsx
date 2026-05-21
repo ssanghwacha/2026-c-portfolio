@@ -20,9 +20,9 @@ export default function BgztPage() {
       belowGrid={
         <SeeMore
           projects={[
-            { slug: 'billow',     title: 'Billow',     category: 'Product · UXUI', thumbnail: '/assets/projects/billow/thumbnail.jpg' },
-            { slug: 'altra',      title: 'Altra',      category: 'Product · UXUI', thumbnail: '/assets/projects/altra/thumbnail.jpg' },
-            { slug: 'fianchetto', title: 'Fianchetto', category: 'Branding',       thumbnail: '/assets/projects/fianchetto/fian_main_01.png' },
+            { slug: 'billow',       title: 'Billow',       category: 'Product · UXUI', thumbnail: '/assets/projects/billow/thumbnail.jpg' },
+            { slug: 'in-the-light', title: 'In the light', category: 'Branding',       thumbnail: '/assets/projects/in-the-light/inthelight_main.png' },
+            { slug: 'altra',        title: 'Altra',        category: 'Product · UXUI', thumbnail: '/assets/projects/altra/thumbnail.jpg' },
           ]}
         />
       }

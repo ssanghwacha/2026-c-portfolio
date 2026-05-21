@@ -201,9 +201,9 @@ export default function BillowPage() {
       belowGrid={
         <SeeMore
           projects={[
-            { slug: 'altra', title: 'Altra', category: 'Product · UXUI', thumbnail: '/assets/projects/altra/thumbnail.jpg' },
-            { slug: 'velot', title: 'Velot', category: 'Branding', thumbnail: '/assets/projects/velot/thumbnail.jpg' },
-            { slug: 'fianchetto', title: 'Fianchetto', category: 'Branding', thumbnail: '/assets/projects/fianchetto/fian_main_01.png' },
+            { slug: 'altra',        title: 'Altra',        category: 'Product · UXUI', thumbnail: '/assets/projects/altra/thumbnail.jpg' },
+            { slug: 'in-the-light', title: 'In the light', category: 'Branding',       thumbnail: '/assets/projects/in-the-light/inthelight_main.png' },
+            { slug: 'velot',        title: 'Velot',        category: 'Branding',       thumbnail: '/assets/projects/velot/thumbnail.jpg' },
           ]}
         />
       }
