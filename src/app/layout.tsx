@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Rethink_Sans } from "next/font/google";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import Script from "next/script";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
 const rethink = Rethink_Sans({
@@ -59,6 +60,7 @@ export default function RootLayout({
           }}
         />
         <ThemeProvider>{children}</ThemeProvider>
+        <GoogleAnalytics gaId="G-RX957HRGVH" />
       </body>
     </html>
   );
