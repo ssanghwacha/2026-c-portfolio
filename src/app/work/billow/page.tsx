@@ -1,5 +1,11 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import { Smiley, Airplay, Users, NumberCircleOne, NumberCircleTwo, NumberCircleThree, NumberCircleFour, NumberCircleFive, UserPlus, ChatDots, CheckCircle, Pause, SlidersHorizontal } from '@phosphor-icons/react/ssr';
+
+export const metadata: Metadata = {
+  title: 'Billow - Work',
+  description: 'Case study: Billow project design work.',
+};
 import ProjectLayout from '@/components/casestudy/ProjectLayout';
 import HoverVideo from '@/components/casestudy/HoverVideo';
 import CaseHero from '@/components/casestudy/CaseHero';

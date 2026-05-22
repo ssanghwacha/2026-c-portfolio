@@ -1,4 +1,10 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
+
+export const metadata: Metadata = {
+  title: 'BGZT - Work',
+  description: 'Case study: BGZT project design work.',
+};
 import ProjectLayout from '@/components/casestudy/ProjectLayout';
 import CaseHero from '@/components/casestudy/CaseHero';
 import CaseSection from '@/components/casestudy/CaseSection';

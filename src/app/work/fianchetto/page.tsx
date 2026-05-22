@@ -1,5 +1,11 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import { BirdIcon, CatIcon, RabbitIcon } from '@phosphor-icons/react/ssr';
+
+export const metadata: Metadata = {
+  title: 'Fianchetto - Work',
+  description: 'Case study: Fianchetto project design work.',
+};
 import ProjectLayout from '@/components/casestudy/ProjectLayout';
 import CaseHero from '@/components/casestudy/CaseHero';
 import CaseSection from '@/components/casestudy/CaseSection';

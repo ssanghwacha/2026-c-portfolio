@@ -1,4 +1,10 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
+
+export const metadata: Metadata = {
+  title: 'Altra - Work',
+  description: 'Case study: Altra project design work.',
+};
 import { BirdIcon, CatIcon, RabbitIcon, NumberCircleOneIcon, NumberCircleTwoIcon, NumberCircleThreeIcon } from '@phosphor-icons/react/ssr';
 import ProjectLayout from '@/components/casestudy/ProjectLayout';
 import HoverVideo from '@/components/casestudy/HoverVideo';

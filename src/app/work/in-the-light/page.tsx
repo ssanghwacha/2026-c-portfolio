@@ -1,5 +1,11 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import ProjectLayout from '@/components/casestudy/ProjectLayout';
+
+export const metadata: Metadata = {
+  title: 'In the Light - Work',
+  description: 'Case study: In the Light project design work.',
+};
 import CaseHero from '@/components/casestudy/CaseHero';
 import CaseSection from '@/components/casestudy/CaseSection';
 import PlaybackRateVideo from '@/components/casestudy/PlaybackRateVideo';
