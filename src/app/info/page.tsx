@@ -1,10 +1,3 @@
-import type { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Info',
-  description: 'About Sangwha Cha - experience, education, and interests.',
-};
-
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';

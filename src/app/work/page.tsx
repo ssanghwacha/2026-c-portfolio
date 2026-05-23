@@ -1,10 +1,3 @@
-import type { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Work',
-  description: 'Portfolio of design projects and case studies.',
-};
-
 'use client';
 
 import { useState } from 'react';

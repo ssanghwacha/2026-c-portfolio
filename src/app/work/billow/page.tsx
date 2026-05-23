@@ -297,6 +297,25 @@ export default function BillowPage() {
                   </div>
                 ))}
               </div>
+
+              <div className="flex gap-3 pt-6">
+                <a
+                  href="https://www.figma.com/proto/YWhTgcOcaigiwR9wO8wjAg/Billow?page-id=1189%3A10577&node-id=1738-4627&viewport=236%2C752%2C0.13&t=zPSIvidPOs9sOcIO-1&scaling=contain&content-scaling=fixed&starting-point-node-id=1738%3A4627&show-proto-sidebar=1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-lg bg-primary text-white px-6 py-3 font-satoshi text-sm font-medium hover:opacity-90 transition-opacity dark:bg-[#2A2A2A] dark:text-[#E6E6E6]"
+                >
+                  View Prototype
+                </a>
+                <a
+                  href="https://billow-tau.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-lg border border-primary text-primary px-6 py-3 font-satoshi text-sm font-medium hover:bg-primary/5 transition-colors dark:border-[#555] dark:text-[#E6E6E6] dark:hover:bg-[#2A2A2A]"
+                >
+                  Live Demo
+                </a>
+              </div>
             </div>
 
             <Image
