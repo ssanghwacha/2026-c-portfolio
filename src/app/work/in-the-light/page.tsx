@@ -75,7 +75,7 @@ export default function InTheLight() {
         <div>
           <HeroMediaReveal>
             {/* Mobile / Tablet */}
-            <div className="relative w-full aspect-square overflow-hidden rounded-[12px] lg:hidden">
+            <div className="relative w-full aspect-square overflow-hidden rounded-[8px] lg:hidden">
               <Image
                 src="/assets/projects/in-the-light/inthelight_main_2.png"
                 alt="IN THE LIGHT project hero"

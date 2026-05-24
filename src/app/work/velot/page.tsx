@@ -85,7 +85,7 @@ export default function VelotPage() {
         <div>
           <HeroMediaReveal>
             {/* Mobile / Tablet */}
-            <div className="relative w-full aspect-square overflow-hidden rounded-[12px] lg:hidden">
+            <div className="relative w-full aspect-square overflow-hidden rounded-[8px] lg:hidden">
               <Image
                 src="/assets/projects/velot/billow_mobile.png"
                 alt="Velot hero"

@@ -247,7 +247,7 @@ export default function BillowPage() {
                 loop
                 muted
                 playsInline
-                className="w-full h-auto rounded-[6px] lg:rounded-[8px]"
+                className="w-full h-auto rounded-[8px]"
               />
             </div>
             {/* Desktop */}
@@ -326,7 +326,7 @@ export default function BillowPage() {
               alt="Billow overview dashboard showing subscription management through chat"
               width={3092}
               height={1370}
-              className="h-auto w-full rounded-[6px] lg:rounded-[8px]"
+              className="h-auto w-full rounded-[8px]"
             />
           </CaseSection>
 
@@ -376,7 +376,7 @@ export default function BillowPage() {
                     name: 'Individual user',
                   },
                 ].map(({ icon, quote, name }) => (
-                  <div key={name} className="flex gap-3 overflow-hidden rounded-[6px] px-2 py-2.5 lg:rounded-[8px]">
+                  <div key={name} className="flex gap-3 overflow-hidden rounded-[8px] px-2 py-2.5">
                     <div className="shrink-0 text-[#3F3F3F] dark:text-[#ADADAD]">{icon}</div>
                     <div className="flex min-w-0 flex-1 flex-col gap-2.5">
                       <p className="font-satoshi text-[18px] font-medium leading-[1.2] text-[#3F3F3F] dark:text-[#D9D9D9]">
@@ -391,8 +391,8 @@ export default function BillowPage() {
               </div>
             </div>
 
-            <div className="mt-[38px] overflow-hidden rounded-[6px] bg-[#F5F5F5] px-4 py-5 dark:bg-[#2A2A2A] lg:rounded-[8px] lg:px-8 lg:py-10">
-              <div className="relative mx-auto aspect-square w-full overflow-hidden rounded-[6px] lg:aspect-auto lg:w-[86%] lg:max-w-none lg:overflow-visible lg:rounded-none">
+            <div className="mt-[38px] overflow-hidden rounded-[8px] bg-[#F5F5F5] px-4 py-5 dark:bg-[#2A2A2A] lg:px-8 lg:py-10">
+              <div className="relative mx-auto aspect-square w-full overflow-hidden rounded-[8px] lg:aspect-auto lg:w-[86%] lg:max-w-none lg:overflow-visible lg:rounded-none">
                 <Image
                   src="/assets/projects/billow/friction_01.png"
                   alt="Examples of inactive business email subscriptions and expired platform licenses"
@@ -603,8 +603,8 @@ export default function BillowPage() {
               <ABTestCard
                 beforeLabel="Expected"
                 afterLabel="What actually happened"
-                beforeContent={<div className="relative w-full aspect-[4/3] rounded-[6px] overflow-hidden lg:h-[480px] lg:aspect-auto lg:rounded-[8px]"><Image src="/assets/projects/billow/expected.jpg" alt="Expected behavior" fill className="object-cover object-left" /></div>}
-                afterContent={<div className="relative w-full aspect-[4/3] rounded-[6px] overflow-hidden lg:h-[480px] lg:aspect-auto lg:rounded-[8px]"><Image src="/assets/projects/billow/actually_happened.jpg" alt="What actually happened" fill className="object-cover object-left" /></div>}
+                beforeContent={<div className="relative w-full aspect-[4/3] rounded-[8px] overflow-hidden lg:h-[480px] lg:aspect-auto"><Image src="/assets/projects/billow/expected.jpg" alt="Expected behavior" fill className="object-cover object-left" /></div>}
+                afterContent={<div className="relative w-full aspect-[4/3] rounded-[8px] overflow-hidden lg:h-[480px] lg:aspect-auto"><Image src="/assets/projects/billow/actually_happened.jpg" alt="What actually happened" fill className="object-cover object-left" /></div>}
                 finding="Users assumed the tool cards were interactive and clicked them instead of approving via chat. As a result, the onboarding flow stopped because the system was waiting for a chat response."
               />
             </div>
@@ -618,13 +618,13 @@ export default function BillowPage() {
                     <div className="grid gap-6 lg:grid-cols-2">
                       <div>
                         <p className="mb-3 text-xs uppercase tracking-[0.18em] text-[#3D5FE8] dark:text-[#555]">Before</p>
-                        <div className="relative w-full aspect-video rounded-[6px] overflow-hidden lg:rounded-[8px]">
+                        <div className="relative w-full aspect-video rounded-[8px] overflow-hidden">
                           <Image src="/assets/projects/billow/01_b.jpg" alt="Before" fill className="object-cover" />
                         </div>
                       </div>
                       <div>
                         <p className="mb-3 text-xs uppercase tracking-[0.18em] text-[#3D5FE8] dark:text-[#555]">After</p>
-                        <div className="relative w-full aspect-video rounded-[6px] overflow-hidden lg:rounded-[8px]">
+                        <div className="relative w-full aspect-video rounded-[8px] overflow-hidden">
                           <Image src="/assets/projects/billow/01_a.jpg" alt="After" fill className="object-cover" />
                         </div>
                       </div>
@@ -635,13 +635,13 @@ export default function BillowPage() {
                     <div className="grid gap-6 md:grid-cols-2">
                       <div>
                         <p className="mb-3 text-xs uppercase tracking-[0.18em] text-[#3D5FE8] dark:text-[#555]">Before</p>
-                        <div className="relative w-full aspect-[3/4] rounded-[6px] overflow-hidden lg:h-[400px] lg:aspect-auto lg:rounded-[8px]">
+                        <div className="relative w-full aspect-[3/4] rounded-[8px] overflow-hidden lg:h-[400px] lg:aspect-auto">
                           <Image src="/assets/projects/billow/02_b.jpg" alt="Before" fill className="object-cover object-top" />
                         </div>
                       </div>
                       <div>
                         <p className="mb-3 text-xs uppercase tracking-[0.18em] text-[#3D5FE8] dark:text-[#555]">After</p>
-                        <div className="relative w-full aspect-[3/4] rounded-[6px] overflow-hidden lg:h-[400px] lg:aspect-auto lg:rounded-[8px]">
+                        <div className="relative w-full aspect-[3/4] rounded-[8px] overflow-hidden lg:h-[400px] lg:aspect-auto">
                           <Image src="/assets/projects/billow/02_a.jpg" alt="After" fill className="object-cover object-top" />
                         </div>
                       </div>

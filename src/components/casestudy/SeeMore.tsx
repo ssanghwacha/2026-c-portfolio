@@ -23,7 +23,7 @@ export default function SeeMore({ projects }: { projects: ProjectRef[] }) {
             href={`/work/${p.slug}`}
             className={`group flex flex-col gap-3 ${index > 1 ? 'hidden md:flex' : ''}`}
           >
-            <div className="relative w-full aspect-[7/10] bg-[#D9D9D9] dark:bg-[#2A2A2A] rounded-[6px] overflow-hidden lg:rounded-lg">
+            <div className="relative w-full aspect-[7/10] bg-[#D9D9D9] dark:bg-[#2A2A2A] rounded-[8px] overflow-hidden">
               {p.thumbnail && (
                 <Image
                   src={p.thumbnail}

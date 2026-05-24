@@ -55,7 +55,7 @@ export default function WorkGrid({ active: externalActive }: { active?: Category
             className="flex flex-col gap-3 group"
             style={{ fontFamily: "'Satoshi', sans-serif" }}
           >
-            <div className="relative w-full bg-[#D9D9D9] dark:bg-[#2A2A2A] rounded-lg overflow-hidden aspect-[7/10]">
+            <div className="relative w-full bg-[#D9D9D9] dark:bg-[#2A2A2A] rounded-[8px] overflow-hidden aspect-[7/10]">
               {project.thumbnail && (
                 <Image
                   src={project.thumbnail}

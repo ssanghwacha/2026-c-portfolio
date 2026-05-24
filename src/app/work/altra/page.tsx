@@ -339,11 +339,11 @@ export default function AltraPage() {
                   <div className="rounded-[8px] bg-[#F5F5F5] p-12 dark:bg-[#2A2A2A]">
                     <div className="mx-auto grid max-w-[760px] gap-4 md:grid-cols-2">
                       <div>
-                        <Image src="/assets/projects/altra/safe.jpg" alt="Altra safe state" width={786} height={586} className="h-auto w-full rounded-[4px] object-cover" />
+                        <Image src="/assets/projects/altra/safe.jpg" alt="Altra safe state" width={786} height={586} className="h-auto w-full rounded-[8px] object-cover" />
                         <p className="mt-5 text-center text-base text-[#6F6F6F] dark:text-[#D9D9D9]">Safe</p>
                       </div>
                       <div>
-                        <Image src="/assets/projects/altra/critical.jpg" alt="Altra critical state" width={786} height={586} className="h-auto w-full rounded-[4px] object-cover" />
+                        <Image src="/assets/projects/altra/critical.jpg" alt="Altra critical state" width={786} height={586} className="h-auto w-full rounded-[8px] object-cover" />
                         <p className="mt-5 text-center text-base text-[#6F6F6F] dark:text-[#D9D9D9]">Critical</p>
                       </div>
                     </div>
