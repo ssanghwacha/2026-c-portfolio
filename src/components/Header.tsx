@@ -142,8 +142,8 @@ export default function Header({
   const mobileHeaderWidth = inlineOnMobile
     ? 'w-full'
     : scrollWithPageOnMobile
-      ? 'w-[calc(100%-2rem)] sm:w-[calc(100%-4rem)] md:w-[calc(100%-5rem)] lg:w-[min(281px,calc(100vw-32px))]'
-    : 'w-[calc(100vw-40px)] sm:w-[calc(100vw-48px)] md:w-[calc(100vw-80px)] md:max-w-[960px] lg:w-[min(281px,calc(100vw-32px))]';
+      ? 'w-[calc(100%-2rem)] sm:w-[calc(100%-4rem)] lg:w-[min(281px,calc(100vw-32px))]'
+    : 'w-[calc(100vw-32px)] lg:w-[min(281px,calc(100vw-32px))]';
   const isInfoActive = pathname === '/info';
   const isWorkActive = pathname === '/work' || pathname.startsWith('/work/');
   const navItems = [
