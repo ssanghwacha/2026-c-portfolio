@@ -92,7 +92,7 @@ export default function Hero() {
       <h1
         className="text-primary dark:text-accent max-w-[700px]"
         style={{
-          fontFamily: "'Instrument Serif', serif",
+          fontFamily: 'var(--font-display), Georgia, serif',
           fontSize: 'clamp(24px, 5vw, 36px)',
           lineHeight: '110%',
           letterSpacing: '0.04em',

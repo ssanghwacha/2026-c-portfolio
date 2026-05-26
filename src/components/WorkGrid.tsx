@@ -48,7 +48,7 @@ export default function WorkGrid({ active: externalActive }: { active?: Category
 
       {/* Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-[clamp(12px,1.0417vw,20px)] gap-y-6">
-        {filtered.map((project) => (
+        {filtered.map((project, index) => (
           <Link
             key={project.slug}
             href={`/work/${project.slug}`}
@@ -61,7 +61,8 @@ export default function WorkGrid({ active: externalActive }: { active?: Category
                   src={project.thumbnail}
                   alt={`${project.title} project thumbnail`}
                   fill
-                  unoptimized
+                  priority={index < 3}
+                  quality={72}
                   sizes="(max-width: 640px) calc(100vw - 64px), (max-width: 1024px) calc((100vw - 84px) / 2), calc((100vw - 104px) / 3)"
                   className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
                 />

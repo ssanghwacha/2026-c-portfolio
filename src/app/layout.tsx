@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Rethink_Sans } from "next/font/google";
+import { Instrument_Serif, Rethink_Sans } from "next/font/google";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import Script from "next/script";
 import { GoogleAnalytics } from "@next/third-parties/google";
@@ -11,6 +11,12 @@ const rethink = Rethink_Sans({
   display: "swap",
 });
 
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-display",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://sangwhacha.com"),
@@ -45,14 +51,13 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${rethink.variable}`}>
+    <html lang="en" className={`${rethink.variable} ${instrumentSerif.variable}`}>
       <head>
         <link rel="preconnect" href="https://api.fontshare.com" />
         <link href="https://api.fontshare.com/v2/css?f[]=satoshi@500,700&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
         <Script
           id="clarity-script"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "wuwcvd5bia");`,
           }}
