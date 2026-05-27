@@ -300,25 +300,6 @@ export default function BillowPage() {
                   </div>
                 ))}
               </div>
-
-              <div className="flex gap-3 pt-6">
-                <a
-                  href={BILLOW_PROTOTYPE_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center rounded-lg bg-primary text-white px-6 py-3 font-satoshi text-sm font-medium hover:opacity-90 transition-opacity dark:bg-[#2A2A2A] dark:text-[#E6E6E6]"
-                >
-                  View Prototype
-                </a>
-                <a
-                  href={BILLOW_LIVE_DEMO_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center rounded-lg border border-primary text-primary px-6 py-3 font-satoshi text-sm font-medium hover:bg-primary/5 transition-colors dark:border-[#555] dark:text-[#E6E6E6] dark:hover:bg-[#2A2A2A]"
-                >
-                  Live Demo
-                </a>
-              </div>
             </div>
 
             <Image
