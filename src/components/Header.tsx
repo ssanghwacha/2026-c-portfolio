@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useTheme } from '@/providers/ThemeProvider';
+import LogoSmile from './LogoSmile';
 
 const getClickCursorUrl = (color: string) => {
   const svgData = `<svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_306_583)"><path d="M14.1827 24H16.7282V21.4545H15.4554V20.1818H14.1827V18.9091H18.0009V17.6364H16.7282V16.3636H15.4554V15.0909H14.1827V13.8182H12.91V12.5455H11.6373V11.2727H10.3645V10H9.0918V22.7273H10.3645V21.4545H11.6373V20.1818H12.91V21.4545H14.1827V24Z" fill="${color}"/><path d="M3.9282 3L5.66025 2L8.66025 7.19615L6.9282 8.19615L3.9282 3ZM11.3923 7.9282L16.5885 4.9282L17.5885 6.66025L12.3923 9.66025L11.3923 7.9282ZM1 13.9282L6.19615 10.9282L7.19615 12.6603L2 15.6603L1 13.9282Z" fill="${color}"/></g><defs><clipPath id="clip0_306_583"><rect width="48" height="48" fill="white"/></clipPath></defs></svg>`;
@@ -166,6 +167,7 @@ export default function Header({
         {/* 로고 */}
         <Link href="/" className={`h-[21px] w-full flex items-center justify-between px-[2px] ${logoBg}`}>
           <span className={`font-rethink font-medium text-2xl leading-none ${logoText}`}>C</span>
+          <LogoSmile className={logoText} />
           <span className={`font-rethink font-medium text-2xl leading-none ${logoText}`}>SANGWHA</span>
         </Link>
 
