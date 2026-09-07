@@ -62,8 +62,6 @@ export default function RootLayout({
             __html: `(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "wuwcvd5bia");`,
           }}
         />
-      </head>
-      <body className={`${rethink.className} min-h-screen antialiased bg-white text-black dark:bg-[#1E1E1E] dark:text-[#E6E6E6]`}>
         <Script
           id="theme-init"
           strategy="beforeInteractive"
@@ -71,8 +69,10 @@ export default function RootLayout({
             __html: `(function(){try{var t=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme:dark)').matches;if(t==='dark'||(t===null&&d)){document.documentElement.classList.add('dark')}}catch(e){}})()`,
           }}
         />
+      </head>
+      <body className={`${rethink.className} min-h-screen antialiased bg-white text-black dark:bg-[#1E1E1E] dark:text-[#E6E6E6]`}>
         <ThemeProvider>{children}</ThemeProvider>
-        <GoogleAnalytics gaId="G-RX957HRGVH" />
+        {/* <GoogleAnalytics gaId="G-RX957HRGVH" /> */}
       </body>
     </html>
   );

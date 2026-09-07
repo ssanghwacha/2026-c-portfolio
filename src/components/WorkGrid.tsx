@@ -2,8 +2,39 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { projects, categoryLabel, type Category } from '@/data/projects';
+
+function ProjectVideoThumbnail({ src, title }: { src: string; title: string }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const play = () => {
+    void videoRef.current?.play();
+  };
+
+  const reset = () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.pause();
+    video.currentTime = 0;
+  };
+
+  return (
+    <video
+      ref={videoRef}
+      src={src}
+      muted
+      loop
+      playsInline
+      preload="metadata"
+      aria-label={`${title} project thumbnail`}
+      onMouseEnter={play}
+      onMouseLeave={reset}
+      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+    />
+  );
+}
 
 export default function WorkGrid({ active: externalActive }: { active?: Category }) {
   const [internalActive, setInternalActive] = useState<Category>('all');
@@ -56,7 +87,12 @@ export default function WorkGrid({ active: externalActive }: { active?: Category
             style={{ fontFamily: "'Satoshi', sans-serif" }}
           >
             <div className="relative w-full bg-[#D9D9D9] dark:bg-[#2A2A2A] rounded-[8px] overflow-hidden aspect-[7/10]">
-              {project.thumbnail && (
+              {project.thumbnailVideo ? (
+                <ProjectVideoThumbnail
+                  src={project.thumbnailVideo}
+                  title={project.title}
+                />
+              ) : project.thumbnail ? (
                 <Image
                   src={project.thumbnail}
                   alt={`${project.title} project thumbnail`}
@@ -66,7 +102,7 @@ export default function WorkGrid({ active: externalActive }: { active?: Category
                   sizes="(max-width: 640px) calc(100vw - 64px), (max-width: 1024px) calc((100vw - 84px) / 2), calc((100vw - 104px) / 3)"
                   className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
                 />
-              )}
+              ) : null}
               <span className="absolute top-3 left-3 bg-white dark:bg-[#2E2E2E] text-black dark:text-[#E6E6E6] text-sm font-medium px-3 py-1 rounded-full border border-black/10 dark:border-white/10">
                 {categoryLabel[project.category] ?? project.category}
               </span>
