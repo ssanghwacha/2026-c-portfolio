@@ -196,7 +196,7 @@ export default function GroceryNavPage() {
           title="Grocery Nav"
           meta="Product · Mobile UX"
           headline="Find what you need. Leave sooner."
-          description="An independent concept that connects a shopping list to an in-store map, helping shoppers locate products while keeping the next task in view. Designed and tested with a functional Android prototype in a real grocery store."
+          description="An independent Android grocery navigation app, designed, built, and tested in a real grocery store."
           role={['Interaction & UI Design', 'Design System', 'Usability Testing']}
           team={[
             { initials: 'SC', color: '#5C6BC0' },
