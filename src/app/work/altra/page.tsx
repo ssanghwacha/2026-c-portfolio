@@ -176,7 +176,7 @@ export default function AltraPage() {
                         <p className="mt-2 text-[32px] font-semibold leading-none text-[#6F6F6F] dark:text-[#E6E6E6]">
                           <NumberCountUp to={75} suffix="%" />
                         </p>
-                        <p className="mt-2 text-sm text-[#6F6F6F] dark:text-[#777]">accuracy</p>
+                        <p className="mt-2 text-sm text-[#6F6F6F] dark:text-[#777]">after revision · 3 of 4</p>
                       </div>
                     </div>
                   </div>
@@ -495,7 +495,7 @@ export default function AltraPage() {
                   <div className="mt-8 flex items-baseline justify-between gap-6 border-t border-[#E6E6E6] pt-6 dark:border-[#3A3A3A]">
                     <p className="text-xs uppercase tracking-[0.18em] text-[#ADADAD] dark:text-[#555]">Risk awareness</p>
                     <p className="text-[24px] font-medium leading-none text-primary dark:text-[#E6E6E6]">
-                      25% to 75% <span className="ml-2 text-sm text-[#6F6F6F] dark:text-[#777]">3x accuracy</span>
+                      25% to 75% <span className="ml-2 text-sm text-[#6F6F6F] dark:text-[#777]">1 of 4 to 3 of 4</span>
                     </p>
                   </div>
                 </div>
@@ -559,29 +559,29 @@ export default function AltraPage() {
                       </p>
                     </div>
                     <div>
-                      <p className="text-xs uppercase tracking-[0.18em] text-[#ADADAD] dark:text-[#555]">Test 02 · Confidence</p>
+                      <p className="text-xs uppercase tracking-[0.18em] text-[#ADADAD] dark:text-[#555]">Test 02 · Risk awareness</p>
+                      <p className="mt-3 text-[40px] font-medium leading-none text-primary dark:text-[#E6E6E6]">
+                        <NumberCountUp to={75} suffix="%" />
+                      </p>
+                      <p className="mt-3 text-sm leading-[150%] text-[#6F6F6F] dark:text-[#999]">
+                        after timeline alignment<br />
+                        <span className="text-[#ADADAD] dark:text-[#777]">25% to 75% · 1 of 4 to 3 of 4</span>
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-xs uppercase tracking-[0.18em] text-[#ADADAD] dark:text-[#555]">Test 03 · Confidence</p>
                       <p className="mt-3 text-[40px] font-medium leading-none text-primary dark:text-[#E6E6E6]">
                         <NumberCountUp to={0.75} decimals={2} prefix="+" />
                       </p>
                       <p className="mt-3 text-sm leading-[150%] text-[#6F6F6F] dark:text-[#999]">
-                        confidence with spatial timeline<br />
+                        with clear critical guidance<br />
                         <span className="text-[#ADADAD] dark:text-[#777]">4.0 to 4.75</span>
-                      </p>
-                    </div>
-                    <div>
-                      <p className="text-xs uppercase tracking-[0.18em] text-[#ADADAD] dark:text-[#555]">Test 03 · Awareness</p>
-                      <p className="mt-3 text-[40px] font-medium leading-none text-primary dark:text-[#E6E6E6]">
-                        <NumberCountUp to={25} suffix="%" />
-                      </p>
-                      <p className="mt-3 text-sm leading-[150%] text-[#6F6F6F] dark:text-[#999]">
-                        recognized both risks<br />
-                        <span className="text-[#ADADAD] dark:text-[#777]">warning is not relationship</span>
                       </p>
                     </div>
                   </div>
                   <Separator />
                   <p className="max-w-3xl text-base leading-[170%] text-[#6F6F6F] dark:text-[#999]">
-                    Explicit labels cut recognition time by more than half. A spatial timeline lifted confidence where numbers alone could not. And under critical risk, only a quarter of users registered both threats. The warning landed, but the time relationship stayed unread.
+                    Explicit labels cut recognition time by more than half. After the timeline was aligned in one direction, risk awareness increased from 1 of 4 participants to 3 of 4. Clear critical-state guidance raised the average confidence rating from 4.0 to 4.75.
                   </p>
                   <Separator />
                   <p className="text-[28px] font-medium leading-[130%] text-primary dark:text-[#E6E6E6]">
