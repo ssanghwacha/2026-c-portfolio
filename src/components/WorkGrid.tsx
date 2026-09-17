@@ -24,10 +24,11 @@ function ProjectVideoThumbnail({ src, title }: { src: string; title: string }) {
     <video
       ref={videoRef}
       src={src}
+      autoPlay
       muted
       loop
       playsInline
-      preload="metadata"
+      preload="auto"
       aria-label={`${title} project thumbnail`}
       onMouseEnter={play}
       onMouseLeave={reset}
