@@ -42,7 +42,7 @@ export default function Footer({ lightInverted = false }: { lightInverted?: bool
   const bottomText = lightInverted ? 'text-white dark:text-[#E6E6E6]' : 'text-primary dark:text-[#E6E6E6]';
 
   return (
-    <footer className="w-full min-w-0 px-4 sm:px-[28px] flex flex-col gap-[12px]" style={{ paddingBottom: '8px' }}>
+    <footer className="flex w-full min-w-0 flex-col gap-[12px] px-4 pb-[calc(24px+env(safe-area-inset-bottom))] sm:px-[28px] sm:pb-2">
       {/* Full-width logo bar */}
       <div className={`w-full ${logoBar} flex items-center justify-between px-[2px] h-[21px]`}>
         <span className={`font-rethink ${logoText} font-medium text-2xl leading-none`}>C</span>
