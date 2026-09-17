@@ -38,8 +38,8 @@ function TextBlock({
   className?: string;
 }) {
   return (
-    <div className={`${className} flex max-w-[839px] flex-col gap-[22px]`}>
-      <div className="flex max-w-[720px] flex-col items-start gap-5">
+    <div className={`${className} flex max-w-[850px] flex-col gap-[22px]`}>
+      <div className="flex max-w-[850px] flex-col items-start gap-5">
         <span className="inline-flex items-center justify-center rounded-[11px] border border-primary/90 px-2 py-0.5 font-satoshi text-[11px] font-medium uppercase leading-[1.5] tracking-[0.08em] text-primary dark:border-[#555] dark:text-[#999]">
           {eyebrow}
         </span>
@@ -98,7 +98,7 @@ function PatternCard({
           </span>
         )}
       </div>
-      <div className="aspect-[9/16] overflow-hidden bg-[#F0F0F0] p-5 sm:p-7 dark:bg-[#202020]">
+      <div className="flex aspect-[3/4] items-center justify-center overflow-hidden bg-[#F0F0F0] p-6 sm:p-8 dark:bg-[#202020]">
         <video
           src={video}
           autoPlay
@@ -106,7 +106,7 @@ function PatternCard({
           loop
           playsInline
           preload="metadata"
-        className="h-full w-full object-contain"
+          className="h-auto w-auto max-h-full max-w-[288px] object-contain"
           aria-label={`${title} interaction pattern`}
         />
       </div>
@@ -186,8 +186,8 @@ export default function GroceryNavPage() {
           aria-label="Grocery Nav showing product selection and location feedback on a store map"
           className="block h-auto w-full rounded-[8px]"
         >
+          <source src="/assets/projects/grocery-nav/hero-video.mp4?v=5" type="video/mp4" />
           <source src="/assets/projects/grocery-nav/hero-video.webm?v=3" type="video/webm" />
-          <source src="/assets/projects/grocery-nav/hero-video.mp4?v=3" type="video/mp4" />
           Your browser does not support this video.
         </video>
       }
@@ -208,7 +208,7 @@ export default function GroceryNavPage() {
             { name: 'Codex', src: '/assets/icons/codex-colored.svg', bg: '#1D1D1F' },
           ]}
           nav={NAV}
-          layout="static"
+          layout="flow"
         />
       }
     >
@@ -238,11 +238,56 @@ export default function GroceryNavPage() {
             headline="Which layout helps shoppers find the next item?"
           >
             <p>
-              To learn which layout felt easier to use in a real aisle, I turned two competing ideas into testable prototypes. Version A kept the shopping list visible above the map. Version B used a collapsible bottom sheet to give the map more room. Shoppers used both while completing the same product-finding tasks.
+              I tested two competing navigation patterns in a real aisle. The first round revealed useful feedback, but the prototypes differed in more than layout. I rebuilt the comparison for a second round, keeping the task and product states aligned before choosing a direction.
             </p>
           </TextBlock>
 
-          <div className="py-2">
+          <div>
+            <p className="font-satoshi text-[10px] font-bold uppercase tracking-[0.1em] text-[#ADADAD]">
+              First round
+            </p>
+            <h3 className="mt-3 font-rethink text-[28px] font-medium leading-[1.25] text-[#1D1D1F] dark:text-[#E6E6E6]">
+              A directional comparison, not a controlled result.
+            </h3>
+            <p className="mt-3 max-w-[850px] font-satoshi text-[16px] leading-[1.65] text-[#6F6F6F] dark:text-[#999]">
+              The prototypes used different product states, button treatments, and interaction details alongside different layouts. The feedback showed where to look, but it could not isolate which layout caused a preference.
+            </p>
+          </div>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            <PatternCard
+              variant="A"
+              label="Fixed header"
+              title="Keep the list in view"
+              video="/assets/projects/grocery-nav/pattern-header.mp4"
+              description="Products remain visible above the map, so switching items does not require opening another layer."
+              strengths={['View the list and map together', 'Switch products in one tap']}
+              tradeoff="Reduces the vertical space available to the map"
+            />
+            <PatternCard
+              variant="B"
+              label="Collapsible bottom sheet"
+              title="Give the map more room"
+              video="/assets/projects/grocery-nav/pattern-sheet.mp4"
+              description="The list can collapse to reveal more of the floor plan, then expand when the shopper needs another item."
+              strengths={['Maximizes the map when collapsed', 'Places list controls near the thumb']}
+              tradeoff="Covers the map when open and adds a step before switching"
+            />
+          </div>
+
+          <div className="mt-20 border-t border-[#DEDEDE] pt-8 dark:border-[#393939]">
+            <p className="font-satoshi text-[10px] font-bold uppercase tracking-[0.1em] text-[#ADADAD]">
+              Second round
+            </p>
+            <h3 className="mt-3 font-rethink text-[28px] font-medium leading-[1.25] text-[#1D1D1F] dark:text-[#E6E6E6]">
+              The same task, with one variable isolated.
+            </h3>
+            <p className="mt-3 max-w-[850px] font-satoshi text-[16px] leading-[1.65] text-[#6F6F6F] dark:text-[#999]">
+              Both versions used the same product list, product states, task flow, and interaction feedback. Layout was the only meaningful difference left for shoppers to compare.
+            </p>
+          </div>
+
+          <div className="mt-8 py-2">
             <div className="grid gap-6 sm:grid-cols-[1.1fr_1.9fr] sm:items-center sm:gap-8">
               <div>
                 <p className="font-satoshi text-[10px] font-bold uppercase tracking-[0.1em] text-[#ADADAD]">
@@ -506,13 +551,13 @@ export default function GroceryNavPage() {
 
             <div className="grid gap-3 sm:grid-cols-3">
               {[
-                ['/assets/projects/grocery-nav/product-before.png', '01 · Original image', 'Original product image with its source background'],
-                ['/assets/projects/grocery-nav/product-cutout.png', '02 · Background removed', 'Product cutout with its background removed'],
-                ['/assets/projects/grocery-nav/product-in-context.png', '03 · Standardized placement', 'Transparent product centered at a consistent fill ratio in the item slot'],
-              ].map(([src, label, alt]) => (
+                ['/assets/projects/grocery-nav/product-source.png', '01 · Original image', 'Original product image on a dark source background', 'h-full w-full', 'bg-[#3F3F3F]'],
+                ['/assets/projects/grocery-nav/product-cutout.png', '02 · Background removed', 'Product cutout with its background removed', 'h-full w-full', 'bg-[#F8F8F8] dark:bg-[#242424]'],
+                ['/assets/projects/grocery-nav/product-in-context.svg', '03 · Standardized placement', 'Product shown at its 60 by 60 pixel in-app size', 'h-[66px] w-[66px]', 'bg-[#F8F8F8] dark:bg-[#242424]'],
+              ].map(([src, label, alt, imageClass, stageClass]) => (
                 <figure key={src} className="rounded-[10px] bg-white p-4 dark:bg-[#1E1E1E]">
-                  <div className="flex aspect-square items-center justify-center overflow-hidden rounded-[8px] bg-[#F8F8F8] dark:bg-[#242424]">
-                    <Image src={src} alt={alt} width={512} height={512} className="h-full w-full object-contain" />
+                  <div className={`flex aspect-square items-center justify-center overflow-hidden rounded-[8px] ${stageClass}`}>
+                    <Image src={src} alt={alt} width={512} height={512} className={`${imageClass} object-contain`} />
                   </div>
                   <figcaption className="mt-3 font-satoshi text-xs font-bold uppercase tracking-[0.06em] text-[#6F6F6F] dark:text-[#999]">
                     {label}
@@ -537,25 +582,15 @@ export default function GroceryNavPage() {
           <TextBlock eyebrow="Final prototype" headline="From an empty list to a completed trip.">
             <p>The final Android prototype connects search, product selection, aisle location, and completion in one persistent map experience.</p>
           </TextBlock>
-          <figure className="rounded-[12px] bg-black p-8 sm:p-10 lg:p-12">
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {[
-                ['/assets/projects/grocery-nav/final/empty-list.png', 'Empty shopping list on the Grocery Nav map'],
-                ['/assets/projects/grocery-nav/final/item-selected.png', 'Selected product shown on the Grocery Nav map'],
-                ['/assets/projects/grocery-nav/final/item-found.png', 'Found product state shown on the Grocery Nav map'],
-                ['/assets/projects/grocery-nav/final/list-complete.png', 'Completed shopping list on the Grocery Nav map'],
-              ].map(([src, alt]) => (
-                <Image
-                  key={src}
-                  src={src}
-                  alt={alt}
-                  width={402}
-                  height={874}
-                  className="h-auto w-full rounded-[12px]"
-                  sizes="(min-width: 1024px) 230px, (min-width: 640px) 45vw, 100vw"
-                />
-              ))}
-            </div>
+          <figure className="overflow-hidden rounded-[12px] bg-black">
+            <Image
+              src="/assets/projects/grocery-nav/final/final-flow.svg"
+              alt="Grocery Nav from an empty shopping list to a completed in-store trip"
+              width={1920}
+              height={1054}
+              className="h-auto w-full"
+              sizes="(min-width: 1024px) 980px, 100vw"
+            />
           </figure>
           <a
             href="#"

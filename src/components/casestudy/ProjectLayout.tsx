@@ -33,7 +33,7 @@ export default function ProjectLayout({
 
           {/* Mobile: hero full-bleed, above info card */}
           {heroSlot && (
-            <div className="w-full min-w-0 lg:hidden pt-[160px] pb-4 px-4">
+            <div className="w-full min-w-0 lg:hidden px-4 pb-6 pt-[160px]">
               {heroSlot}
             </div>
           )}
