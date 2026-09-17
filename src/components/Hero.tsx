@@ -207,7 +207,7 @@ function SmileIcon() {
 
 export default function Hero() {
   return (
-    <section className="relative isolate flex min-h-[90svh] items-center overflow-hidden bg-white px-4 py-16 text-[#1E1E1E] sm:min-h-[70svh] sm:px-10 sm:py-24 lg:min-h-[76svh] lg:px-[5.5vw] lg:py-24 dark:bg-[#1E1E1E] dark:text-[#E6E6E6]">
+    <section className="relative isolate flex min-h-[90svh] touch-pan-y items-center overflow-hidden bg-white px-4 py-16 text-[#1E1E1E] sm:min-h-[70svh] sm:px-10 sm:py-24 lg:min-h-[76svh] lg:px-[5.5vw] lg:py-24 dark:bg-[#1E1E1E] dark:text-[#E6E6E6]">
       <div className="relative z-10 mx-auto w-full max-w-[1540px] translate-y-[1svh] text-center sm:translate-y-[4svh] lg:translate-y-[6svh]">
         <h1
           className="mx-auto max-w-[1450px] text-[clamp(30px,5vw,56px)] font-medium text-[#252525] lg:text-[clamp(56px,5.65vw,86px)] lg:font-normal dark:text-[#E6E6E6]"
