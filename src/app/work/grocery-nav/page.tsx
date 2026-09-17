@@ -316,8 +316,11 @@ export default function GroceryNavPage() {
                   { participant: 'P1', sequence: ['A', 'B'] },
                   { participant: 'P2', sequence: ['B', 'A'] },
                   { participant: 'P3', sequence: ['A', 'B'] },
-                ].map((item) => (
-                  <div key={item.participant} className="border-l border-[#D5D5D5] px-5 py-1 dark:border-[#444]">
+                ].map((item, index) => (
+                  <div
+                    key={item.participant}
+                    className={`${index === 0 ? 'border-l-0 lg:border-l' : 'border-l'} border-[#D5D5D5] px-5 py-1 dark:border-[#444]`}
+                  >
                     <p className="font-satoshi text-[10px] font-bold uppercase tracking-[0.08em] text-[#1D1D1F] dark:text-[#E6E6E6]">
                       {item.participant}
                     </p>
@@ -497,7 +500,7 @@ export default function GroceryNavPage() {
                 How the design system connected to code
               </h3>
             </div>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
               {[
                 ['01', 'Existing language', 'Public Walmart brand guidance and established app patterns created the recognizable base.'],
                 ['02', 'Semantic meaning', 'Tokens described purpose, such as selected, found, route, and surface. They did not describe a specific hex value.'],
