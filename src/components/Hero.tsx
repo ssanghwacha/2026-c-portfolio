@@ -41,13 +41,13 @@ const NOW_STATUSES: NowStatus[] = [
     icons: [{ src: '/assets/icons/now/slack.svg', alt: 'Slack' }],
   },
   {
-    before: 'having',
-    emphasis: 'an A&W burger',
+    before: 'running on A&W between deadlines',
+    emphasis: '',
     icons: [{ src: '/assets/icons/now/aw.svg', alt: 'A&W' }],
   },
   {
-    before: 'making',
-    emphasis: 'bubble tea',
+    before: 'learning from real customer flows',
+    emphasis: '',
     icons: [{ src: '/assets/icons/now/cooc.svg', alt: 'Cooc' }],
   },
 ];
