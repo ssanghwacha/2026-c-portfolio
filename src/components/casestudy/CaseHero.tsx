@@ -38,7 +38,7 @@ export default function CaseHero({
   nav?: NavItem[];
   prototypeUrl?: string;
   liveDemoUrl?: string;
-  layout?: 'fixed' | 'static';
+  layout?: 'fixed' | 'static' | 'flow';
 }) {
   const [top, setTop] = useState(36);
   const [activeSection, setActiveSection] = useState('');
@@ -108,11 +108,13 @@ export default function CaseHero({
   return (
     <aside
       className={
-        layout === 'static'
+        layout === 'flow'
+          ? 'relative z-30 flex w-full min-w-0 flex-col gap-[12px]'
+          : layout === 'static'
           ? 'w-full min-w-0 sticky z-30 flex flex-col gap-[12px] overflow-y-auto transition-[top] duration-300 ease-out lg:static lg:transition-none'
           : 'fixed left-9 w-[calc(30vw-60px)] z-30 flex flex-col gap-[12px] overflow-y-auto'
       }
-      style={{ top, maxHeight: `calc(100vh - ${top}px - 24px)` }}
+      style={layout === 'flow' ? undefined : { top, maxHeight: `calc(100vh - ${top}px - 24px)` }}
     >
       {/* Card 1: Project info + meta */}
       <div className="flex shrink-0 flex-col gap-5 overflow-hidden rounded-[12px] bg-[#F5F5F5] p-5 dark:bg-[#2A2A2A]">

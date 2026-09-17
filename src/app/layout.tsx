@@ -54,7 +54,7 @@ export default function RootLayout({
     <html lang="en" className={`${rethink.variable} ${instrumentSerif.variable}`}>
       <head>
         <link rel="preconnect" href="https://api.fontshare.com" />
-        <link href="https://api.fontshare.com/v2/css?f[]=satoshi@500,700&display=swap" rel="stylesheet" />
+        <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet" />
         <Script
           id="clarity-script"
           strategy="lazyOnload"
