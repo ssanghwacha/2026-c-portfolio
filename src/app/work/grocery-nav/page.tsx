@@ -175,21 +175,35 @@ export default function GroceryNavPage() {
         />
       }
       heroSlot={
-        <video
-          width={3840}
-          height={2160}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          aria-label="Grocery Nav showing product selection and location feedback on a store map"
-          className="block h-auto w-full rounded-[8px]"
-        >
-          <source src="/assets/projects/grocery-nav/hero-video.mp4?v=5" type="video/mp4" />
-          <source src="/assets/projects/grocery-nav/hero-video.webm?v=3" type="video/webm" />
-          Your browser does not support this video.
-        </video>
+        <>
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-label="Grocery Nav mobile product selection and location feedback"
+            className="block h-auto w-full rounded-[8px] sm:hidden"
+          >
+            <source src="/assets/projects/grocery-nav/hero-video-mobile.mp4" type="video/mp4" />
+            Your browser does not support this video.
+          </video>
+          <video
+            width={3840}
+            height={2160}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-label="Grocery Nav showing product selection and location feedback on a store map"
+            className="hidden h-auto w-full rounded-[8px] sm:block"
+          >
+            <source src="/assets/projects/grocery-nav/hero-video.mp4?v=5" type="video/mp4" />
+            <source src="/assets/projects/grocery-nav/hero-video.webm?v=3" type="video/webm" />
+            Your browser does not support this video.
+          </video>
+        </>
       }
       sidebar={
         <CaseHero
