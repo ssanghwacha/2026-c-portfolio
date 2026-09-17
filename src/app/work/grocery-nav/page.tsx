@@ -7,6 +7,7 @@ import CaseHero from '@/components/casestudy/CaseHero';
 import CaseSection from '@/components/casestudy/CaseSection';
 import SeeMore from '@/components/casestudy/SeeMore';
 import AutoplayVideo from '@/components/casestudy/AutoplayVideo';
+import HorizontalDragScroll from '@/components/casestudy/HorizontalDragScroll';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 
@@ -516,8 +517,8 @@ export default function GroceryNavPage() {
                 </div>
               ))}
             </div>
-            <div className="mt-4 grid gap-4 md:grid-cols-2">
-              <figure className="overflow-hidden rounded-[12px] bg-[#F5F5F5] dark:bg-[#262626]">
+            <HorizontalDragScroll className="no-scrollbar mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain pb-2 md:grid md:grid-cols-2 md:overflow-visible md:pb-0">
+              <figure className="w-[88%] shrink-0 snap-center overflow-hidden rounded-[12px] bg-[#F5F5F5] dark:bg-[#262626] md:w-auto">
                 <Image
                   src="/assets/projects/grocery-nav/system/figma-variables.png"
                   alt="Semantic tokens linked to their primitive values in Figma"
@@ -527,7 +528,7 @@ export default function GroceryNavPage() {
                   sizes="(min-width: 768px) 50vw, 100vw"
                 />
               </figure>
-              <figure className="aspect-[1672/2300] overflow-hidden rounded-[12px] bg-[#F5F5F5] p-3 dark:bg-[#262626]">
+              <figure className="aspect-[1672/2300] w-[88%] shrink-0 snap-center overflow-hidden rounded-[12px] bg-[#F5F5F5] p-3 dark:bg-[#262626] md:w-auto">
                 <div className="relative h-full w-full overflow-hidden rounded-[8px]">
                   <Image
                     src="/assets/projects/grocery-nav/system/react-tokens.png"
@@ -538,7 +539,7 @@ export default function GroceryNavPage() {
                   />
                 </div>
               </figure>
-            </div>
+            </HorizontalDragScroll>
           </div>
         </CaseSection>
 
