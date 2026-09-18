@@ -121,8 +121,6 @@ function SmileIcon() {
 
   useEffect(() => {
     const RADIUS = 140;
-    const MAX_X = 24;
-    const MAX_Y = 12;
 
     const onMove = (e: MouseEvent) => {
       const el = wrapRef.current;
@@ -140,8 +138,11 @@ function SmileIcon() {
       }
 
       const force = 1 - dist / RADIUS;
-      const nx = -(dx / dist) * force * MAX_X;
-      const ny = -(dy / dist) * force * MAX_Y;
+      const isMobile = window.matchMedia('(max-width: 639px)').matches;
+      const maxX = isMobile ? 8 : 24;
+      const maxY = isMobile ? 4 : 12;
+      const nx = -(dx / dist) * force * maxX;
+      const ny = -(dy / dist) * force * maxY;
       setOffset({ x: nx, y: ny });
     };
 
