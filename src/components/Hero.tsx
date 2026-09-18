@@ -83,7 +83,7 @@ function NowStatusLine() {
   return (
     <p
       aria-live="polite"
-      className="mx-auto mt-8 flex min-h-9 w-[calc(100vw-24px)] flex-col items-center justify-center gap-1 text-center text-[clamp(12px,3.8vw,20px)] tracking-[-0.01em] text-primary sm:mt-10 sm:w-full sm:min-h-9 sm:flex-row sm:gap-1.5 sm:text-[16px] lg:w-auto lg:min-h-10 lg:gap-2 lg:text-[20px] dark:text-[#E6E6E6]"
+      className="mx-auto mt-8 flex min-h-9 w-[calc(100vw-24px)] flex-col items-center justify-center gap-1 text-center text-[clamp(12px,3.8vw,20px)] leading-none tracking-[-0.01em] text-primary sm:mt-10 sm:w-full sm:min-h-9 sm:flex-row sm:gap-1.5 sm:text-[16px] lg:w-auto lg:min-h-10 lg:gap-2 lg:text-[20px] dark:text-[#E6E6E6]"
       style={{ fontFamily: "'Satoshi', sans-serif", fontWeight: 500 }}
     >
       <span>
@@ -92,9 +92,9 @@ function NowStatusLine() {
       <motion.span
         layout="size"
         transition={{ layout: { duration: 0.62, ease: [0.16, 1, 0.3, 1] } }}
-        className="relative inline-flex min-h-9 max-w-full overflow-hidden rounded-full bg-primary px-2.5 py-1 text-white will-change-[width] sm:px-3 sm:py-1.5 lg:min-h-10 lg:px-3.5 lg:py-2 dark:bg-[#E6E6E6] dark:text-[#1E1E1E]"
+        className="relative inline-flex min-h-9 max-w-full overflow-hidden rounded-full bg-primary px-2.5 py-1 text-white will-change-[width] sm:px-3 sm:py-1.5 lg:min-h-10 lg:px-3.5 lg:py-1 dark:bg-[#E6E6E6] dark:text-[#1E1E1E]"
       >
-        <span aria-hidden="true" className="invisible inline-flex items-center gap-1 whitespace-nowrap lg:gap-1.5">
+        <span aria-hidden="true" className="invisible inline-flex items-center justify-center gap-1 whitespace-nowrap lg:gap-1.5">
           <StatusContent status={status} />
         </span>
         <AnimatePresence mode="sync" initial={false}>
@@ -104,7 +104,7 @@ function NowStatusLine() {
             animate={{ opacity: 1, y: '0%' }}
             exit={{ opacity: 0, y: '35%', filter: 'blur(2px)' }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute inset-y-0 left-2.5 right-2.5 inline-flex items-center gap-1 whitespace-nowrap sm:left-3 sm:right-3 lg:left-3.5 lg:right-3.5 lg:gap-1.5"
+            className="absolute inset-y-0 left-2.5 right-2.5 inline-flex items-center justify-center gap-1 whitespace-nowrap sm:left-3 sm:right-3 lg:left-3.5 lg:right-3.5 lg:gap-1.5"
           >
             <StatusContent status={status} />
           </motion.span>
