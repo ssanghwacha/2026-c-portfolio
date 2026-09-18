@@ -83,7 +83,7 @@ function NowStatusLine() {
   return (
     <p
       aria-live="polite"
-      className="mx-auto mt-8 flex min-h-9 w-[calc(100vw-24px)] flex-col items-center justify-center gap-1 text-center text-[clamp(12px,3.8vw,20px)] leading-none tracking-[-0.01em] text-primary sm:mt-10 sm:w-full sm:min-h-9 sm:flex-row sm:gap-1.5 sm:text-[16px] lg:w-auto lg:min-h-10 lg:gap-2 lg:text-[20px] dark:text-[#E6E6E6]"
+      className="mx-auto mt-8 flex min-h-9 w-[calc(100vw-24px)] flex-col items-center justify-center gap-1 text-center text-[clamp(12px,3.8vw,20px)] leading-[1.2] tracking-[-0.01em] text-primary sm:mt-10 sm:w-full sm:min-h-9 sm:flex-row sm:gap-1.5 sm:text-[16px] lg:w-auto lg:min-h-10 lg:gap-2 lg:text-[20px] dark:text-[#E6E6E6]"
       style={{ fontFamily: "'Satoshi', sans-serif", fontWeight: 500 }}
     >
       <span>
