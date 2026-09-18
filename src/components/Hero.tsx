@@ -92,7 +92,7 @@ function NowStatusLine() {
       <motion.span
         layout="size"
         transition={{ layout: { duration: 0.62, ease: [0.16, 1, 0.3, 1] } }}
-        className="relative inline-flex min-h-9 max-w-full overflow-hidden rounded-full bg-primary px-3 py-1.5 text-white will-change-[width] lg:min-h-10 lg:px-3.5 lg:py-1 dark:bg-[#E6E6E6] dark:text-[#1E1E1E]"
+        className="relative inline-flex min-h-9 max-w-full overflow-hidden rounded-full bg-primary px-3 py-1 text-white will-change-[width] sm:py-1.5 lg:min-h-10 lg:px-3.5 lg:py-1 dark:bg-[#E6E6E6] dark:text-[#1E1E1E]"
       >
         <span aria-hidden="true" className="invisible inline-flex items-center justify-center gap-1 whitespace-nowrap lg:gap-1.5">
           <StatusContent status={status} />
