@@ -217,14 +217,43 @@ export default function Hero() {
             letterSpacing: '-0.055em',
           }}
         >
-          <motion.span
-            className="block text-balance lg:hidden"
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          >
-            Sangwha <SmileIcon /> is a designer shaping brands, digital products, and systems with a refined eye for user experience.
-          </motion.span>
+          <span className="sm:hidden">
+            {[
+              <>Sangwha <SmileIcon /> is a</>,
+              <>designer shaping brands,</>,
+              <>digital products, and systems</>,
+              <>with a refined eye for</>,
+              <>user experience.</>,
+            ].map((line, index) => (
+              <motion.span
+                key={index}
+                className="block"
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.9, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              >
+                {line}
+              </motion.span>
+            ))}
+          </span>
+          <span className="hidden sm:block lg:hidden">
+            {[
+              <>Sangwha <SmileIcon /> is a designer</>,
+              <>shaping brands, digital products,</>,
+              <>and systems with a refined eye</>,
+              <>for user experience.</>,
+            ].map((line, index) => (
+              <motion.span
+                key={index}
+                className="block"
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.9, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              >
+                {line}
+              </motion.span>
+            ))}
+          </span>
           <span className="hidden lg:block">
             <motion.span
               className="block"
