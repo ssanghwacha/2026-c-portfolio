@@ -55,8 +55,8 @@ const NOW_STATUSES: NowStatus[] = [
 function StatusContent({ status }: { status: NowStatus }) {
   return (
     <>
-      <span>{status.before}</span>
-      <span className="font-medium">{status.emphasis}</span>
+      <span className="relative -top-px">{status.before}</span>
+      <span className="relative -top-px font-medium">{status.emphasis}</span>
       {status.icons?.map(({ src, alt }, index) => (
         <Image
           key={src}
