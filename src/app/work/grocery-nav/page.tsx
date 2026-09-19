@@ -347,7 +347,7 @@ export default function GroceryNavPage() {
               label="Fixed header"
               selected
               title="Keep the list in view"
-              video="/assets/projects/grocery-nav/pattern-header.mp4"
+              video="/assets/projects/grocery-nav/pattern-header-round-2.mp4"
               description="Products remain visible above the map, so switching items does not require opening another layer."
               strengths={['View the list and map together', 'Switch products in one tap']}
               tradeoff="Reduces the vertical space available to the map"
@@ -356,7 +356,7 @@ export default function GroceryNavPage() {
               variant="B"
               label="Collapsible bottom sheet"
               title="Give the map more room"
-              video="/assets/projects/grocery-nav/pattern-sheet.mp4"
+              video="/assets/projects/grocery-nav/pattern-sheet-round-2.mp4"
               description="The list can collapse to reveal more of the floor plan, then expand when the shopper needs another item."
               strengths={['Maximizes the map when collapsed', 'Places list controls near the thumb']}
               tradeoff="Covers the map when open and adds a step before switching"
