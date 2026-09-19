@@ -211,7 +211,7 @@ export default function Hero() {
     <section className="relative isolate flex min-h-[90svh] touch-pan-y items-center overflow-hidden bg-white px-4 py-16 text-[#1E1E1E] sm:min-h-[70svh] sm:px-10 sm:py-24 lg:min-h-[76svh] lg:px-[5.5vw] lg:py-24 dark:bg-[#1E1E1E] dark:text-[#E6E6E6]">
       <div className="relative z-10 mx-auto w-full max-w-[1540px] -translate-y-[4svh] text-center sm:translate-y-[4svh] lg:translate-y-[6svh]">
         <h1
-          className="mx-auto max-w-[1450px] text-[clamp(26px,7vw,36px)] font-medium text-[#252525] sm:text-[clamp(30px,5vw,56px)] lg:text-[clamp(56px,5.65vw,86px)] lg:font-normal dark:text-[#E6E6E6]"
+          className="mx-auto max-w-[1450px] text-[clamp(26px,7vw,36px)] font-medium text-[#252525] sm:text-[clamp(30px,5vw,56px)] lg:text-[clamp(54px,5.3vw,80px)] lg:font-normal dark:text-[#E6E6E6]"
           style={{
             fontFamily: "'Satoshi', sans-serif",
             lineHeight: '0.98',
