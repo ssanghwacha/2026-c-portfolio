@@ -107,7 +107,7 @@ function PatternCard({
           loop
           playsInline
           preload="metadata"
-          className="h-auto w-auto max-h-full max-w-[288px] object-contain"
+          className="h-full w-full object-contain"
           aria-label={`${title} interaction pattern`}
         />
       </div>
