@@ -99,7 +99,7 @@ function PatternCard({
           </span>
         )}
       </div>
-      <div className="flex aspect-[3/4] items-center justify-center overflow-hidden bg-[#F0F0F0] p-6 sm:p-8 dark:bg-[#202020]">
+      <div className="flex aspect-[3/4] items-center justify-center overflow-hidden bg-[#F0F0F0] dark:bg-[#202020]">
         <video
           src={video}
           autoPlay
@@ -107,7 +107,7 @@ function PatternCard({
           loop
           playsInline
           preload="metadata"
-          className="h-full w-full object-contain"
+          className="h-[calc(100%-48px)] w-[calc(100%-48px)] object-contain sm:h-[calc(100%-64px)] sm:w-[calc(100%-64px)]"
           aria-label={`${title} interaction pattern`}
         />
       </div>
