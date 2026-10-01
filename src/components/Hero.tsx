@@ -180,7 +180,7 @@ function SmileIcon() {
         initial={{ opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="pointer-events-none absolute bottom-[calc(100%-4px)] left-1/2 w-[64px] max-w-none -translate-x-1/2 sm:bottom-[calc(100%-6px)] sm:w-[80px] lg:bottom-[calc(100%-10px)] lg:w-[112px]"
+        className="pointer-events-none absolute bottom-[calc(100%-4px)] left-1/2 w-[64px] max-w-none -translate-x-1/2 sm:bottom-[calc(100%-6px)] sm:w-[80px] lg:bottom-[calc(100%-8px)] lg:w-[92px] xl:bottom-[calc(100%-10px)] xl:w-[112px]"
       >
         <Image
           src="/assets/hero/hi-bubble-blue.svg"
@@ -188,7 +188,7 @@ function SmileIcon() {
           width={112}
           height={80}
           priority
-          className="h-auto w-[64px] sm:w-[80px] lg:w-[112px] dark:hidden"
+          className="h-auto w-[64px] sm:w-[80px] lg:w-[92px] xl:w-[112px] dark:hidden"
         />
         <Image
           src="/assets/hero/hi-bubble-v3.svg"
@@ -196,7 +196,7 @@ function SmileIcon() {
           width={112}
           height={80}
           priority
-          className="hidden h-auto w-[64px] sm:w-[80px] lg:w-[112px] dark:block dark:invert"
+          className="hidden h-auto w-[64px] sm:w-[80px] lg:w-[92px] xl:w-[112px] dark:block dark:invert"
         />
       </motion.div>
       <svg width="56" height="56" viewBox="0 0 34 34" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className="inline-block h-[0.72em] w-[0.72em]" style={{ verticalAlign: '-0.15em' }}>
